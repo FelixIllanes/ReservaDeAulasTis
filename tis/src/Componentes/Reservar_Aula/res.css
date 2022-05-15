@@ -1,0 +1,42 @@
+#form_res_amb{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.dos{
+    margin-top: 120px;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+}
+#reserva{
+    margin-left: 20px;
+}
+#codAmb{
+    width: 25em;
+}
+#motivoSol{
+    width: 25em;
+}
+.form-check{
+    align-items: center;
+}
+.form-check{
+    margin-left: 35%;
+    font-size: 20px;
+}
+.boton_form{
+    margin-top: 10px;
+    justify-content: center;
+}
+
+
+@media only screen and (max-width: 992px){
+    #form_res_amb{
+        display: block;
+    }
+    .dos{
+        margin-top: 80px;
+    }
+}
