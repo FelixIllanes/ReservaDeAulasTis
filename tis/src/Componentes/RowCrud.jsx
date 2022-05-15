@@ -5,12 +5,16 @@ import Eliminar_modal from './Eliminar_modal';
 
 const DEFAULT_IMAGE_PATH = "assets/imagenes/logo_facultad.png"
 
-function RowCrud({aula, editAula}){
+function RowCrud({aula, editAula, deleteAula}){
     const { id, imagen, capacidad, codigo, caracteristicas, tipo, ubicacion} = aula
 
 
     const handleEdit = () => {
         editAula(aula)
+    }
+
+    const handleDelete =() =>{
+        deleteAula(aula)
     }
 
     return(
@@ -38,7 +42,7 @@ function RowCrud({aula, editAula}){
                         className="btn_eliminar" 
                         data-bs-target="#exampleModal" 
                         data-bs-toggle="modal" 
-                        onClick={() =>{  }}>Eliminar</button>
+                        onClick={handleDelete}>Eliminar</button>
 
                 </div>
                 </td>

@@ -1,18 +1,45 @@
-function Eliminar_modal(){
+import './delete_crud.css'
+import {useState} from 'react'
+import {Modal} from 'react-bootstrap'
+import {button} from 'react-bootstrap'
+import {remove} from '../../services/crud'
+import {getAll} from '../../services/crud'
+
+function Eliminar_modal({aula, closeModalKill}){
+    const { id, imagen, capacidad, codigo, caracteristicas, tipo, ubicacion} = aula || {}
+    const [body, setBody] = useState(aula)
+
+    const handleOnSubmit = (evt) => {
+        evt.preventDefault()
+         //console.log(body)
+         remove(id)
+         closeModalKill()
+         //window.location.reload();
+         //actualizar()
+         //redirectTo()
+        
+         //getAllAula(true)
+     }
+
+    //
+
+     const actualizar = (evt) =>{
+        window.location.reload();
+    }
+
     return(
-        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                    <div className="modal-body">
-                        <h5>¿Seguro que desea Eliminar?</h5>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn_eliminar" id="btn_eliminar" >Si, deseo elimniar</button>
-                        <button type="button" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
+        <form onSubmit={handleOnSubmit}>
+            <div>
+                <div className='delete_title'>
+                    <label htmlFor="">¿Seguro que desea Eliminar Ambiente <strong>{codigo}</strong>?</label>
+                </div>
+                <div className="modal-footer">
+                    <button type="submit" className="btn_eliminar" > Eliminar</button>
+                    <button type="button" onClick={()=> closeModalKill()} >Cancelar</button>
                 </div>
             </div>
-        </div>
+        </form>
+
 )}
 
 export default Eliminar_modal

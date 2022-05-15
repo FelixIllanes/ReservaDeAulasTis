@@ -2,7 +2,7 @@ import {useState} from 'react'
 import Formcrud_modal from '../Formcrud_modal';
 import RowCrud from '../RowCrud' 
 
-function Crud_table ({aulas = [], setShowModal, editAula}){
+function Crud_table ({aulas = [], setShowModal, editAula,deleteAula}){
     return(
         <>
             {aulas?.map((aula, idx) => (
@@ -10,6 +10,7 @@ function Crud_table ({aulas = [], setShowModal, editAula}){
                     key={idx}
                     aula={aula}  
                     editAula={editAula}
+                    deleteAula={deleteAula}
                 />
             ))}
           
