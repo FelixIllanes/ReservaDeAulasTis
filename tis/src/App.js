@@ -9,6 +9,7 @@ import Crud from './pages/Crud'
 import ReservarAula from './pages/ReservarAula';
 import LoginUsr from './pages/Login';
 import Login from './pages/Login';
+import Respuesta_Reserva from './pages/Respuesta_Reserva'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="catalogo" element={<Catalogos/>}/>
           <Route path="iniciarSesion" element={<Crud/>}/>
           <Route path="crud" element={<Crud/>}/>
+          <Route path="respuesta-reserva" element={<Respuesta_Reserva/>}/>
         </Route>
         <Route path="/login" element={()=> 'login_otro'} />
         <Route path="/register" element={()=> 'register'} />

@@ -1,0 +1,18 @@
+:root{
+    --color-bg-btn:rgb(227, 227, 227);
+}
+.btn_card{
+    width: 12rem;
+    height: 2rem;
+    font-size: 10px;
+    padding: 15px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 8%;
+    background-color: var(--color-bg-btn);
+}
+
+.btn_card:hover{
+    background-color: var(--color-bg-btn);
+    color: black;
+}

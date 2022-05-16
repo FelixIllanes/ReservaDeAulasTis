@@ -109,7 +109,7 @@ function Buscador({setAulas}){
             })
         }else{
             search([]).then(data => {
-                console.log(data.Respuesta);
+                //console.log(data.Respuesta);
                 if (data.length){
                     setAulas(data)
                 }else{

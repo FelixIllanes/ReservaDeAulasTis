@@ -1,13 +1,20 @@
 import {Button} from 'react-bootstrap'
 import {Offcanvas} from 'react-bootstrap'
 import {useEffect, useState} from 'react'
-
+import {getCardResponse} from '../../services/reserva'
+import Notify from '../Notify'
 
 function OffCanvasExample({ name, ...props }) {
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const [reservas, setReservas] = useState([])
+
+    useEffect(() => {
+      getCardResponse(1).then(setReservas)
+    }, [])
   
     return (
       <>
@@ -16,10 +23,16 @@ function OffCanvasExample({ name, ...props }) {
         </Button>
         <Offcanvas show={show} onHide={handleClose} {...props}>
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+            <Offcanvas.Title>Notificaciones</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            Aqui las notificaciones que algun dia vamos a poner 
+
+          {reservas?.map(reserva => (
+                <>
+                <Notify reserva={reserva}/><br />
+                </>
+            ))}
+
           </Offcanvas.Body>
         </Offcanvas>
       </>

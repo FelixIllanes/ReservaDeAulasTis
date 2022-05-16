@@ -5,16 +5,18 @@ import Eliminar_modal from './Eliminar_modal';
 
 const DEFAULT_IMAGE_PATH = "assets/imagenes/logo_facultad.png"
 
-function RowCrud({aula, editAula, deleteAula}){
+function RowCrud({aula, focusAula, openModal, openAlert}){
     const { id, imagen, capacidad, codigo, caracteristicas, tipo, ubicacion} = aula
 
 
     const handleEdit = () => {
-        editAula(aula)
+        focusAula(aula)
+        openModal()
     }
 
     const handleDelete =() =>{
-        deleteAula(aula)
+        focusAula(aula)
+        openAlert()
     }
 
     return(

@@ -1,21 +1,20 @@
 import {useEffect, useState} from 'react'
-import { getAll } from '../services/crud'
+import RowCrud from '../Componentes/RowCrud' 
+//import { getAll } from '../services/au'
 import { useNavigate } from "react-router-dom";
 import Crud_table from "../Componentes/Crud_Table";
 import Eliminar_modal from '../Componentes/Eliminar_modal';
 import Formcrud_modal from '../Componentes/Formcrud_modal';
 import FormEditAula from '../Componentes/FormEditAula';
 import {Modal} from 'react-bootstrap'
+
+import {useAulas} from '../hooks/useAulas'
+
 export default function Crud(){
     const [showModal, setShowModal] = useState(false)
-    const [showKill, setShowKill] = useState(false)
-    const [aulas, setAulas] = useState([])
-    const [aulaSelected, setAulaSelected] = useState(null)
+    const [showAlert, setShowAlert] = useState(false)
+    const {aulas, updateAula, removeAula, focusAula, aula} = useAulas()
 
-    useEffect(() => {
-        getAll().then(setAulas)
-    }, [])
-  
     const navigate = useNavigate()
 
     const redirectTo = () => {
@@ -25,24 +24,8 @@ export default function Crud(){
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
 
-    const openModalKill = () => setShowKill(true)
-    const closeModalKill = () =>{
-        setShowKill(false)
-        //useEffect()
-        //getAll().then(setAulas)
-        //window.location.replace('http://localhost:3000/iniciarSesion');
-    }
-
-
-    const editAula = (aula) => {
-        setAulaSelected(aula)
-        setShowModal(true)
-    }
-
-    const deleteAula = (aula) => {
-        setAulaSelected(aula)
-        setShowKill(true)
-    }
+    const openAlert = () => setShowAlert(true)
+    const closeAlert = () => setShowAlert(false)
 
 
     return (
@@ -61,16 +44,25 @@ export default function Crud(){
                         <th scope="col" >Opciones</th>
                     </tr>
                     </thead>
-                        <Crud_table aulas={aulas} 
-                            setShowModal={setShowModal}
-                            editAula={editAula}
-                            deleteAula={deleteAula}
-                        />
+            {aulas?.map((aula, idx) => (
+                <RowCrud
+                    key={idx}
+                    aula={aula}  
+                    focusAula={focusAula}
+                    openModal={openModal}
+                    openAlert={openAlert}
+                />
+            ))}
+
                 </table>
             </div>
         </div>
-        {showModal && <Modal show={showModal} centered> <FormEditAula aula={aulaSelected} closeModal={closeModal}/> </Modal>}
-        {showKill && <Modal show={showKill} centered> <Eliminar_modal aula={aulaSelected} closeModalKill={closeModalKill}/> </Modal>}   
+        {showModal && <Modal show={showModal} centered> 
+                            <FormEditAula aula={aula} closeModal={closeModal} updateAula={updateAula}/> 
+                        </Modal>}
+        {showAlert && <Modal show={showAlert} centered> 
+                            <Eliminar_modal aula={aula} closeAlert={closeAlert} removeAula={removeAula}/> 
+                        </Modal>}   
     </main>
         
     )    

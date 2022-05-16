@@ -1,0 +1,41 @@
+.card_resp{
+    width: 400px;
+    height: 330px;
+    margin-top: 20px;
+}
+.resp_btn{
+    display: flex;
+    justify-content: center;
+}
+.btn_aceptar{
+    margin-right: 10px;
+    width: 140px;
+    height: 2rem;
+    font-size: 5px;
+    letter-spacing: 0;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 12px;
+
+}
+.btn_rechazar{
+    width: 140px;
+    height: 2rem;
+    font-size: 5px;
+    letter-spacing: 0;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 12px;
+ 
+}
+.btn_aceptar:hover{
+    background-color: green;
+  
+}
+.btn_rechazar:hover{
+    background-color: rgb(187, 0, 0);
+}
+
+.peticion_cont{
+    color: black;
+}

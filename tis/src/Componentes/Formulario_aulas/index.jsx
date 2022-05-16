@@ -1,6 +1,6 @@
 
 import {useState} from 'react'
-import {create} from '../../services/crud'
+import {create} from '../../services/aulas'
 import './formAu.css'
 
 function Formulario_aulas(){
@@ -45,7 +45,6 @@ function Formulario_aulas(){
        
         evt.preventDefault()
         console.log(body.codigo)
-        const a = body.codigo 
         formData.append('codigo', body.codigo);
         formData.append('capacidad', body.capacidad);
         formData.append('ubicacion', body.ubicacion);
@@ -54,12 +53,12 @@ function Formulario_aulas(){
         formData.append('imagen', body.imagen);
        
             create(formData).then(data => {
-                //if (data.length){
-                   // setAulas(data)
-                /* }else{
-                    setAulas(["vacio"])
-                } */
-                console.log(data)
+                console.log(data.Respuesta)
+                if (data.Respuesta=="Agregado Correctamente"){
+                   return( <h2>se creo correctamente</h2>)
+                }else{
+                    return( <h2>EROOOOOOOOOR</h2>)
+                } 
             })
     
     }

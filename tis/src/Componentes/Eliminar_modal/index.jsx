@@ -2,30 +2,16 @@ import './delete_crud.css'
 import {useState} from 'react'
 import {Modal} from 'react-bootstrap'
 import {button} from 'react-bootstrap'
-import {remove} from '../../services/crud'
-import {getAll} from '../../services/crud'
 
-function Eliminar_modal({aula, closeModalKill}){
+function Eliminar_modal({aula, closeAlert, removeAula}){
     const { id, imagen, capacidad, codigo, caracteristicas, tipo, ubicacion} = aula || {}
     const [body, setBody] = useState(aula)
 
     const handleOnSubmit = (evt) => {
         evt.preventDefault()
-         //console.log(body)
-         remove(id)
-         closeModalKill()
-         //window.location.reload();
-         //actualizar()
-         //redirectTo()
-        
-         //getAllAula(true)
+        removeAula(id)
+        closeAlert()
      }
-
-    //
-
-     const actualizar = (evt) =>{
-        window.location.reload();
-    }
 
     return(
         <form onSubmit={handleOnSubmit}>
@@ -35,7 +21,7 @@ function Eliminar_modal({aula, closeModalKill}){
                 </div>
                 <div className="modal-footer">
                     <button type="submit" className="btn_eliminar" > Eliminar</button>
-                    <button type="button" onClick={()=> closeModalKill()} >Cancelar</button>
+                    <button type="button" onClick={()=> closeAlert()} >Cancelar</button>
                 </div>
             </div>
         </form>
