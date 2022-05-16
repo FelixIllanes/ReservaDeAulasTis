@@ -18,9 +18,9 @@ function OffCanvasExample({ name, ...props }) {
   
     return (
       <>
-        <Button variant="primary" onClick={handleShow} className="me-2">
+        <a className="nav-menu-link" variant="primary" style={{cursor:"pointer"}} onClick={handleShow}>
           Notificaciones
-        </Button>
+        </a>
         <Offcanvas show={show} onHide={handleClose} {...props}>
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>Notificaciones</Offcanvas.Title>

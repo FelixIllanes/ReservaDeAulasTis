@@ -14,3 +14,8 @@ export const setAccept = (id) =>
   fetch(`${api}/reserva/Aceptar/${id}`, {method: 'PUT', headers})
     .then((res) => res.json())
     .then((data) => data);
+
+export const setReject = (body,id) =>
+  fetch(`${api}/reserva/Rechazar/${id}`, {method: 'PUT', headers, body: JSON.stringify(body)})
+    .then((res) => res.json())
+    .then((data) => data);

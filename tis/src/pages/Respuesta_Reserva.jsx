@@ -8,7 +8,7 @@ import {useReservas} from '../hooks/useReservas'
 export default function Respuesta_Reserva(){
 
     //const [reservas, setReservas] = useState([])
-    const {reservas, acceptReserva, reserva } = useReservas()
+    const {reservas, acceptReserva, reserva, rejectReserva} = useReservas()
 
     /* useEffect(() => {
         getToResponse().then(setReservas)
@@ -23,6 +23,7 @@ export default function Respuesta_Reserva(){
                 <>
                 <Respuesta reserva={reserva}
                         acceptReserva={acceptReserva}
+                        rejectReserva={rejectReserva}
                 />
                 </>
             ))}

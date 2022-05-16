@@ -39,3 +39,29 @@
 .peticion_cont{
     color: black;
 }
+.motivo_resp{
+    padding: 15px;
+
+}
+
+.motivo{
+    padding: 20px;
+    display: block;
+}
+.btn_motivo{
+    text-align: right; 
+}
+.motivo_input{
+    border-radius: 20px !important;
+    width: 24rem;
+    height: 40px;
+    padding-left: 30px;
+    border: none;
+    margin-right: 15px;
+    margin-left: 35px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.motivo label{
+    font-size: 20px;
+}

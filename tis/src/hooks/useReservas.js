@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import { getCardResponse, getToResponse, setAccept } from '../services/reserva'
+import { getCardResponse, getToResponse, setAccept, setReject} from '../services/reserva'
 
 export const useReservas = () => {
     const [reservas, setReservas] = useState([])
@@ -10,7 +10,7 @@ export const useReservas = () => {
     }, [])
 
     const updateAula = (id, body) => {
-        const newAulas = aulas.map((aula) => aula.id === id ? body : aula)
+        const newAulas = aulas.map((aula) => aula.id === id ? body : aula)//actualiza el dato en pantalla
         setAulas(newAulas)
         update(body, id)
     }
@@ -36,5 +36,11 @@ export const useReservas = () => {
         setAccept(id)
     }
 
-return {reservas, acceptReserva, reserva }
+    const rejectReserva = (id, body) => {
+        const newReservas = reservas.filter(reserva => reserva.id !== id)//borra el dato de pantalla
+        setReservas(newReservas)
+        setReject(body, id)
+    }
+
+return {reservas, acceptReserva, reserva, rejectReserva }
 }

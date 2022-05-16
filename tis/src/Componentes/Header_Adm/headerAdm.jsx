@@ -3,17 +3,21 @@ import Example from '../Notificaciones'
 
 const links = [
     {
-        url:'catalogo',
-        name: 'Catálogo',
+        url:'crud',
+        name: 'Crud',
     },
     {
-        url:'iniciarSesion',
-        name: 'Iniciar Sesión',
+        url:'respuesta-reserva',
+        name: 'Peticiones',
+    },
+    {
+        url:'vista-forma-aul',
+        name: 'Crear Ambiente',
     },
 ]
 
 
-function Header(){
+function HeaderAdm(){
 
     return(
     <header className="header">
@@ -24,11 +28,6 @@ function Header(){
                 <i className="fa-solid fa-bars"></i>
             </button>
             <ul className="menu-nav">
-
-                <li className="item-nav-menu">
-                    <Example/>
-                </li>
-
                 {
                     links.map(
                         ({url, name}, idx) => (
@@ -45,4 +44,4 @@ function Header(){
     )
 }
 
-export default Header
+export default HeaderAdm
