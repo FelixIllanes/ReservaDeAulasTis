@@ -5,7 +5,6 @@ import Pie_de_pagina from '../Componentes/Pie_de_pagina/pieDePagina';
 
 export default function AdminHome(){
 
-
     return (
         <>
            <HeaderAdm />

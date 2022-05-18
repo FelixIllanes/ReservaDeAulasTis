@@ -7,20 +7,6 @@ import {Modal} from 'react-bootstrap'
 import {reservarAula, getPeriodos} from '../../services/reserva'
 
 
-
-const horarios = [
-  '6:45 - 8:15',
-  '8:15 - 9:45',
-  '9:45 - 11:15',
-  '11:15 - 12:45',
-  '12:45 - 14:15',
-  '14:15 - 15:45',
-  '15:45 - 17:15',
-  '17:15 - 18:45',
-  '18:45 - 20:15',
-  '20:15 - 21:45',
-]
-
 function ReservaAula(){
     const [data, setData] = useState({})
     const [reservas, setReservas] = useState([])
@@ -111,7 +97,7 @@ function ReservaAula(){
                         <label className="label_form" htmlFor="">Capacidad de Alumnos</label>
                     </div>
                     <div className="grupo">
-                        <input className="input_form"   type="date" name="fechaReserva" onChange={handleChange} id="fechReser" required/><span className="barra"></span>
+                        <input className="input_form" type="date" name="fechaReserva" onChange={handleChange} id="fechReser" required/><span className="barra"></span>
                         <label className="label_form" htmlFor="">Fecha de Reserva</label>
                     </div>
                     <div className="grupo">

@@ -35,13 +35,13 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
     return(
         <div>        
         <Card bg="Light" className='card_resp' style={{ width: '18rem', color:"black" }}>
-            <Card.Header><strong>Solicitud del aula {id_aulas} </strong></Card.Header>
+            <Card.Header><strong>Solicitud del aula {codigo} </strong></Card.Header>
             <Card.Body className='position-relative'>
                 <Card.Text>
                     <div className='peticion_cont'>
-                        <p><strong>Codigo: </strong>  {codigo} </p>
-                        <p><strong> fecha: </strong>{fechaReserva}</p>
-                        <p><strong> periodo: </strong>{periodo}</p>
+                        <p><strong>Código: </strong>  {codigo} </p>
+                        <p><strong> Fecha: </strong>{fechaReserva}</p>
+                        <p><strong> Periodo: </strong>{periodo}</p>
                         <p><strong> Motivo: </strong>{razon}</p>
                     </div>
                     <div className='resp_btn'>
