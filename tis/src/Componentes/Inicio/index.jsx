@@ -1,6 +1,11 @@
 import Example from '../Notificaciones'
 
 function Inicio(){
+
+    //useEffect(()=> {
+    //    if (!isAuthenticated) navigate('/login')
+    //},[isAuthenticated])
+
     return(
     <div className="container">
         

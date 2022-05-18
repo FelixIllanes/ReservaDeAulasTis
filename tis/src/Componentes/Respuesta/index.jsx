@@ -5,7 +5,7 @@ import {useEffect, useState} from 'react'
 import './respuesta.css'
 
 function Respuesta({reserva, acceptReserva, rejectReserva}){
-    const { id, id_users, id_aulas, codigo, materia, grupo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, created_at, updated_at} = reserva
+    const { id, id_users, id_aulas, codigo, materia, grupo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, motivo, observaciones, created_at, updated_at} = reserva
     const [body, setBody] = useState({})
     const [showModal, setShowModal] = useState(false)
 
@@ -35,14 +35,15 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
     return(
         <div>        
         <Card bg="Light" className='card_resp' style={{ width: '18rem', color:"black" }}>
-            <Card.Header><strong>Solicitud del aula {id_aulas} </strong></Card.Header>
+            <Card.Header><strong>Solicitud del aula {codigo} </strong></Card.Header>
             <Card.Body className='position-relative'>
                 <Card.Text>
                     <div className='peticion_cont'>
-                        <p><strong>Codigo: </strong>  {codigo} </p>
-                        <p><strong> fecha: </strong>{fechaReserva}</p>
-                        <p><strong> periodo: </strong>{periodo}</p>
-                        <p><strong> Motivo: </strong>{razon}</p>
+                        <p><strong>Código: </strong>  {codigo} </p>
+                        <p><strong> Fecha: </strong>{fechaReserva}</p>
+                        <p><strong> Periodo: </strong>{periodo}</p>
+                        <p><strong> Motivo: </strong>{motivo}</p>
+                        <p><strong> Observaciones: </strong>{observaciones}</p>
                     </div>
                     <div className='resp_btn'>
                         <button className='btn_aceptar' type="button" onClick={handleAccept} >Aceptar</button>

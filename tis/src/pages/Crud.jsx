@@ -30,11 +30,7 @@ export default function Crud(){
 
     return (
     <main className="inicio">
-        <div className="container">
-            <div>
-                <button className="redir-form-crud" type="button" onClick={redirectTo} ><a style={{textDecoration:"none", color:"black"}}>Crear Ambiente</a></button>
-            </div>
-            <div className="container" id="tabla_com" >
+            <div className="container" id="tabla_com" style={{paddingTop:30+"px"}} >
                 <table className="table table-bordered" id="crud_table">
                     <thead>
                     <tr>
@@ -55,7 +51,6 @@ export default function Crud(){
             ))}
 
                 </table>
-            </div>
         </div>
         {showModal && <Modal show={showModal} centered> 
                             <FormEditAula aula={aula} closeModal={closeModal} updateAula={updateAula}/> 

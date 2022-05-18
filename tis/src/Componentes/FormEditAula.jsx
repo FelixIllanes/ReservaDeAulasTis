@@ -1,3 +1,5 @@
+import './Eliminar_modal/delete_crud.css'
+
 import {useState} from 'react'
 import React from 'react'
 import Select from 'react-bootstrap/Button';
@@ -34,17 +36,18 @@ function FormEditAula({aula, closeModal, updateAula }){
                     placeholder="Codigo" 
                     defaultValue={codigo}
                     onChange={handleOnChange}
-                ></input>    
+                 ></input>    
             </div>
             <div>
                 <label>Capacidad:</label>
                 <input className="form_mod_input" 
                     onChange={handleOnChange} 
-                    type="text" 
+                    type="number" 
                     name="capacidad" 
                     id="capacidad_mod" 
                     placeholder="Capacidad" 
-                    defaultValue={capacidad}></input>  
+                    defaultValue={capacidad}
+                    required min={20} max={200}></input>  
             </div>
             <div>
                 <label>Ubicación:</label>
@@ -54,7 +57,9 @@ function FormEditAula({aula, closeModal, updateAula }){
                 name="ubicacion" 
                 id="ubicacion_mod" 
                 placeholder="Ubicacion" 
-                defaultValue={ubicacion}></input>  
+                defaultValue={ubicacion}
+                required pattern='[A-Za-z0-9 ]{7,40}' 
+                title='Letras y numeros. Mínimo 6 caracteres, máximo 40 '></input>  
             </div>
             <div>
                 <label>Características:</label>
@@ -64,7 +69,9 @@ function FormEditAula({aula, closeModal, updateAula }){
                 name="caracteristicas" 
                 id="carac_mod"
                 placeholder="Caracteristicas" 
-                defaultValue={caracteristicas}></input>  
+                defaultValue={caracteristicas}
+                required pattern='[A-Za-z0-9 ]{7,40}' 
+                title='Letras y numeros. Mínimo 6 caracteres, máximo 40 '></input>  
             </div>
             <div>
             <label>Tipo:</label>
@@ -78,7 +85,7 @@ function FormEditAula({aula, closeModal, updateAula }){
                 </select> 
             </div>
                 <div className='btn_modal_edit'>
-                <button> Enviar </button>
+                <button type='submit'> Enviar </button>
                 <button type="button" onClick={()=> closeModal()} >Cancelar</button>
 
                 </div>  </form>

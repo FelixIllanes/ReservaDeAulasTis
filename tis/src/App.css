@@ -163,7 +163,7 @@ body{
 }
 
 .inicio{
-  min-height: 85vh;
+  min-height: 100vh;
   padding-bottom: 130px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -321,7 +321,7 @@ form .grupo{
 }
 .input_form:focus{
   outline: none;
-  color: #5e5d5d;
+  color: #5e5d5d; 
 }
 
 .label_form{

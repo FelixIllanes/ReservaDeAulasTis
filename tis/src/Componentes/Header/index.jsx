@@ -7,7 +7,7 @@ const links = [
         name: 'Catálogo',
     },
     {
-        url:'iniciarSesion',
+        url:'login',
         name: 'Iniciar Sesión',
     },
 ]

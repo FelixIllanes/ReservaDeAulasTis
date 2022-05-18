@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Respuesta_Reserva from './pages/Respuesta_Reserva'
 import AdminHome from './pages/AdminHome';
 
+import {PrivateRoutes} from './routes/privateRoutes'
 
 function App() {
   return (
@@ -19,13 +20,11 @@ function App() {
       <Routes>
         
         {/* Rutas para el docentes */}
-        <Route path="/" element={<Home />} >
-          <Route index element={<Inicio />}/>
-          <Route path="reservar-aula/:id" element={<ReservarAula/>}/>
-          <Route path="catalogo" element={<Catalogos/>}/>
-          <Route path="iniciarSesion" element={<Login/>}/>
-          <Route path="login" element={<Login/>}/>
-        </Route>
+          <Route path="/" element={<Home />} >
+              <Route index element={<Inicio />}/>
+              <Route path="reservar-aula/:id" element={<ReservarAula/>}/>
+              <Route path="catalogo" element={<Catalogos/>}/>
+          </Route>
 
        {/*  Rutas para el adminstradores */}
         <Route path="/Home-admin/" element={<AdminHome/>}>
@@ -35,8 +34,8 @@ function App() {
           <Route path="vista-forma-aul" index element={<Vista_formulario_aulas/>}/>
         </Route>
 
-        <Route path="/login" element={()=> 'login_otro'} />
-        <Route path="/register" element={()=> 'register'} />
+          <Route path="/register" element={<Login/>}/>
+          <Route path="/login" element={<Login/>}/>
       </Routes>
     </div>
   );
