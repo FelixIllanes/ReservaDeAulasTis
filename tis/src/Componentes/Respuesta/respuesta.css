@@ -6,10 +6,13 @@
 .resp_btn{
     display: flex;
     justify-content: center;
+    left: 0;
+    bottom: 1rem;
+    position: absolute;
 }
 .btn_aceptar{
     margin-right: 10px;
-    width: 140px;
+    width: 130px;
     height: 2rem;
     font-size: 5px;
     letter-spacing: 0;
@@ -26,7 +29,6 @@
     font-weight: 400;
     text-align: center;
     padding-top: 12px;
- 
 }
 .btn_aceptar:hover{
     background-color: green;
@@ -49,7 +51,7 @@
     display: block;
 }
 .btn_motivo{
-    text-align: right; 
+    text-align: right;
 }
 .motivo_input{
     border-radius: 20px !important;

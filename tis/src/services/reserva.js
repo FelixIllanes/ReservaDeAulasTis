@@ -19,3 +19,14 @@ export const setReject = (body,id) =>
   fetch(`${api}/reserva/Rechazar/${id}`, {method: 'PUT', headers, body: JSON.stringify(body)})
     .then((res) => res.json())
     .then((data) => data);
+
+export const reservarAula= (body) =>
+  fetch(`${api}/reserva`, {method: 'POST', headers, body: JSON.stringify(body)})
+    .then((res) => res.json())
+    .then((data) => data);
+  
+  
+export const getPeriodos= (id, body) =>
+  fetch(`${api}/reserva/periodos/${id}`,{method: 'POST', headers, body: JSON.stringify(body)})
+    .then((res) => res.json())
+    .then((data) => data);
