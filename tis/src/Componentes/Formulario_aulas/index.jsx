@@ -105,7 +105,7 @@ function Formulario_aulas(){
                     </div>
                     <div className="boton_form">
                         <button type="submit" >Crear Ambiente</button>
-                        <button>Cancelar</button>
+                        <button type="reset">Cancelar</button>
                     </div>
                 </div>
             </form>

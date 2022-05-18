@@ -594,3 +594,7 @@ thead{
   grid-template-columns: auto auto auto;
 }
 /*fin respuesta*/
+
+#form_reserva{
+  width: 50%;
+}

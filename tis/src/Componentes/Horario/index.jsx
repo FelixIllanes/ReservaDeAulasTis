@@ -1,15 +1,18 @@
+import './horario.css'
+import HorarioCheck from './horarioCheck'
+import {useState} from 'react'
 
-
-function Horario({periodo}){
+function Horario({reservas=[], periodoChange}){
+  
+  
   return(
-
-  <div className="form-check">
-        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  />
-        <label className="form-check-label" for="flexRadioDefault2">
-          {periodo}
-        </label>
-    </div>
-  )
+        reservas.map(reserva => (
+            <HorarioCheck reserva={reserva}
+                      periodoChange={periodoChange}
+            />
+        ))
+    
+)
 }
 
 export default Horario

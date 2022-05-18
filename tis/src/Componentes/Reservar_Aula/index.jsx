@@ -1,8 +1,10 @@
 import './res.css';
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import Horario  from '../Horario'
 import {  useParams } from 'react-router-dom';
 import {get} from '../../services/catalogo';
+import {Modal} from 'react-bootstrap'
+import {reservarAula, getPeriodos} from '../../services/reserva'
 
 
 
@@ -21,61 +23,124 @@ const horarios = [
 
 function ReservaAula(){
     const [data, setData] = useState({})
+    const [reservas, setReservas] = useState([])
+    const [showModal, setShowModal] = useState(false)
+    const [body, setBody] = useState({})
+    const [fecha, setFecha] = useState({})
+    
+
+
+    const openModal = () => {
+        setShowModal(true)
+        getPeriodos(id, fecha).then(setReservas)
+    }
+    const closeModal = () => {
+        setShowModal(false)
+    }
 
     const {id}= useParams()
 
-    const goBack = () => {
-        window.history.back()
+    useEffect(() => {
+        get(id).then(data => {
+            setData(data)
+        })
+    }, [])
+
+    const handleChange = (evt) => {
+        if([evt.target.name]=="fechaReserva"){
+            setFecha({
+                ...fecha,
+                fecha : evt.target.value
+            })
+        }
+        setBody({
+                ...body,
+                [evt.target.name] : evt.target.value
+        })
+    }
+    const periodoChange = (evt) => {
+            setBody({
+                ...body,
+                periodo: evt.target.value,
+                id_users: 1,
+                id_aulas: id,
+                codigo: data.codigo,
+                cantidadPeriodo: 1
+                
+            })
     }
 
-    get(id).then(data => {
-        setData(data)
-    })
+    const datos = () => {
+        setBody({
+            ...body,
+            id_users: 1,
+            id_aulas: id,
+            codigo: data.codigo,
+            cantidadPeriodo: 1,
+            
+        })
+    }
+
+    const handleOnSubmit = (evt) => {
+        evt.preventDefault()
+        console.log(body)
+        reservarAula(body)
+        closeModal()
+        document.getElementById("formReserva").reset();
+    }
 
     return(
+        <form id="formReserva">
+        <div className="formulario" id="form_reserva">
         <div id="form_res_amb">
                 <div>
-                <div onClick={goBack} style={{cursor: 'pointer'}}><i id="back" className="fa-solid fa-circle-arrow-left"></i></div>
+                
                 <h1 style={{textAlign:"center",color:"black"}}>Reserva de Ambiente</h1>
+                <h2 style={{textAlign:"center"}}><strong>Codigo de Aula</strong> {data.codigo}</h2>
+
                     <div className="grupo">
-                        <input className="input_form" type="text" name="" id="nomDocente" required/><span className="barra"></span>
-                        <label className="label_form" for="">Nombre Docente:</label>
+                        <input className="input_form" type="text" name="materia" onChange={handleChange} id="codigo" required /><span className="barra"></span>
+                        <label className="label_form" htmlFor="">Mater&iacute;a</label>
                     </div>
                     <div className="grupo">
-                        <input className="input_form" type="text" name="" id="materia" required/><span className="barra"></span>
-                        <label className="label_form" for="">Mater&iacute;a</label>
+                        <input className="input_form"  type="text" name="grupo" onChange={handleChange} id="grp" required/><span className="barra"></span>
+                        <label className="label_form" htmlFor="">Grupo</label>
                     </div>
                     <div className="grupo">
-                        <input className="input_form" type="text" name="" id="grp" required/><span className="barra"></span>
-                        <label className="label_form" for="">Grupo</label>
+                        <input className="input_form"   type="number" name="cantidadEstudiantes" onChange={handleChange} id="capAlum" required/><span className="barra" ></span>
+                        <label className="label_form" htmlFor="">Capacidad de Alumnos</label>
                     </div>
                     <div className="grupo">
-                        <input className="input_form" type="number" name="" id="capAlum" required/><span className="barra" ></span>
-                        <label className="label_form" for="">Capacidad de Alumnos</label>
+                        <input className="input_form"   type="date" name="fechaReserva" onChange={handleChange} id="fechReser" required/><span className="barra"></span>
+                        <label className="label_form" htmlFor="">Fecha de Reserva</label>
                     </div>
                     <div className="grupo">
-                        <input className="input_form" type="date" name="" id="fechReser" required/><span className="barra"></span>
-                        <label className="label_form" for="">Fecha de Reserva</label>
-                    </div>
-                    <div className="grupo">
-                        <input className="input_form" type="text" name="" id="motRes" required/><span className="barra"></span>
-                        <label className="label_form" for="">Motivo de la reserva</label>
+                        <input className="input_form"  type="text" name="razon" onChange={handleChange}  id="motRes" required/><span className="barra"></span>
+                        <label className="label_form" htmlFor="">Razon de la reserva</label>
                     </div>
                 </div>
-                <div className='dos'>
-                    <h2 style={{textAlign:"center"}}><strong>Codigo de Aula</strong> {data.codigo}</h2>
-                    <h2 style={{textAlign:"center"}}>Horario de la reserva</h2>
-                    {
-                        horarios.map(periodo => (
-                            <Horario periodo={periodo}/> 
-                        ))
-                    }
+                {showModal && <Modal show={showModal}>
+                    <div className='container modal_horario' style={{padding:"20px"}}>
+                        <h2 style={{textAlign:"center"}}>Horario de la reserva</h2>
+                        
+                        {
+                            <Horario reservas={reservas}
+                                periodoChange={periodoChange}/>
+                        }
+                        <div className="boton_form">
+                            <button onClick={handleOnSubmit}>Reservar Aula</button>
+                            <button onClick={closeModal}>Cancelar</button>
+                        </div>
+                        </div>
+                    </Modal>
+                }
                     <div className="boton_form">
-                        <button type="submit" >Crear Ambiente</button>
-                        <button>Cancelar</button>
+                        <a className='selec_per_btn' onClick={openModal}>Seleccionar Periodo</a>
+                        <button type="reset">Cancelar</button>
                     </div>
                 </div>
-            </div>
+            </div>  
+        </form>  
     )
 }
 
