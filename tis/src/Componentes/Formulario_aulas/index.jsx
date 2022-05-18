@@ -35,7 +35,6 @@ function Formulario_aulas(){
     const handleSubmit = (evt) => {
        
         evt.preventDefault()
-        console.log(body.codigo)
 
         formData.append('codigo', body.codigo);
         formData.append('capacidad', body.capacidad);
@@ -43,6 +42,7 @@ function Formulario_aulas(){
         formData.append('caracteristicas', body.caracteristicas);
         formData.append('tipo', body.tipo);
         formData.append('imagen', body.imagen);
+        create(formData)
 
     
     }

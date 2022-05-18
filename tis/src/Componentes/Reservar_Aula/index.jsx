@@ -51,7 +51,8 @@ function ReservaAula(){
                 id_users: 1,
                 id_aulas: id,
                 codigo: data.codigo,
-                cantidadPeriodo: 1
+                cantidadPeriodo: 1,
+
                 
             })
     }
@@ -101,8 +102,8 @@ function ReservaAula(){
                         <label className="label_form" htmlFor="">Fecha de Reserva</label>
                     </div>
                     <div className="grupo">
-                        <input className="input_form"  type="text" name="razon" onChange={handleChange}  id="motRes" required/><span className="barra"></span>
-                        <label className="label_form" htmlFor="">Razon de la reserva</label>
+                        <input className="input_form"  type="text" name="motivo" onChange={handleChange}  id="motRes" required/><span className="barra"></span>
+                        <label className="label_form" htmlFor="">Motivo de la reserva</label>
                     </div>
                 </div>
                 {showModal && <Modal show={showModal}>

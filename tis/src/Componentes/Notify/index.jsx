@@ -2,7 +2,7 @@ import './card.css'
 import {Card} from 'react-bootstrap'
 
 function Notify({reserva}){
-  const { id, id_users, id_aulas, codigo, materia, grupo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, created_at, updated_at} = reserva
+  const { id, id_users, id_aulas, codigo, materia, grupo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, motivo, created_at, updated_at} = reserva
   
   if(aceptadoRechazado == 1){
     return(
@@ -14,7 +14,7 @@ function Notify({reserva}){
         <strong><p>Código: {codigo} </p></strong> 
         <strong><p>Fecha: {fechaReserva}</p></strong>
         <strong><p>Periodo: {periodo}</p></strong>
-        <strong><p>Motivo: {razon}</p></strong>
+        <strong><p>Motivo: {motivo}</p></strong>
         <strong><p>Estado: Aceptado </p></strong>
       </Card.Text>
     </Card.Body>
@@ -33,7 +33,7 @@ if(aceptadoRechazado == 0){
         <p><strong>Código: </strong> {codigo} </p>
         <p><strong>Fecha: </strong>{fechaReserva}</p>
         <p><strong>Periodo: </strong>{periodo}</p>
-        <p><strong>Motivo: </strong>{razon}</p>
+        <p><strong>Motivo: </strong>{motivo}</p>
         <p><strong>Estado: </strong>Rechazado</p>
         <button className='btn_card'>Recomendación</button>
       </Card.Text>

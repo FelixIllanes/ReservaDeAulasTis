@@ -10,7 +10,7 @@ export const useReservas = () => {
     }, [])
 
     const acceptReserva = (id) => {
-        const newReservas = reservas.filter(reserva => reserva.id !== id)
+        const newReservas = reservas.filter(reserva => reserva.id !== id )
         setReservas(newReservas)
         setAccept(id)
     }

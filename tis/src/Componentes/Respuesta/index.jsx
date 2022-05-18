@@ -5,7 +5,7 @@ import {useEffect, useState} from 'react'
 import './respuesta.css'
 
 function Respuesta({reserva, acceptReserva, rejectReserva}){
-    const { id, id_users, id_aulas, codigo, materia, grupo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, created_at, updated_at} = reserva
+    const { id, id_users, id_aulas, codigo, materia, grupo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, motivo, observaciones, created_at, updated_at} = reserva
     const [body, setBody] = useState({})
     const [showModal, setShowModal] = useState(false)
 
@@ -42,7 +42,8 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
                         <p><strong>Código: </strong>  {codigo} </p>
                         <p><strong> Fecha: </strong>{fechaReserva}</p>
                         <p><strong> Periodo: </strong>{periodo}</p>
-                        <p><strong> Motivo: </strong>{razon}</p>
+                        <p><strong> Motivo: </strong>{motivo}</p>
+                        <p><strong> Observaciones: </strong>{observaciones}</p>
                     </div>
                     <div className='resp_btn'>
                         <button className='btn_aceptar' type="button" onClick={handleAccept} >Aceptar</button>
