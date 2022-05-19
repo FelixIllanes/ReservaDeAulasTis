@@ -4,7 +4,7 @@ import Example from '../Notificaciones'
 const links = [
     {
         url:'crud',
-        name: 'Crud',
+        name: 'Gestión de Ambientes',
     },
     {
         url:'respuesta-reserva',
