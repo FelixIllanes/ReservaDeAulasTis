@@ -98,7 +98,6 @@ function Buscador({setAulas}){
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        
         if(body != []){   
             search(body).then(data => {
                 if (data.length){

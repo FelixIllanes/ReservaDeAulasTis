@@ -95,13 +95,13 @@ function ReservaAula(){
                 <h2 style={{textAlign:"center"}}><strong>Codigo de Aula</strong> {data.codigo}</h2>
 
                     <div className="grupo">
-                        <input className="input_form" type="text" name="materia" onChange={handleChange} id="codigo" required pattern='[A-Za-z0-9 ]{3,15}' 
-                        title='Letras y numeros. Mínimo 3 caracteres, máximo 15 '/><span className="barra"></span>
+                        <input className="input_form" type="text" name="materia" onChange={handleChange} id="codigo" required pattern='[A-Za-z0-9 ]{5,15}' 
+                        title='Letras y números. Mínimo 5 caracteres, máximo 15 '/><span className="barra"></span>
                         <label className="label_form" htmlFor="">Mater&iacute;a</label>
                     </div>
                     <div className="grupo">
                         <input className="input_form"  type="text" name="grupo" onChange={handleChange} id="grp" required pattern='[A-Za-z0-9 ]{1,15}' 
-                        title='Letras y numeros. Mínimo 1 caracteres, máximo 15 '/><span className="barra"></span>
+                        title='Letras y números. Mínimo 1 caracteres, máximo 15 '/><span className="barra"></span>
                         <label className="label_form" htmlFor="">Grupo</label>
                     </div>
                     <div className="grupo">
@@ -113,8 +113,8 @@ function ReservaAula(){
                         <label className="label_form" htmlFor="">Fecha de Reserva</label>
                     </div>
                     <div className="grupo">
-                        <input className="input_form"  type="text" name="motivo" onChange={handleChange}  id="motRes" required pattern='[A-Za-z0-9 ]{5,40}' 
-                        title='Letras y numeros. Mínimo 5 caracteres, máximo 40 '/><span className="barra"></span>
+                        <input className="input_form"  type="text" name="motivo" onChange={handleChange}  id="motRes" required pattern='[A-Za-z ]{5,40}' 
+                        title='Mínimo 5 caracteres, máximo 40 '/><span className="barra"></span>
                         <label className="label_form" htmlFor="">Motivo de la reserva</label>
                     </div>
                 </div>
@@ -134,7 +134,7 @@ function ReservaAula(){
                     </Modal>
                 }
                     <div className="boton_form">
-                        <a className='selec_per_btn' onClick={openModal}>Seleccionar Periodo</a>
+                        <a className='selec_per_btn' onClick={openModal}>Seleccionar Horario</a>
                         <button type="reset">Cancelar</button>
                     </div>
                 </div>
