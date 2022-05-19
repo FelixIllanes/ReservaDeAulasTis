@@ -11,11 +11,10 @@ function Notify({reserva}){
     <Card.Header><strong>Respuesta a la solicitud</strong></Card.Header>
     <Card.Body>
       <Card.Text>
-        <strong><p>Código: {codigo} </p></strong> 
-        <strong><p>Fecha: {fechaReserva}</p></strong>
-        <strong><p>Periodo: {periodo}</p></strong>
-        <strong><p>Motivo: {motivo}</p></strong>
-        <strong><p>Estado: Aceptado </p></strong>
+        <p><strong>Código: </strong>{codigo} </p> 
+        <p><strong>Fecha: </strong>{fechaReserva}</p>
+        <p><strong>Periodo: </strong>{periodo}</p>
+        <p><strong>Estado: Aceptado</strong> </p>
       </Card.Text>
     </Card.Body>
   </Card>
@@ -33,7 +32,7 @@ if(aceptadoRechazado == 0){
         <p><strong>Código: </strong> {codigo} </p>
         <p><strong>Fecha: </strong>{fechaReserva}</p>
         <p><strong>Periodo: </strong>{periodo}</p>
-        <p><strong>Motivo: </strong>{motivo}</p>
+        <p><strong>Motivo: </strong>{razon}</p>
         <p><strong>Estado: </strong>Rechazado</p>
         <button className='btn_card'>Recomendación</button>
       </Card.Text>

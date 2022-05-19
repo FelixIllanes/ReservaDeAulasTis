@@ -9,8 +9,11 @@ export const useReservas = () => {
         getToResponse().then(setReservas)
     }, [])
 
-    const acceptReserva = (id) => {
-        const newReservas = reservas.filter(reserva => reserva.id !== id )
+    const acceptReserva = (id, codigo, periodo, fecha, id_aulas) => {
+        const newReservas = reservas.filter(reserva => reserva.id !== id )  
+        /* const newReservas1 = newReservas .filter(reserva => reserva.periodo !== periodo ) 
+        const newReservas2 = newReservas1.filter(reserva => reserva.fecha !== fecha )  */
+        /* const newReservas = reservas.filter(reserva => reserva.id_aulas !== fecha.id_aulas)  */
         setReservas(newReservas)
         setAccept(id)
     }

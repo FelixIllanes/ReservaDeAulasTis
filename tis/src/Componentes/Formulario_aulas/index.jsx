@@ -1,12 +1,18 @@
 
 import {useState} from 'react'
 import {create} from '../../services/aulas'
+import {Modal} from 'react-bootstrap'
 import './formAu.css'
 
 function Formulario_aulas(){
 
     const [body, setBody] = useState({})
+    const [showModal, setShowModal] = useState(false)
     const formData = new FormData();
+
+    
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
 
     const handleChange = (evt) => {
 
@@ -42,12 +48,19 @@ function Formulario_aulas(){
         formData.append('caracteristicas', body.caracteristicas);
         formData.append('tipo', body.tipo);
         formData.append('imagen', body.imagen);
-        create(formData)
+        create(formData).then(data => {
+            if (data.ReFspuesta == "Agregado Correctamente"){
+                document.getElementById("formRgs").reset();
+                openModal();
+            }
+
+        })
 
     
     }
     
     return(
+        <>
         <div className="container cont_form">
             <form onSubmit={handleSubmit} id="formRgs" encType='multipart/form-data'>
                 <div className="formulario">
@@ -109,8 +122,7 @@ function Formulario_aulas(){
                             name="btnradio" 
                             onChange={handleChange} 
                             id="aula" 
-                            value="Aula" 
-                            defaultChecked />
+                            value="Aula"/>
                             <label className="btn btn-outline-primary" htmlFor="aula">Aula</label>
                         
                             <input type="radio" 
@@ -140,7 +152,18 @@ function Formulario_aulas(){
                     </div>
                 </div>
             </form>
-        </div>    
+        </div> 
+        {showModal && <Modal show={showModal} centered> 
+        <div>
+            <div className='delete_title'>
+                <h2>¡Ambiente {body.codigo} creado con éxito!</h2>
+            </div>
+            <div className="modal-footer" style={{justifyContent:"center"}} >
+                <button type="button" onClick={closeModal} >Aceptar</button>
+            </div>
+        </div>
+        </Modal>} 
+        </>  
 )}
 
 export default Formulario_aulas
