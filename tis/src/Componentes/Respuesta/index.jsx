@@ -16,13 +16,13 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
     const handleOnChange = (evt) => {
         setBody({
             ...body,
-            motivo: evt.target.value
+            razon: evt.target.value
         })
     }
 
     const handleAccept= (evt) => {
         evt.preventDefault()
-        acceptReserva(id)
+        acceptReserva(id, codigo, periodo, fechaReserva, id_aulas)
     }
 
     const handleOnSubmit = (evt) => {
@@ -56,7 +56,7 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
                         <div className='motivo_resp'>
                             <form onSubmit={handleOnSubmit}>
                                 <div className='motivo'>
-                                    <label >Motivo del Rechazo:</label><br />
+                                    <label >Razon del Rechazo:</label><br />
                                     <input type="text" onChange={handleOnChange}  className='motivo_input' />
                                 </div>
                                 <div className='btn_motivo'>
