@@ -11,6 +11,6 @@ export const getAll = () =>
     .then((data) => data);
 
 export const search = (body) =>
-  fetch(`${api}/ambientes/buscar`, {method: 'POST', 'Content-Type': 'multipart/form-data', body: JSON.stringify(body)})
+  fetch(`${api}/ambientes/buscar`, {method: 'POST', headers, body: JSON.stringify(body)})
     .then((res) => res.json())
     .then((data) => data)
