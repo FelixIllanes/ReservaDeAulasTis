@@ -7,10 +7,10 @@ import Catalogos from './pages/Catalogos';
 import Vista_formulario_aulas from './pages/Vista_formulario_aulas'
 import Crud from './pages/Crud'
 import ReservarAula from './pages/ReservarAula';
-import LoginUsr from './pages/Login';
 import Login from './pages/Login';
 import Respuesta_Reserva from './pages/Respuesta_Reserva'
 import AdminHome from './pages/AdminHome';
+import AdminIni from './Componentes/Inicio/adminin';
 
 import {PrivateRoutes} from './routes/privateRoutes'
 
@@ -28,7 +28,7 @@ function App() {
 
        {/*  Rutas para el adminstradores */}
         <Route path="/Home-admin/" element={<AdminHome/>}>
-          <Route index element={<Inicio />}/>
+          <Route index element={<AdminIni />}/>
           <Route path="crud" element={<Crud/>}/>
           <Route path="respuesta-reserva" element={<Respuesta_Reserva/>}/>
           <Route path="vista-forma-aul" index element={<Vista_formulario_aulas/>}/>

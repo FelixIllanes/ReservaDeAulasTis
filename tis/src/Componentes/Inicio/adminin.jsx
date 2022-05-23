@@ -1,5 +1,5 @@
 
-function Inicio(){
+function AdminIni(){
 
     //useEffect(()=> {
     //    if (!isAuthenticated) navigate('/login')
@@ -9,12 +9,12 @@ function Inicio(){
     <div className="container">
         
         <div className="container descripcion">
+            <p><center>Bienvenido al inicio de Administrador</center></p>
             <p><center>Facultad de Ciencias y Tecnologia</center></p>
             <p><center>UMSS</center></p>
-            <br />
             
         </div>
    </div> 
 )}
 
-export default Inicio
+export default AdminIni

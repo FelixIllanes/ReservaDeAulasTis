@@ -23,7 +23,7 @@ function HeaderAdm(){
     <header className="header">
         <nav className="nav">
             <img className="logo" src="assets/imagenes/logo_facultad.png" alt=""/>
-            <p className="titulo">Sistema de Reserva de Ambientes</p>
+            <p className="titulo">Gestión de Reserva de Ambientes</p>
             <button className="nav-toggle">
                 <i className="fa-solid fa-bars"></i>
             </button>

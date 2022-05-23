@@ -76,7 +76,7 @@ function Buscador({setAulas}){
     }
 
     const handleChange = (evt) => {
-        if((evt.target.value) == "todos"){//aqui habia un ||
+        if((evt.target.value) === "todos"){//aqui habia un ||
             setBody({
                 body
             })
@@ -84,7 +84,7 @@ function Buscador({setAulas}){
             if (evt.target.name === 'rango'){
                 setBody({
                     ...body,
-                    rangoBajo: parseInt(evt.target.value) - 50,
+                    rangoBajo: parseInt(evt.target.value) - 49,
                     rangoAlto: parseInt(evt.target.value)
                 })
             }else{ 
