@@ -18,6 +18,8 @@ function LoginUsr(){
         console.log(user)
         auth(user).then(res => {
             console.log(res)
+        }).catch(err => {
+            console.log(err)
         })
     }
 
