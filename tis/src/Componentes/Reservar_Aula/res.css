@@ -54,3 +54,35 @@
 #fechReser{
     color: #c6c6c694; 
 }
+.form_input{
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px !important;
+    margin-bottom: 16px;
+    font-size: 18px;
+    border: 1px solid rgba(53, 53, 53, 0.44);
+    display: inline-block;
+    outline: unset;
+    border-color: #003770;
+}
+.form_input:invalid{
+    border-color: #1b010222;
+}
+.cont_form_au{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.div_form{
+    margin-left: 15%;
+}
+.formulario_au{
+    background-color: white;
+    padding: 40px 20px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+.formulario_au{
+    width: 100%;
+    margin: auto;
+}

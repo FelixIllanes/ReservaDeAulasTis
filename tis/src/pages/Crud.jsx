@@ -1,10 +1,7 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import RowCrud from '../Componentes/RowCrud' 
-//import { getAll } from '../services/au'
 import { useNavigate } from "react-router-dom";
-import Crud_table from "../Componentes/Crud_Table";
 import Eliminar_modal from '../Componentes/Eliminar_modal';
-import Formcrud_modal from '../Componentes/Formcrud_modal';
 import FormEditAula from '../Componentes/FormEditAula';
 import {Modal} from 'react-bootstrap'
 

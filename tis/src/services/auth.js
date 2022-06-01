@@ -5,3 +5,8 @@ export const auth = (body) =>
   fetch(`${api}/login`, {method: 'POST', headers, body: JSON.stringify(body)})
     .then((res) => res.json())
     .then((data) => data);
+
+export const logout = (body) =>
+  fetch(`${api}/logout`)
+    .then((res) => res.json())
+    .then((data) => data);

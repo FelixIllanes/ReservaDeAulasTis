@@ -13,6 +13,7 @@ function ReservaAula(){
     const [showModalSucces, setShowModalSucces] = useState(false)
     const [body, setBody] = useState({})
     const [fecha, setFecha] = useState({})
+    const prueba = 150
     
     
     const openModalSucces = () => setShowModalSucces(true)
@@ -94,28 +95,28 @@ function ReservaAula(){
                 <h1 style={{textAlign:"center",color:"black"}}>Reserva de Ambiente</h1>
                 <h2 style={{textAlign:"center"}}><strong>Codigo de Aula</strong> {data.codigo}</h2>
 
-                    <div className="grupo">
-                        <input className="input_form" type="text" name="materia" onChange={handleChange} id="codigo" required pattern='[A-Za-z0-9 ]{5,15}' 
-                        title='Letras y números. Mínimo 5 caracteres, máximo 15 '/><span className="barra"></span>
-                        <label className="label_form" htmlFor="">Mater&iacute;a</label>
+                    <div className="div_form">
+                        <label>Mater&iacute;a</label><br />
+                        <input className = "form_input" type="text" autoComplete='off'name="materia" onChange={handleChange} id="codigo" required pattern='[A-Za-z0-9 ]{5,15}' 
+                        title='Letras y números. Mínimo 5 caracteres, máximo 15 '/>
                     </div>
-                    <div className="grupo">
-                        <input className="input_form"  type="text" name="grupo" onChange={handleChange} id="grp" required pattern='[A-Za-z0-9 ]{1,15}' 
-                        title='Letras y números. Mínimo 1 caracteres, máximo 15 '/><span className="barra"></span>
-                        <label className="label_form" htmlFor="">Grupo</label>
+                    <div className="div_form">
+                        <label>Grupo</label><br />
+                        <input className = "form_input" type="text" autoComplete='off' name="grupo" onChange={handleChange} id="grp" required pattern='[A-Za-z0-9 ]{1,15}' 
+                        title='Letras y números. Mínimo 1 caracteres, máximo 15 '/>
                     </div>
-                    <div className="grupo">
-                        <input className="input_form"   type="number" name="cantidadEstudiantes" onChange={handleChange} id="capAlum" required min={20} max={200}/><span className="barra" ></span>
-                        <label className="label_form" htmlFor="">Capacidad de Alumnos</label>
+                    <div className="div_form">
+                        <label>Capacidad de Alumnos</label><br />
+                        <input className = "form_input" type="number"  autoComplete='off'name="cantidadEstudiantes" onChange={handleChange} id="capAlum" required min={20} max={prueba}/>
                     </div>
-                    <div className="grupo">
-                        <input className="input_form" type="date" name="fechaReserva" onChange={handleChange} id="fechReser" required/><span className="barra"></span>
-                        <label className="label_form" htmlFor="">Fecha de Reserva</label>
+                    <div className="div_form">
+                        <label>Fecha de Reserva</label><br />
+                        <input className = "form_input" type="date" autoComplete='off'name="fechaReserva" onChange={handleChange} id="fechReser" required/>
                     </div>
-                    <div className="grupo">
-                        <input className="input_form"  type="text" name="motivo" onChange={handleChange}  id="motRes" required pattern='[A-Za-z ]{5,40}' 
-                        title='Mínimo 5 caracteres, máximo 40 '/><span className="barra"></span>
-                        <label className="label_form" htmlFor="">Motivo de la reserva</label>
+                    <div className="div_form">
+                        <label>Motivo de la reserva</label><br />
+                        <input className = "form_input" type="text" autoComplete='off'name="motivo" onChange={handleChange}  id="motRes" required pattern='[A-Za-z ]{5,40}' 
+                        title='Mínimo 5 caracteres, máximo 40 '/>
                     </div>
                 </div>
                 {showModal && <Modal show={showModal}>

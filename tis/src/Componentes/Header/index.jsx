@@ -1,32 +1,30 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import MiPerfil from "../Mi_Perfil";
 import Example from '../Notificaciones'
 
 const links = [
     {
         url:'catalogo',
         name: 'Catálogo',
-    },
-    {
-        url:'login',
-        name: 'Iniciar Sesión',
-    },
+    }
 ]
 
-
 function Header(){
-
+    const [toggle, setToggle] = useState(false)
     return(
     <header className="header">
         <nav className="nav">
             <img className="logo" src="assets/imagenes/logo_facultad.png" alt=""/>
             <p className="titulo">Sistema de Reserva de Ambientes</p>
-            <button className="nav-toggle">
+            <button className="nav-toggle" onClick={()=> setToggle(!toggle)}>
                 <i className="fa-solid fa-bars"></i>
             </button>
-            <ul className="menu-nav">
+            
+            <ul className={`menu-nav ${toggle ? 'nav-menu_visible' : ''}`}>
 
                 <li className="item-nav-menu">
-                    <Example/>
+                    <MiPerfil/>
                 </li>
 
                 {
@@ -38,6 +36,9 @@ function Header(){
                         )
                     )
                 }
+                <li className="item-nav-menu">
+                    <Example />
+                </li>
             
             </ul>
         </nav>

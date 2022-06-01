@@ -61,58 +61,59 @@ function Formulario_aulas(){
     
     return(
         <>
-        <div className="container cont_form">
+        <div className="container cont_form_au">
             <form onSubmit={handleSubmit} id="formRgs" encType='multipart/form-data'>
-                <div className="formulario">
+                <div className="formulario_au">
                     <h1 style={{textAlign:"center"}}>Crear Ambiente</h1>
                     <div className="ventana" id="alert_form">
                     </div>
-                    <div className="grupo">
-                        <input className="input_form" 
+                    <div className="div_form" style={{marginTop:40+"px"}}>
+                        <label >C&oacute;digo</label><br />
+                        <input className = "form_input"
                         type="text" name="codigo" 
                         onChange={handleChange} 
-                        id="codigo" 
+                        id="codigo"
+                        autoComplete='off' 
                         required 
                         pattern='[A-Za-z0-9 ]{3,15}' 
                         title='Letras y numeros. Mínimo 3 caracteres, máximo 15 ' />
-                        <span className="barra" ></span>
-                        <label className="label_form" htmlFor="">C&oacute;digo</label>
                     </div>
-                    <div className="grupo">
-                        <input className="input_form" 
+                    <div className="div_form">
+                        <label>Capacidad</label> <br />
+                        <input  className = "form_input"
                         type="number" 
                         name="capacidad" 
                         min={20} max={200}  
                         onChange={handleChange} 
-                        id="capacidad" 
+                        id="capacidad"
+                        autoComplete='off' 
                         required />
-                        <span className="barra"></span>   
-                        <label className="label_form" htmlFor="">Capacidad</label>
                     </div>
 
-                    <div className="grupo">
-                        <input className="input_form" 
+                    <div className="div_form">
+                        <label>Ubicaci&oacute;n</label> <br />
+                        <input className = "form_input"
                         type="text" 
                         name="ubicacion" 
                         onChange={handleChange}  
-                        id="ubicacion" 
+                        id="ubicacion"
+                        autoComplete='off' 
                         required 
                         pattern='[A-Za-z0-9 ]{7,40}' 
                         title='Letras y numeros. Mínimo 7 caracteres, máximo 40 ' />
-                        <span className="barra"></span>
-                        <label className="label_form" htmlFor="">Ubicaci&oacute;n</label>
+                        
                     </div>
-                    <div className="grupo">
-                        <input className="input_form" 
+                    <div className="div_form">
+                        <label >Caracter&iacute;sticas</label> <br />
+                        <input className = "form_input" 
                         type="text" 
                         name="caracteristicas"  
                         onChange={handleChange}  
-                        id="caracteristicas" 
+                        id="caracteristicas"
+                        autoComplete='off' 
                         required 
                         pattern='[A-Za-z0-9 ]{7,40}' 
                         title='Letras y numeros. Mínimo 7 caracteres, máximo 40 ' />
-                        <span className="barra"></span>
-                        <label className="label_form" htmlFor="">Caracter&iacute;sticas</label>
                     </div>
                     <div className="checkbox_form">
                         <p>Seleccione el tipo de aula</p>

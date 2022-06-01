@@ -11,32 +11,44 @@ import Login from './pages/Login';
 import Respuesta_Reserva from './pages/Respuesta_Reserva'
 import AdminHome from './pages/AdminHome';
 import AdminIni from './Componentes/Inicio/adminin';
+import Crud_Usuarios from './pages/Crud_Usuarios';
+import Mis_Reservas from './pages/Mis_Reservas'
 
-import {PrivateRoutes} from './routes/privateRoutes'
+import {PrivateDocRoutes, PrivateAdmRoutes} from './routes/privateRoutes'
+import {PublicRoutes} from './routes/publicRoutes'
+import {AuthProvider} from './store/user'
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        
-        {/* Rutas para el docentes */}
-          <Route path="/" element={<Home />} >
-              <Route index element={<Inicio />}/>
-              <Route path="reservar-aula/:id" element={<ReservarAula/>}/>
-              <Route path="catalogo" element={<Catalogos/>}/>
+      <AuthProvider>
+        <Routes>
+          {/* Rutas para el docentes */}
+          <Route element={<PrivateDocRoutes/>}>
+            <Route path="/" element={<Home />} >
+                <Route index element={<Inicio />}/>
+                <Route path="reservar-aula/:id" element={<ReservarAula/>}/>
+                <Route path="catalogo" element={<Catalogos/>}/>
+                <Route path="mis-reservas" element={<Mis_Reservas/>}/>
+            </Route>
           </Route>
+          {/*  Rutas para el adminstradores */}
 
-       {/*  Rutas para el adminstradores */}
-        <Route path="/Home-admin/" element={<AdminHome/>}>
-          <Route index element={<AdminIni />}/>
-          <Route path="crud" element={<Crud/>}/>
-          <Route path="respuesta-reserva" element={<Respuesta_Reserva/>}/>
-          <Route path="vista-forma-aul" index element={<Vista_formulario_aulas/>}/>
-        </Route>
-
-          <Route path="/register" element={<Login/>}/>
-          <Route path="/login" element={<Login/>}/>
-      </Routes>
+          <Route element={<PrivateAdmRoutes/>}>
+          <Route path="/Home-admin" element={<AdminHome/>}>
+            <Route index element={<AdminIni />}/>
+            <Route path="crud" element={<Crud/>}/>
+            <Route path="respuesta-reserva" element={<Respuesta_Reserva/>}/>
+            <Route path="vista-forma-aul" index element={<Vista_formulario_aulas/>}/>
+            <Route path="crud-usarios" element={<Crud_Usuarios/>}/>
+          </Route>
+          </Route>
+          <Route element={<PublicRoutes/>}>
+            <Route path="/register" element={<Login/>}/>
+            <Route path="/login" element={<Login/>}/>
+          </Route>
+        </Routes>
+      </AuthProvider>
     </div>
   );
 }

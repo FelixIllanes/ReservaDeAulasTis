@@ -1,32 +1,45 @@
 import './login.css'
 
-import {useState} from 'react'
-import {auth} from '../../services/auth'
+import {useState, useContext} from 'react'
 
-
+import {AuthContext} from '../../store/user'
+import { useNavigate } from "react-router-dom";
 function LoginUsr(){
+    let navigate = useNavigate();
+
+    const {signIn, isAdmin} = useContext(AuthContext)
+
     const [userForm, setUserForm] = useState({})
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleOnChange = (evt) => {}
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = async(evt) => {
         evt.preventDefault()
-        const user = {
-            'email': evt.target.email.value,
-            'password': evt.target.password.value
-        }
-        console.log(user)
-        auth(user).then(res => {
-            console.log(res)
-        }).catch(err => {
-            console.log(err)
-        })
+        
+            const user = {
+                'email': evt.target.email.value,
+                'password': evt.target.password.value
+            }
+            
+            setIsLoading(true)
+            signIn(user).then(res => {
+                if (isAdmin){
+                    setIsLoading(false)
+                    navigate("/Home-admin");
+                }else{
+                    navigate("/");
+                }
+               
+            })
+        
     }
 
     return(
         <div className="container cont_form">
             <form onSubmit={handleSubmit}>
-                <div className="formulario" id='login_form_cont'>
+                <div className={`formulario ${isLoading && 'contanier-loading'}`}
+                id='login_form_cont'>
                     <h1 style={{textAlign:"center"}}>Inicio de Sesi&oacute;n</h1>
                     <p>Ingrese su correo</p>
                     <p> electronico registrado</p>

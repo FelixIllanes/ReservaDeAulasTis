@@ -1,0 +1,18 @@
+.img-perfil{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+}
+.cont-img-perfil{
+    text-align: center;
+    font-size: 20px;
+}
+.cont-btn-perfil{
+    margin-top: 1rem;
+    text-align: center;
+    display: block;
+}
+.cont-btn-perfil button{
+    margin-top: 4rem;
+
+}
