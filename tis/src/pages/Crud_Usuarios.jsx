@@ -15,7 +15,7 @@ export default function Crud_Usuarios(){
     const navigate = useNavigate()
 
     const redirectTo = () => {
-        navigate(`/vista-forma-aul/`)        
+        navigate(`/Home-admin/form-usuario`)        
     }
 
     const openModal = () => setShowModal(true)
@@ -27,14 +27,14 @@ export default function Crud_Usuarios(){
     return (
         <main className="inicio">
             <div className="container" id="tabla_com" style={{paddingTop:30+"px"}} >
-                <table className="table table-bordered" id="crud_table">
+                <button  onClick={redirectTo}>Reservar</button>
+               <table className="table table-bordered" id="crud_table">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Foto usuario</th>
                             <th>Nombre</th>
                             <th>Email</th>
-                            <th>Password</th>
                             <th>Rol</th>
                             <th>Opciones</th>
                         </tr>

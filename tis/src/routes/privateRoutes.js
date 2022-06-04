@@ -4,14 +4,13 @@ import {AuthContext} from '../store/user'
 // haz la prueba xd
 
 export const PrivateDocRoutes = () => {
-    const {isAuthenticated, isAdmin} = useContext(AuthContext)
-  
-    let location = useLocation();
-    return isAuthenticated && !isAdmin ? <Outlet/> : <Navigate to="/login" state={{ from: location }} replace />;  
+    const {isAuthenticated, isAdmin} = useContext(AuthContext)  
+    let location = useLocation()
+    return isAuthenticated && !isAdmin ? <Outlet/> : <Navigate to="/login" state={{ from: location }} />;  
 }
 
 export const PrivateAdmRoutes = () => {
     const {isAuthenticated, isAdmin} = useContext(AuthContext)
     let location = useLocation();
-    return isAuthenticated && isAdmin ? <Outlet/> : <Navigate to="/login" state={{ from: location }} replace />;  
+    return isAuthenticated && isAdmin ? <Outlet/> : <Navigate to="/login" state={{ from: location }} />;  
 }

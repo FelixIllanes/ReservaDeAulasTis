@@ -118,7 +118,7 @@ main{
       top: 60px;
       width: 100%;
       padding: 20px 0;
-      height: calc(37% - 60px);
+      height: 100%;
       overflow-y: auto;
       left: 100%;
       transition: 0.3s;
@@ -174,7 +174,7 @@ body{
 .descripcion{
   justify-content: center;
   font-size: 50px;
-  padding-top: 11%;
+  padding-top: 8%;
   color: white;
   text-shadow: 2.5px 2.5px 2.5px black;
 }
@@ -593,6 +593,17 @@ thead{
   display: grid;
   grid-template-columns: auto auto auto;
 }
+@media screen and (max-width:991px){
+  .resp_cont{
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}
+@media screen and (max-width:700px){
+  .resp_cont{
+    display: block;
+  }
+}
 /*fin respuesta*/
 
 #form_reserva{
@@ -604,3 +615,4 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
     }
 input[type=number] { -moz-appearance:textfield; }
+

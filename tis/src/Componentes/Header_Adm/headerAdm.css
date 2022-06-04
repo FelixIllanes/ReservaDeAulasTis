@@ -1,0 +1,140 @@
+.headerAdm{
+    background-blend-mode: multiply;
+    background-color: initial;
+    background-image: url(../../../public/assets/imagenes/fondo_header.png),linear-gradient(154deg,#003770 90%,#e30613 90%);
+    height: 90px;
+    position: sticky;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+  .tituloAdm{
+    position: absolute;
+    top: 24%;
+    left: 10%;
+    color: white;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .navAdm{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .nav-linkAdm{
+    color: white;
+    text-decoration: none;
+  }
+  .logoAdm{
+    padding: 0 40px;
+    line-height: 80px;
+    height: 68px;
+    width: -68px;
+    margin-top: 11px;
+  }
+  .menu-navAdm{
+    display: flex;
+    margin-right: 40px;
+    list-style: none;
+  }
+  .item-nav-menuAdm{
+    font-size:  18px;
+    margin: 0px 10px;
+    line-height: 80px;
+    text-transform: uppercase;
+    width: max-content;
+  }
+  
+  .nav-menu-linkAdm{
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+  }
+  .nav-menu-linkAdm:hover {
+    background-color: rgb(9, 4, 78);
+    transition: 0.5s;
+  }
+  .nav-toggleAdm{
+    color: white;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 0 20px;
+    line-height: 60px;
+    cursor: pointer;
+  
+    display: none;
+  }
+  
+  @media only screen and (max-width: 1170px) {
+    .tituloAdm{
+        left: 12%;
+    }
+  
+  }
+  
+  @media only screen and (max-width: 940px) {
+    .tituloAdm{
+        font-size: 15px;
+        left: 15%;
+    }
+  }
+  
+  @media only screen and (max-width: 814px) {
+  
+    .headerAdm{
+        height: 60px;
+    }
+    .logoAdm{
+        font-size: 25px;
+        padding: 0 20px;
+        line-height: 60px;
+    }
+    .tituloAdm{
+  
+        font-size: 12px;
+        left: 40%;
+    }
+  
+    .menu-navAdm {
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20px;
+        background-color: rgb(180, 3, 3);
+        position: fixed;
+        left: 0;
+        top: 60px;
+        width: 100%;
+        padding: 20px 0;
+        height: 100%;
+        overflow-y: auto;
+        left: 100%;
+        transition: 0.3s;
+        z-index: 11;
+  
+    }
+  
+    .item-nav-menuAdm{
+        line-height: 70px;
+    }
+  
+    .nav-menu-linkAdm:hover {
+        background: none;
+        color: blueviolet;
+    }
+  
+    .nav-toggleAdm{
+        display: block;
+    }
+  
+    .nav-menu_visibleAdm{
+        left: 0;
+    }
+    .logoAdm{
+        height: 45px;
+        width: -45px;
+        margin-top: 8px;
+    }
+  }

@@ -3,12 +3,19 @@ import {useEffect, useState} from 'react'
 import './perfil.css'
 import { useNavigate } from "react-router-dom";
 import {useAuth} from '../../hooks/useAuth'
+import {get} from '../../services/user'
 
 function OffCanvasExample({ name, ...props }) {
 
     const {logout, user} = useAuth()
     const [show, setShow] = useState(false);
+    const [perfil, setPerfil] = useState([])
 
+    useEffect(()=> {
+        const userId = window.localStorage.getItem('userId')
+        get(userId).then(setPerfil)
+    }, [])
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -23,13 +30,13 @@ function OffCanvasExample({ name, ...props }) {
         </a>
         <Offcanvas show={show} onHide={handleClose} {...props}>
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Mi Perfil</Offcanvas.Title>
+            <center><Offcanvas.Title>Mi Perfil</Offcanvas.Title></center>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <div className='cont-img-perfil'>
                 <img className="img-perfil" src="/assets/imagenes/perfilpordefecto.png" alt=""/>
-                <p style={{marginTop:12+'px'}}>Nombre del usuario</p>
-                <p>cualquiercorreo@gmail.com</p>
+                <p style={{marginTop:12+'px'}}>{perfil.name} {perfil.apellido}</p>
+                <p>{perfil.email}</p>
             </div>
             <div className='cont-btn-perfil'>
                 <button onClick={()=> logout()}>Cerrar Sesión</button>

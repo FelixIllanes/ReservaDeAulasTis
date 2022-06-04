@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Example from '../Notificaciones'
 import MiPerfilAdm from '../Mi_Perfil/perfil'
 import { useState } from "react";
+import './headerAdm.css'
 
 const links = [
     {
@@ -28,24 +29,24 @@ function HeaderAdm(){
     const [toggle, setToggle] = useState(false)
 
     return(
-    <header className="header">
-        <nav className="nav">
-            <img className="logo" src="/assets/imagenes/logo_facultad.png" alt=""/>
-            <p className="titulo">Gestión de Reserva de Ambientes</p>
-            <button className="nav-toggle" onClick={()=> setToggle(!toggle)}>
+    <header className="headerAdm">
+        <nav className="navAdm">
+            <img className="logoAdm" src="/assets/imagenes/logo_facultad.png" alt=""/>
+            <p className="tituloAdm">Gestión de Reserva de Ambientes</p>
+            <button className="nav-toggleAdm" onClick={()=> setToggle(!toggle)}>
                 <i className="fa-solid fa-bars"></i>
             </button>
-            <ul className={`menu-nav ${toggle ? 'nav-menu_visible' : ''}`}>
+            <ul className={`menu-navAdm ${toggle ? 'nav-menu_visibleAdm' : ''}`}>
                 {
                     links.map(
                         ({url, name}, idx) => (
-                        <li className="item-nav-menu" key={idx}>
-                            <Link to={url} className="nav-menu-link">{name}</Link>
+                        <li className="item-nav-menuAdm" key={idx}>
+                            <Link to={url} className="nav-menu-linkAdm">{name}</Link>
                          </li>
                         )
                     )
                 }
-                 <li className="item-nav-menu">
+                 <li className="item-nav-menuAdm">
                     <MiPerfilAdm/>
                 </li>
             </ul>

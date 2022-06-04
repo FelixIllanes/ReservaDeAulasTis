@@ -8,7 +8,7 @@ export const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState(null)
     const [isAuthenticated, setIsAuthenticated] = useState(false)
-    
+    const [isAdmin, setIsAdmin] = useState(null)
     
     useEffect(()=>{
         const token = window.localStorage.getItem('token')
@@ -18,18 +18,16 @@ export const AuthProvider = ({children}) => {
         }else{
            //iniciar sesion -> pedir el detalle del usuario al back 
            //reload -> si hay token -> solicito detalle del usuario al back
-           setIsAuthenticated(true)
-           get(userId).then(setUser).catch(err => console.error(err))
+           get(userId).then(authenticate).catch(err => console.error(err))
         }
     },[])
 
 
     const authenticate = (user) => {
-        console.log(user)
         const {id, fullName, email, esAdmin}  = user
         setUser({id, fullName, email, esAdmin})
         setIsAuthenticated(true)
-
+        setIsAdmin(esAdmin === 'yes')
         window.localStorage.setItem('userId', id)
         window.localStorage.setItem('token', user.access_token)
     }
@@ -53,7 +51,7 @@ export const AuthProvider = ({children}) => {
         setIsAuthenticated(false)
     }
 
-    const vars = {isAuthenticated, isAdmin: user?.esAdmin === 'yes', signIn, signUp, logout, user}
+    const vars = {isAuthenticated, isAdmin, signIn, signUp, logout, user}
     return (
         <AuthContext.Provider value={vars}>
             {children}

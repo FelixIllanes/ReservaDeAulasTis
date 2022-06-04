@@ -1,0 +1,27 @@
+.check_cont label{
+    font-size: 20px;
+}
+.check_cont input[type=checkbox]{
+    display: none;
+}
+.check_cont input[type=checkbox] + label{
+    cursor: pointer;
+}
+.check_cont label::before{
+    content: '';
+    background: transparent;
+    border: 4px solid #003770;
+    border-radius: 25px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin-right: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+.check_cont input[type=checkbox]:checked + label:before{
+    font-size: 18px;
+    background-color: #06396fbd;
+    color: #003770;
+}
+

@@ -29,6 +29,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0;
 }
 .div_form{
     margin-left: 15%;
@@ -42,4 +43,40 @@
 .formulario_au{
     width: 100%;
     margin: auto;
+}
+@media screen and (max-width:520px){
+    .formulario_au{
+        width: 100%;
+        margin: 0;
+    }
+    .formulario_au .file label{
+        width: 13rem;
+    }
+    .formulario_au .checkbox_form{
+        width: 100%;
+    }
+}
+@media screen and (max-width:520px){
+    .formulario_au{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .cont_form_au{
+        width: 100%;
+        padding: 0;
+    }
+    .formulario_au .file label{
+        width: 13rem;
+    }
+
+}
+@media screen and (max-width:390px){
+ 
+    .formulario_au .file label{
+        width: 10rem;
+    }
+    .formulario_au .checkbox_form{
+        width: 60px;
+    }
 }

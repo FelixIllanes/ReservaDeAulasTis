@@ -7,15 +7,6 @@ import {AuthContext} from '../store/user'
 
 
 export default function Home(){
-    let navigate = useNavigate();
-    const {signUp} = useContext(AuthContext)
-    let location = useLocation();
-    useEffect(()=>{
-        const token = window.localStorage.getItem('token')
-        if (!token) {
-            return <Navigate to="/login" state={{ from: location }} replace />; 
-        }
-    },[])
 
     return (
         <>

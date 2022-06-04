@@ -7,6 +7,7 @@ import { getImageUrl } from '../../services/images'
  const DEFAULT_IMAGE_PATH = "/assets/imagenes/perfilpordefecto.png"
 function CrudUsuarios({user, focusUser, openModal, openAlert}){
     const { id, name, apellido, email, password, esAdmin} = user
+    const userLog = window.localStorage.getItem('userId')
 
     const handleEdit = () => {
         focusUser(user)
@@ -25,7 +26,7 @@ function CrudUsuarios({user, focusUser, openModal, openAlert}){
     }
 
     /*En lugar de 3 ponemos el id del usuario con el que estamos logeado */
-    if(id == 3){
+    if(id == userLog ){
         return <></>
     }
 
@@ -40,8 +41,7 @@ function CrudUsuarios({user, focusUser, openModal, openAlert}){
                     </div>
                 </td>
                 <td><b>Nombre:</b> {name} {apellido}</td>
-                <td><b>Email;</b> {email}</td>
-                <td><b>Contraseña:</b> {password}</td>
+                <td><b>Email:</b> {email}</td>
                 <td>{tipo}</td>
                 <td className="btn_crud" rowSpan="2" >
                 <div className="container crud_op">

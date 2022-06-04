@@ -1,16 +1,24 @@
 import './login.css'
 
-import {useState, useContext} from 'react'
+import {useState, useContext, useEffect} from 'react'
 
 import {AuthContext} from '../../store/user'
 import { useNavigate } from "react-router-dom";
 function LoginUsr(){
     let navigate = useNavigate();
-
-    const {signIn, isAdmin} = useContext(AuthContext)
+    const {signIn, isAdmin, isAuthenticated} = useContext(AuthContext)
 
     const [userForm, setUserForm] = useState({})
     const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(()=> {
+        if (isAuthenticated){
+            if (isAdmin){
+                if (isAdmin === true) navigate('/Home-admin')
+                if (isAdmin === false) navigate('/')
+            }
+        }
+    },[isAuthenticated, isAdmin])
 
     const handleOnChange = (evt) => {}
 
@@ -21,17 +29,8 @@ function LoginUsr(){
                 'email': evt.target.email.value,
                 'password': evt.target.password.value
             }
-            
             setIsLoading(true)
-            signIn(user).then(res => {
-                if (isAdmin){
-                    setIsLoading(false)
-                    navigate("/Home-admin");
-                }else{
-                    navigate("/");
-                }
-               
-            })
+            signIn(user)
         
     }
 

@@ -5,9 +5,11 @@ import Inicio from '../Componentes/Inicio';
 import Pie_de_pagina from '../Componentes/Pie_de_pagina/pieDePagina';
 
 export default function AdminHome(){
+    
     let navigate = useNavigate();
     let location = useLocation();
-
+    console.log(location)
+    /*
     useEffect(()=>{
         const token = window.localStorage.getItem('token')
         if (!token) {
@@ -15,6 +17,7 @@ export default function AdminHome(){
             return <Navigate to="/login" state={{ from: location }} replace />;  
         }
     },[])
+    */
     return (
         <>
            <HeaderAdm />

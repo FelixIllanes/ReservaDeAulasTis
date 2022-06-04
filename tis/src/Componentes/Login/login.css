@@ -29,8 +29,8 @@
     margin:auto;
     width: 80px;
     height: 80px;
-    border: 10px solid black;
-    border-left: 10px solid red;
+    border: 10px solid #003770;
+    border-left: 10px solid #e30613;
     border-radius: 50%;
     animation-name: snipper;
     animation-duration: .7s;

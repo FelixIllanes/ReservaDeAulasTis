@@ -13,6 +13,7 @@ import AdminHome from './pages/AdminHome';
 import AdminIni from './Componentes/Inicio/adminin';
 import Crud_Usuarios from './pages/Crud_Usuarios';
 import Mis_Reservas from './pages/Mis_Reservas'
+import FormUser from './pages/Formulario_Usuario';
 
 import {PrivateDocRoutes, PrivateAdmRoutes} from './routes/privateRoutes'
 import {PublicRoutes} from './routes/publicRoutes'
@@ -41,6 +42,7 @@ function App() {
             <Route path="respuesta-reserva" element={<Respuesta_Reserva/>}/>
             <Route path="vista-forma-aul" index element={<Vista_formulario_aulas/>}/>
             <Route path="crud-usarios" element={<Crud_Usuarios/>}/>
+            <Route path="form-usuario" element={<FormUser/>}/>
           </Route>
           </Route>
           <Route element={<PublicRoutes/>}>

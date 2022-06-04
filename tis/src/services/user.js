@@ -15,10 +15,10 @@ export const getAll = () =>
     .then((res) => res.json())
     .then((data) => data);
 
-/* export const create = (body) =>
-  fetch(`${api}/ambientes`, {method: 'POST', headers2, body: body})
+export const create = (body) =>
+  fetch(`${api}/registro`, {method: 'POST', headers, body: JSON.stringify(body)})
     .then((res) => res.json())
-    .then((data) => data); */
+    .then((data) => data);
 
 export const update = (body, id) =>
   fetch(`${api}/usuario/${id}`, {method: 'PUT', headers, body: JSON.stringify(body)})

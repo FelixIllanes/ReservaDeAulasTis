@@ -1,31 +1,40 @@
-#form_res_amb{
-    display: block;
-}
-.buttons{
-    display: flex;
+.form_usr{
     justify-content: center;
-    margin-top: 55px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 3rem;
+    width: 38rem;
+    margin: 0px auto;
+
 }
-#reserva{
-    margin-left: 20px;
-}
-#codAmb{
-    width: 25em;
-}
-#motivoSol{
-    width: 25em;
-}
-.form-check{
-    align-items: center;
-}
-.form-check{
-    font-size: 20px;
-}
-.boton_form{
-    margin-top: 10px;
+.btn_form_user{
     justify-content: center;
+    padding-left: 8%;
+    margin-top: 15px;
 }
-.selec_per_btn {
+.form_usr .form_mod_input{
+    width: 85%;
+    border-radius: 10px !important;
+    margin-bottom: 16px;
+    border: 0.5px solid;
+    font-size: 18px;
+}
+
+.form_usr .btn_modal_edit{
+    text-align: center;
+}
+.inp_form_usr{
+    margin-left: 15%;
+    padding: 0;
+}
+.form_usr h2{
+    text-align: center;
+}
+.form_usr .form-select{
+    width: 80%;
+}
+
+.selec_mat_btn {
     padding: 1rem 2.5rem;
     font-size: 12px !important;
     text-transform: uppercase !important;
@@ -41,71 +50,52 @@
     outline: none;
     text-decoration: none;
 }
-.selec_per_btn:hover {
+.selec_mat_btn:hover{
     background-color: #003770;
     box-shadow: 0px 15px 20px rgba(29, 89, 255, 0.112);
     color: #fff;
     transform: translateY(-7px);
-  }
-   
-.selec_per_btn:active {
-    transform: translateY(-1px);
-  }
-.form_input{
-    width: 80%;
-    padding: 10px;
-    border-radius: 10px !important;
-    margin-bottom: 16px;
-    font-size: 18px;
-    border: 1px solid rgba(53, 53, 53, 0.44);
-    display: inline-block;
-    outline: unset;
-    border-color: #003770;
 }
-.form_input:invalid{
+   
+.selec_mat_btn:active{
+    transform: translateY(-1px);
+}
+
+.form_usr input:invalid{
     border-color: #1b010222;
 }
-.cont_form_au{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.div_form{
-    margin-left: 15%;
-}
-.formulario_au{
-    background-color: white;
-    padding: 40px 20px;
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
+
+.form_input_usr{
+width: 80%;
+padding: 10px;
+border-radius: 10px !important;
+margin-bottom: 16px;
+font-size: 18px;
+border: 1px solid rgba(53, 53, 53, 0.44);
+display: inline-block;
+outline: unset;
+border-color: #003770;
 }
 
-#formReservaAmbientes{
-    width: 50%;
-    margin: 0 auto;
-    background-color: white;
-    padding: 50px 0;
-    border-radius: 25px;
-    justify-content: center;
+.inp_form_usr label{
+    font-size: 18px;
+    
 }
 
-.div_form select{
-    width: 80%;
-    border-radius: 12px;
-}
-
-@media screen and (max-width:992px){
-    #btn_res_amb{
+@media only screen and (max-width: 770px){
+    .form_usr{
+        width: 100%;
+    }
+    .btn_form_user{
         display: block;
         text-align: center;
     }
-    #btn_res_amb button{
+    .btn_form_user button{
         margin-top: 20px;
     }
-  }
+}
 
 
-  
 .contanier-loading::after{
     display: block;
     position: absolute;
@@ -145,8 +135,4 @@
     to{
         transform: rotate(360deg);
     }
-}
-
-.pn{
-    display: none;
 }
