@@ -15,7 +15,7 @@ export default function Crud(){
     const navigate = useNavigate()
 
     const redirectTo = () => {
-        navigate(`/vista-forma-aul/`)        
+        navigate(`/Home-admin/vista-forma-aul/`)        
     }
 
     const openModal = () => setShowModal(true)
@@ -25,8 +25,17 @@ export default function Crud(){
     const closeAlert = () => setShowAlert(false)
 
 
+    const redirectIni = () => {
+        navigate(`/Home-admin/`)        
+    }
+
+
     return (
     <main className="inicio">
+            <div className='btn_crud_usr'>
+                <div onClick={redirectIni} style={{cursor: 'pointer'}}><i id="back" className="fa-solid fa-circle-arrow-left"></i></div>
+                <button style={{marginTop:15+"px"}} onClick={redirectTo}>Crear Ambiente</button>
+            </div>
             <div className="container" id="tabla_com" style={{paddingTop:30+"px"}} >
                 <table className="table table-bordered" id="crud_table">
                     <thead>

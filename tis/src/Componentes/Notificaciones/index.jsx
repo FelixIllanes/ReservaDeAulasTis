@@ -9,11 +9,12 @@ function OffCanvasExample({ name, ...props }) {
   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const userId = window.localStorage.getItem('userId')
 
     const [reservas, setReservas] = useState([])
 
     useEffect(() => {
-      getCardResponse(1).then(setReservas)
+      getCardResponse(userId).then(setReservas)
     }, [])
   
     return (

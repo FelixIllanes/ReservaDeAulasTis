@@ -126,10 +126,10 @@ function ReservarAula({fechaIni, grupos}){
                         aria-label="materia_grupo" 
                         id="materia_grupo_id" onChange={handleChange} name="tipo">
                             <option selected disabled>Seleccionar</option>   
-                            <option value="aula">Examen</option>
-                            <option value="laboratorio">Elecciones</option>
-                            <option value="auditorio">Reuniones</option>
-                            <option value="auditorio">Otros</option>
+                            <option value="Examen">Examen</option>
+                            <option value="Elecciones">Elecciones</option>
+                            <option value="Reuniones">Reuniones</option>
+                            <option value="Otro">Otros</option>
                         </select>
                     </div>
 

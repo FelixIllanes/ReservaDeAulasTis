@@ -1,0 +1,38 @@
+.form_rec_cont{
+    margin: auto;
+    display: block;
+}
+
+.rec_cont_form{
+    padding: 30px 0;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    width: 60%;
+    margin: auto;
+}
+
+.btn_rec_cont{
+    margin-top: 20px;
+}
+.rec_cont_form label{
+    font-size: 20px;
+}
+
+.rec_cont_form input{
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px !important;
+    margin-bottom: 16px;
+    font-size: 18px;
+    border: 1px solid rgba(53, 53, 53, 0.44);
+    display: inline-block;
+    outline: unset;
+    border-color: #003770;
+}
+
+@media screen and (max-width:1000px){
+    .rec_cont_form{
+        width: 100%;
+    }
+  }

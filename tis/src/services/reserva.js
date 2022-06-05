@@ -30,3 +30,8 @@ export const getPeriodos= (id, body) =>
   fetch(`${api}/reserva/periodos/${id}`,{method: 'POST', headers, body: JSON.stringify(body)})
     .then((res) => res.json())
     .then((data) => data);
+
+export const getRecomend= (body) =>
+  fetch(`${api}/reserva/Recomendacion`,{method: 'POST', headers, body: JSON.stringify(body)})
+    .then((res) => res.json())
+    .then((data) => data);

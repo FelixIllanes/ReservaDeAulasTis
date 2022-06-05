@@ -12,7 +12,8 @@ function FormEditUser({user, closeModal, updateUser }){
     const handleOnChange = (evt) =>{
         setForm({
             ...form,
-            [evt.target.name] : evt.target.value
+            [evt.target.name] : evt.target.value,
+            password: password,
         })
     }
     
@@ -60,17 +61,6 @@ function FormEditUser({user, closeModal, updateUser }){
                 id="emailuser_mod" 
                 placeholder="Email" 
                 defaultValue= {email}
-                ></input>  
-            </div>
-            <div>
-                <label>Contraseña:</label>
-                <input className="form_mod_input" 
-                type="text" 
-                name="password" 
-                id="contraseñauser_mod"
-                placeholder="Contraseña"
-                readOnly 
-                defaultValue= {password}
                 ></input>  
             </div>
             <div>

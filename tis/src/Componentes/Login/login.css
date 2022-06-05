@@ -54,4 +54,12 @@
     font-size: 13px;
 }
 
+.rec_cont{
+    cursor: pointer;
+    color: #003770;
+}
+.rec_cont:hover{
+    color: blue;
+
+}
 

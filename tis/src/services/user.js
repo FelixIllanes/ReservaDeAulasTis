@@ -1,7 +1,8 @@
 import { baseUrl as api, headers } from './api.config';
 
 export const headers2 = {
-  'Content-Type': 'multipart/form-data'
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
 }
 
 export const get = (id) =>
@@ -16,7 +17,7 @@ export const getAll = () =>
     .then((data) => data);
 
 export const create = (body) =>
-  fetch(`${api}/registro`, {method: 'POST', headers, body: JSON.stringify(body)})
+  fetch(`${api}/registro`, {method: 'POST', headers , body: JSON.stringify(body)})
     .then((res) => res.json())
     .then((data) => data);
 

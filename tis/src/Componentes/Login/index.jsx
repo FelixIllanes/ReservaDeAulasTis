@@ -1,15 +1,26 @@
 import './login.css'
+import {Alert} from 'react-bootstrap'
 
 import {useState, useContext, useEffect} from 'react'
 
 import {AuthContext} from '../../store/user'
 import { useNavigate } from "react-router-dom";
 function LoginUsr(){
-    let navigate = useNavigate();
+
+    const navigate = useNavigate()
+
+    const redirectTo = () => {
+        navigate(`/recuperar`)        
+    }
+
+
+
     const {signIn, isAdmin, isAuthenticated} = useContext(AuthContext)
 
     const [userForm, setUserForm] = useState({})
+    const [errores, setErrores] = useState({})
     const [isLoading, setIsLoading] = useState(false)
+    const [show, setShow] = useState(false);
 
     useEffect(()=> {
         if (isAuthenticated){
@@ -29,9 +40,18 @@ function LoginUsr(){
                 'email': evt.target.email.value,
                 'password': evt.target.password.value
             }
-            setIsLoading(true)
-            signIn(user)
-        
+            
+
+            if(signIn(user)){
+                console.log("entra")
+                setIsLoading(true)
+            }else{
+                setErrores({
+                    errores,
+                    error: "correo o contraseña incorrecto",
+                })
+                setShow(true)
+            }
     }
 
     return(
@@ -40,6 +60,14 @@ function LoginUsr(){
                 <div className={`formulario ${isLoading && 'contanier-loading'}`}
                 id='login_form_cont'>
                     <h1 style={{textAlign:"center"}}>Inicio de Sesi&oacute;n</h1>
+                    
+                    {show && <Alert variant="danger"  onClose={() => setShow(false)} dismissible>
+                        <p>
+                             {errores['error']}
+                        </p>
+                    </Alert>
+                    }
+                    
                     <p>Ingrese su correo</p>
                     <p> electronico registrado</p>
                     <div className="grupo">
@@ -62,7 +90,7 @@ function LoginUsr(){
                         <button type="submit" >Iniciar Sesi&oacute;n</button>
                     </div>
                     <br />
-                    <a href="">¿Se te olvido la contraseña?</a>
+                    <a className='rec_cont' onClick={redirectTo}>¿Se te olvido la contraseña?</a>
                 </div>
             </form>
         </div>    

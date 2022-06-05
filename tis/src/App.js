@@ -14,6 +14,10 @@ import AdminIni from './Componentes/Inicio/adminin';
 import Crud_Usuarios from './pages/Crud_Usuarios';
 import Mis_Reservas from './pages/Mis_Reservas'
 import FormUser from './pages/Formulario_Usuario';
+import Rec_Cont from './pages/Rec_Cont';
+import CambiarCont from './pages/CambiarCont'
+import Recomendaciones_pag from './pages/Recomendaciones_pag'
+
 
 import {PrivateDocRoutes, PrivateAdmRoutes} from './routes/privateRoutes'
 import {PublicRoutes} from './routes/publicRoutes'
@@ -31,6 +35,7 @@ function App() {
                 <Route path="reservar-aula/:id" element={<ReservarAula/>}/>
                 <Route path="catalogo" element={<Catalogos/>}/>
                 <Route path="mis-reservas" element={<Mis_Reservas/>}/>
+                <Route path="recomendaciones/:carac/:tipo/:cap" element={<Recomendaciones_pag/>}/>
             </Route>
           </Route>
           {/*  Rutas para el adminstradores */}
@@ -48,6 +53,8 @@ function App() {
           <Route element={<PublicRoutes/>}>
             <Route path="/register" element={<Login/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/recuperar" element={<Rec_Cont/>}/>
+            <Route path="/cambiar-cont/:email" element={<CambiarCont/>}/>
           </Route>
         </Routes>
       </AuthProvider>
