@@ -15,12 +15,6 @@ function AdminIni(){
     <div className="container">
         
         <div className="container descripcion-Adm">
-            <div className="inicio_btns">
-                <button>Gestion de usuarios</button><br />
-                <button>Gestion de ambientes</button><br />
-                <button>Crear usuario</button><br />
-                <button>Crear ambiente</button>
-            </div>
             <div>
                 <p><center>Bienvenido al inicio {user.name} </center></p>
                 <p><center>Facultad de Ciencias y Tecnologia</center></p>

@@ -616,3 +616,25 @@ input[type=number]::-webkit-outer-spin-button {
     }
 input[type=number] { -moz-appearance:textfield; }
 
+.btn_crud_usr{
+  display: flex;
+}
+.btn_crud_usr button{
+  margin-left: 5rem;
+}
+.btn_crud_usr i{
+  margin-top: 20px;
+  margin-left: 20px;
+}
+/*Botones para ir atras*/
+i:hover{
+  transform: translateY(-5px);
+}
+
+i{
+  transition: all 0.3s ease 0s;
+}
+/*fin*/
+.fade{
+  font-size: 20px;
+}

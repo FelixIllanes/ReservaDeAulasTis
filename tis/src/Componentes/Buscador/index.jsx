@@ -1,6 +1,7 @@
 
 import {useState} from 'react'
 import {search} from '../../services/catalogo'
+import { useNavigate } from "react-router-dom";
 
 const caracteristicasOpciones = [
     {
@@ -71,8 +72,10 @@ const capacidadOpciones = [
 function Buscador({setAulas}){
     const [body, setBody] = useState({})
 
-    const goBack = () => {
-        window.history.back()
+    const navigate = useNavigate()
+
+    const redirectTo = () => {
+        navigate(`/`)        
     }
 
     const handleChange = (evt) => {
@@ -120,7 +123,7 @@ function Buscador({setAulas}){
 
     return(
         <form className="buscador_form" onSubmit={handleSubmit} id="frmBuscador">
-        <div onClick={goBack} style={{cursor: 'pointer'}}><i id="back" className="fa-solid fa-circle-arrow-left"></i></div>
+        <div onClick={redirectTo} style={{cursor: 'pointer'}}><i id="back" className="fa-solid fa-circle-arrow-left"></i></div>
         <div className="container filtro">
 
             <input 

@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import {create} from '../../services/user'
 import {Modal} from 'react-bootstrap'
+import {Alert} from 'react-bootstrap'
 import {getToAssign, assignAll} from '../../services/group'
 import './formUsr.css'
 import Materia_grupo from '../Materias_Grupos'
@@ -8,18 +9,24 @@ import Materia_grupo from '../Materias_Grupos'
 function Crear_Usuario(){
 
     const [body, setBody] = useState({})
+    const [errores, setErrores] = useState({})
     const [assign, setAssign] = useState({})
     const [grupos, setGrupos] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const [showModalSuccess, setShowModalSuccess] = useState(false)
+    const [show, setShow] = useState(false);
+
     const formData = new FormData();
 
-    useEffect(()=> {
+    /* useEffect(()=> {
         getToAssign().then(setGrupos)
-    }, [])
+    }, []) */
 
-    const openModal = () => setShowModal(true)
+    const openModal = () => {
+        getToAssign().then(setGrupos)
+        setShowModal(true)
+    }
     const closeModal = () => setShowModal(false)
 
     const openModalSuccess = () => setShowModalSuccess(true)
@@ -65,30 +72,57 @@ function Crear_Usuario(){
         formData.append('caracteristicas', body.caracteristicas);
         formData.append('tipo', body.tipo);
         formData.append('imagen', body.imagen); */
-        setIsLoading(true)
-        create(body).then(data => {
-    
-            if (data.status === 1){
-    
-                assignAll(assign).then(res => {
-            
-                   
-                    /*  if (res.Respuesta == 'Aceptados con exito'){  */
-                        closeModal();
-                        document.getElementById("formUser").reset();
-                        setIsLoading(false)
-                        openModalSuccess();
-                        
-                   /*  } */
-               }).catch(err => console.log(err))  
-            }
-        })  
+
+        if(body['password'] == body['password_confirmation']){
+            setIsLoading(true)
+            create(body).then(data => {
+                console.log(data)
+                if (data.status === 1){
+        
+                    assignAll(assign).then(res => {
+                        /*  if (res.Respuesta == 'Aceptados con exito'){  */
+                            closeModal();
+                            document.getElementById("formUser").reset();
+                            setIsLoading(false)
+                            openModalSuccess();      
+                    /*  } */
+                    }).catch(err => console.log(err))  
+                }
+
+                if(data.status === 0){
+                    closeModal()
+                    setIsLoading(false)
+                    setErrores({
+                        errores,
+                        error: "El correo ingresado ya existe",
+                    })
+                    setShow(true)
+                }
+            }).catch(err => console.log(err))  
+        }else{
+            closeModal()
+            setErrores({
+                errores,
+                error: "Las contraseñas no son iguales",
+            })
+            setShow(true)
+        }
     }
 
     return(
         <>
         <form className='form_usr' id='formUser'>
             <h2 >Crear Usuario</h2>
+
+
+            {show && <Alert variant="danger"  onClose={() => setShow(false)} dismissible>
+                <p>
+                  {errores['error']} 
+                </p>
+            </Alert>
+            }
+
+
             <div className = "inp_form_usr" style={{marginTop:30+"px"}}>
                 <label>Nombre:</label><br />
                 <input className="form_input_usr" 
@@ -136,7 +170,8 @@ function Crear_Usuario(){
                 id="contraseñauser_mod"
                 placeholder="Contraseña"
                 autoComplete='off'
-                required
+                required pattern='[A-Za-z0-9]{8,20}' 
+                title='Contraseña inválido, mínimo 8 caracteres máximos 20'
                 ></input>  
             </div>
             <div className = "inp_form_usr">
@@ -148,7 +183,8 @@ function Crear_Usuario(){
                 id="contraseñauser_mod_dos"
                 placeholder="Contraseña"
                 autoComplete='off'
-                required
+                required pattern='[A-Za-z0-9]{8,20}' 
+                title='Contraseña inválido, mínimo 8 caracteres máximos 20'
                 ></input>  
             </div>
 

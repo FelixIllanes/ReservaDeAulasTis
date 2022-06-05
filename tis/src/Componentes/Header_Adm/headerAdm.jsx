@@ -18,10 +18,7 @@ const links = [
         url:'respuesta-reserva',
         name: 'Peticiones',
     },
-    {
-        url:'vista-forma-aul',
-        name: 'Crear Ambiente',
-    },
+
 ]
 
 

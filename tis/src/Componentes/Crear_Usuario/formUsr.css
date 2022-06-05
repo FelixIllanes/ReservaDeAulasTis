@@ -136,3 +136,16 @@ border-color: #003770;
         transform: rotate(360deg);
     }
 }
+
+.btn-close{
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.btn-close:hover{
+    background-color: #f8d7da;
+    transform: translateY(-1px);
+    border-radius: 50%;
+    box-shadow: none;
+}
+

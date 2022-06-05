@@ -33,11 +33,20 @@ export const AuthProvider = ({children}) => {
     }
    
     const signIn = (user) => {
-        return auth(user).then(res => {
-            authenticate(res)
+        var res = ""
+        auth(user).then(res => {
+            if(res.status == 1){
+                authenticate(res)
+                res =  true;
+            }else{
+                res =  false;
+            }
+        
         }).catch(err => {
            console.log(err)
         })
+
+        return res
         
     }
 

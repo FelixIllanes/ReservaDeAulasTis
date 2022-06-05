@@ -68,21 +68,21 @@
     display: none;
   }
   
-  @media only screen and (max-width: 1170px) {
+  @media only screen and (max-width: 1270px) {
     .tituloAdm{
         left: 12%;
     }
   
   }
-  
-  @media only screen and (max-width: 940px) {
+  @media only screen and (max-width: 1220px) {
     .tituloAdm{
-        font-size: 15px;
-        left: 15%;
+        display: none;
     }
+  
   }
   
-  @media only screen and (max-width: 814px) {
+  
+  @media only screen and (max-width: 1020px) {
   
     .headerAdm{
         height: 60px;
@@ -93,9 +93,9 @@
         line-height: 60px;
     }
     .tituloAdm{
-  
-        font-size: 12px;
-        left: 40%;
+        display: block;
+        font-size: 20px;
+        left: 35%;
     }
   
     .menu-navAdm {
@@ -137,4 +137,12 @@
         width: -45px;
         margin-top: 8px;
     }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .tituloAdm{
+        font-size: 15px;
+        left: 30%;
+    }
+  
   }
