@@ -1,7 +1,7 @@
 import { baseUrl as api, headers } from './api.config';
 
-export const getCardResponse = (id) =>
-  fetch(`${api}/reserva/Todas/${id}`)
+export const getNotify = (id_user) =>
+  fetch(`${api}/reserva/Todas/${id_user}`)
     .then((res) => res.json())
     .then((data) => data);
 

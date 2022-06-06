@@ -92,6 +92,7 @@ main{
   }
 }
 
+
 @media only screen and (max-width: 814px) {
 
   .header{
@@ -148,6 +149,12 @@ main{
       margin-top: 8px;
   }
 }
+@media only screen and (max-width: 380px) {
+  .titulo{
+      left: 25%;
+  }
+}
+
 
 /*fin header*/
 
@@ -637,4 +644,16 @@ i{
 /*fin*/
 .fade{
   font-size: 20px;
+}
+
+.vacio_men p{
+  font-size: 50px;
+  color: black;
+  text-decoration: none;
+}
+
+.men_vacio_grupo_asig_grupo{
+  text-align: center;
+  font-size: 25px;
+  margin: 10px;
 }

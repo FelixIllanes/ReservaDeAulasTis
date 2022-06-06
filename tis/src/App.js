@@ -35,7 +35,7 @@ function App() {
                 <Route path="reservar-aula/:id" element={<ReservarAula/>}/>
                 <Route path="catalogo" element={<Catalogos/>}/>
                 <Route path="mis-reservas" element={<Mis_Reservas/>}/>
-                <Route path="recomendaciones/:carac/:tipo/:cap" element={<Recomendaciones_pag/>}/>
+                <Route path="recomendaciones/:id/:carac/:tipo/:cap" element={<Recomendaciones_pag/>}/>
             </Route>
           </Route>
           {/*  Rutas para el adminstradores */}

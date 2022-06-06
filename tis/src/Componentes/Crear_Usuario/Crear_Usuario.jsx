@@ -24,7 +24,13 @@ function Crear_Usuario(){
     }, []) */
 
     const openModal = () => {
-        getToAssign().then(setGrupos)
+        getToAssign().then(data => {
+            if (data.length){
+                setGrupos(data)
+            }else{
+                setGrupos(["vacio"])
+            }
+        })
         setShowModal(true)
     }
     const closeModal = () => setShowModal(false)

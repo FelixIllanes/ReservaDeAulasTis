@@ -6,7 +6,13 @@ export const useAulas = () => {
     const [aula, setAula] = useState(null)
 
     useEffect(() => {
-        getAll().then(setAulas)
+        getAll().then(data => {
+            if (data.length){
+                setAulas(data)
+            }else{
+                setAulas(["vacio"])
+            }
+        })
     }, [])
 
     const updateAula = (id, body) => {

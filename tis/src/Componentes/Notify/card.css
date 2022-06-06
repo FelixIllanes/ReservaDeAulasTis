@@ -16,3 +16,8 @@
     background-color: var(--color-bg-btn);
     color: black;
 }
+
+.vac_men_not_res{
+    margin: 200px 20px;
+    font-size: 55px;
+}

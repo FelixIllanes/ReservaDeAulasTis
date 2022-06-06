@@ -1,7 +1,9 @@
 import {useEffect, useState} from 'react'
 import Card from '../Card'
 
-function Recomendaciones({aulas = []}){
+function Recomendaciones({aulas}){
+    
+    
 
     return(
         <div className="container Catalogo" id="tableBody_Users">

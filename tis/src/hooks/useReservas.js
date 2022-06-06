@@ -6,7 +6,13 @@ export const useReservas = () => {
     const [reserva, setReserva] = useState(null)
 
     useEffect(() => {
-        getToResponse().then(setReservas)
+        getToResponse().then(data => {
+            if (data.length){
+                setReservas(data)
+            }else{
+                setReservas(["vacio"])
+            }
+        })
     }, [])
 
     const acceptReserva = (id, codigo, periodo, fecha, id_aulas) => {
