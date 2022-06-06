@@ -6,6 +6,7 @@ const DEFAULT_IMAGE_PATH = "assets/imagenes/logo_facultad.png"
 function Card({aula}) {
     const { id, imagen, capacidad, codigo, caracteristicas, tipo, ubicacion} = aula
     const navigate = useNavigate()
+    console.log(aula)
 
     const redirectTo = () => {
         navigate(`/reservar-aula/${id}`)        
@@ -13,9 +14,21 @@ function Card({aula}) {
 
     if(aula == [["vacio"]]){
         return(
-            <h1 style={{marginTop:90+"px"}}>No existen resultados para su busqueda</h1>
+            <div className='vacio_men'>
+                <p style={{marginTop:90+"px"}}>No existen resultados para su busqueda</p>
+            </div>
         )
     }
+
+    if(aula == [["empty"]]){
+        return(
+            <div className='vacio_men'>
+                <p style={{marginTop:90+"px"}}>No existen recomendaciones disponibles</p>
+            </div>
+        )
+    }
+
+
 
     return (
             <div className="container img_carac">

@@ -32,6 +32,14 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
         closeModal()
     }
 
+    if(reserva == [["vacio"]]){
+        return(
+            <div className='vacio_men'>
+                <p style={{marginTop:90+"px"}}>No existen resultados para su busqueda</p>
+            </div>
+        )
+    }
+
     return(
         <div>        
         <Card bg="Light" className='card_resp' style={{ width: '18rem', color:"black" }}>

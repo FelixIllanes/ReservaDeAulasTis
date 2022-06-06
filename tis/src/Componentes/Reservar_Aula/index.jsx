@@ -163,7 +163,7 @@ function ReservarAula({fechaIni, grupos}){
         {showModalSucces && <Modal show={showModalSucces} centered> 
         <div>
             <div className='delete_title'>
-                <h2>¡Reserva creada con éxito!</h2>
+                <h2>¡Solicitud de reserva enviada!</h2>
             </div>
             <div className="modal-footer" style={{justifyContent:"center"}}>
                 <button type="button" onClick={closeModalSucces} >Aceptar</button>

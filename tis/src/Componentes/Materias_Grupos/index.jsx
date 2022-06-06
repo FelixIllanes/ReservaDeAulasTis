@@ -3,6 +3,14 @@ import './materia_check.css'
 function Materia_grupo({matGrupo, grupoChange}){
 
     const {nombre, id_grupo, grupo, materia} = matGrupo
+
+    if(matGrupo == [["vacio"]]){
+        return(
+            <div className='men_vacio_grupo_asig_grupo'>
+                <p>No existen grupos para asignar</p>
+            </div>
+        )
+    }
     
     return(
         <div className="check_cont">

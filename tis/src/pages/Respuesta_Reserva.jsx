@@ -21,6 +21,8 @@ export default function Respuesta_Reserva(){
         navigate(`/Home-admin/`)        
     }
 
+   
+
 
     return (
         <main className="inicio">
