@@ -19,12 +19,14 @@ function Crear_Usuario(){
 
     const formData = new FormData();
 
-    /* useEffect(()=> {
-        getToAssign().then(setGrupos)
-    }, []) */
-
     const openModal = () => {
-        getToAssign().then(setGrupos)
+        getToAssign().then(data => {
+            if (data.length){
+                setGrupos(data)
+            }else{
+                setGrupos(["vacio"])
+            }
+        })
         setShowModal(true)
     }
     const closeModal = () => setShowModal(false)
@@ -66,12 +68,6 @@ function Crear_Usuario(){
     const handleSubmit = (evt) => {
        
         evt.preventDefault()
-        /* formData.append('codigo', body.codigo);
-        formData.append('capacidad', body.capacidad);
-        formData.append('ubicacion', body.ubicacion);
-        formData.append('caracteristicas', body.caracteristicas);
-        formData.append('tipo', body.tipo);
-        formData.append('imagen', body.imagen); */
 
         if(body['password'] == body['password_confirmation']){
             setIsLoading(true)
@@ -80,12 +76,12 @@ function Crear_Usuario(){
                 if (data.status === 1){
         
                     assignAll(assign).then(res => {
-                        /*  if (res.Respuesta == 'Aceptados con exito'){  */
+
                             closeModal();
                             document.getElementById("formUser").reset();
                             setIsLoading(false)
                             openModalSuccess();      
-                    /*  } */
+
                     }).catch(err => console.log(err))  
                 }
 
@@ -189,32 +185,27 @@ function Crear_Usuario(){
             </div>
 
             {showModal && <Modal show={showModal}>  
-              {/*  <div className={`formulario ${isLoading && 'contanier-loading'}`}>  */}
-                    <div className={`container modal_horario ${isLoading && 'contanier-loading'}`} style={{padding:"20px"}}>
-                        <h2 style={{textAlign:"center"}}>Materias y grupos</h2>
+                <div className={`container modal_horario ${isLoading && 'contanier-loading'}`} style={{padding:"20px"}}>
+                    <h2 style={{textAlign:"center"}}>Materias y grupos</h2>
 
-                        {grupos.map(matGrupo => (
-                            <Materia_grupo matGrupo={matGrupo}
-                                    grupoChange={grupoChange}
-                                />
-                            ))}
+                    {grupos.map(matGrupo => (
+                        <Materia_grupo matGrupo={matGrupo}
+                                grupoChange={grupoChange}
+                            />
+                        ))}
 
-                        <div className="boton_form">
-                            <button onClick={handleSubmit}>Crear Usuario</button>
-                            <button onClick={closeModal}>Cancelar</button>
-                        </div>
+                    <div className="boton_form">
+                        <button onClick={handleSubmit}>Crear Usuario</button>
+                        <button onClick={closeModal}>Cancelar</button>
                     </div>
-       {/*         </div>  */} 
+                </div>
             </Modal>
             }
-
                 <div className='btn_form_user'>
                     <a className='selec_mat_btn' onClick={openModal}>Seleccionar Materias</a>
                     <button type="button" >Cancelar</button>
                 </div>  
         </form>
-
-
 
         {showModalSuccess && <Modal show={showModalSuccess} centered> 
         <div>

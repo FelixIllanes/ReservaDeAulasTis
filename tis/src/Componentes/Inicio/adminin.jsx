@@ -11,9 +11,8 @@ function AdminIni(){
     }, [])
 
 
-    return(
-    <div className="container">
-        
+return(
+    <div className="container">  
         <div className="container descripcion-Adm">
             <div>
                 <p><center>Bienvenido al inicio {user.name} </center></p>

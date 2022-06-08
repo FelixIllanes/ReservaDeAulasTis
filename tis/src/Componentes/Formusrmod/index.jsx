@@ -1,9 +1,6 @@
 
 import {useState} from 'react'
 import React from 'react'
-import Select from 'react-bootstrap/Button';
-import FormSelect from 'react-bootstrap/Button'
-
 
 function FormEditUser({user, closeModal, updateUser }){
     const [form, setForm] = useState(user || {})
@@ -24,7 +21,7 @@ function FormEditUser({user, closeModal, updateUser }){
     }
 
     return (
-            <form onSubmit={handleOnSubmit} className='form_mod'>
+        <form onSubmit={handleOnSubmit} className='form_mod'>
             <h2 >Editar Usuario</h2>
             <div>
                 <label>Nombre:</label>
@@ -63,21 +60,11 @@ function FormEditUser({user, closeModal, updateUser }){
                 defaultValue= {email}
                 ></input>  
             </div>
-            <div>
-            <label>Tipo:</label>
-                <select className="form-select" onChange={handleOnChange} 
-                aria-label="tipo" 
-                defaultValue={esAdmin.toLowerCase()}
-                id="mod_Tipo" name="esAdmin">    
-                    <option value="no" selected>Docente</option>
-                    <option value="yes">Administrador</option>
-                </select> 
-            </div>
                 <div className='btn_modal_edit'>
                 <button type='submit'> Enviar </button>
                 <button type="button" onClick={()=> closeModal()} >Cancelar</button>
-
-                </div>  </form>
+            </div>  
+        </form>
     )
 }
 export default FormEditUser

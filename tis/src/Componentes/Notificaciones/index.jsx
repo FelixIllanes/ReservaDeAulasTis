@@ -1,7 +1,7 @@
 import {Button} from 'react-bootstrap'
 import {Offcanvas} from 'react-bootstrap'
 import {useEffect, useState} from 'react'
-import {getCardResponse} from '../../services/reserva'
+import {getNotify } from '../../services/reserva'
 import Notify from '../Notify'
 
 function OffCanvasExample({ name, ...props }) {
@@ -14,7 +14,14 @@ function OffCanvasExample({ name, ...props }) {
     const [reservas, setReservas] = useState([])
 
     useEffect(() => {
-      getCardResponse(userId).then(setReservas)
+      var user = window.localStorage.getItem('userId')
+      getNotify (userId).then(data => {
+        if (data.length){
+            setReservas(data)
+        }else{
+            setReservas(["vacio"])
+        }
+      })
     }, [])
   
     return (

@@ -1,7 +1,5 @@
-import { useState } from 'react';
-import { getImageUrl } from '../services/images'
 
-import Eliminar_modal from './Eliminar_modal';
+import { getImageUrl } from '../services/images'
 
 const DEFAULT_IMAGE_PATH = "assets/imagenes/logo_facultad.png"
 
@@ -45,7 +43,6 @@ function RowCrud({aula, focusAula, openModal, openAlert}){
                         data-bs-target="#exampleModal" 
                         data-bs-toggle="modal" 
                         onClick={handleDelete}>Eliminar</button>
-
                 </div>
                 </td>
                     </tr>

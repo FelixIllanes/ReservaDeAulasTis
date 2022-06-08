@@ -15,7 +15,15 @@ function Notify({reserva}){
   const navigate = useNavigate()
 
   const redirectTo = () => {
-      navigate(`/recomendaciones/${aula.caracteristicas}/${aula.tipo}/${aula.capacidad}`)        
+      navigate(`/recomendaciones/${aula.id}/${aula.caracteristicas}/${aula.tipo}/${aula.capacidad}`)        
+  }
+
+  if(reserva == [["vacio"]]){
+    return(
+      <div className='vac_men_not_res'>
+          <p>No existen notificaciones</p>
+      </div>
+    )
   }
 
   if(aceptadoRechazado == 1){

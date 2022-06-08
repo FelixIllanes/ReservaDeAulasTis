@@ -1,11 +1,6 @@
 import './Eliminar_modal/delete_crud.css'
-
 import {useState} from 'react'
 import React from 'react'
-import Select from 'react-bootstrap/Button';
-import FormSelect from 'react-bootstrap/Button'
-import {update} from '../services/aulas'
-
 
 function FormEditAula({aula, closeModal, updateAula }){
     const [form, setForm] = useState(aula || {})
@@ -25,7 +20,7 @@ function FormEditAula({aula, closeModal, updateAula }){
     }
 
     return (
-            <form onSubmit={handleOnSubmit} className='form_mod'>
+        <form onSubmit={handleOnSubmit} className='form_mod'>
             <h2 >Editar Ambiente</h2>
             <div>
                 <label>Código:</label>
@@ -84,11 +79,11 @@ function FormEditAula({aula, closeModal, updateAula }){
                     <option value="auditorio">Auditorio</option>
                 </select> 
             </div>
-                <div className='btn_modal_edit'>
+            <div className='btn_modal_edit'>
                 <button type='submit'> Enviar </button>
                 <button type="button" onClick={()=> closeModal()} >Cancelar</button>
-
-                </div>  </form>
+            </div>  
+    </form>
     )
 }
 export default FormEditAula

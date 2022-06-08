@@ -29,6 +29,13 @@ export default function Crud(){
         navigate(`/Home-admin/`)        
     }
 
+    if(aulas == [["vacio"]]){
+        return(
+            <div className='vacio_men'>
+                <p style={{marginTop:90+"px"}}>No existen resultados para su busqueda</p>
+            </div>
+        )
+    }
 
     return (
     <main className="inicio">

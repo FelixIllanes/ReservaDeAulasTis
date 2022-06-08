@@ -61,7 +61,7 @@ function Formcrud_modal({aula}){
         <button type="button" className="btn_eliminar" id="btn_eliminar" >Si, deseo elimniar</button>
         <button type="button" data-bs-dismiss="modal">Cancelar</button>
         
-      </Modal> 
+        </Modal> 
 )}
 
 export default Formcrud_modal

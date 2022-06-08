@@ -9,7 +9,6 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
     const [body, setBody] = useState({})
     const [showModal, setShowModal] = useState(false)
 
-
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
 
@@ -32,41 +31,49 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
         closeModal()
     }
 
+    if(reserva == [["vacio"]]){
+        return(
+            <div className='vacio_men'>
+                <p style={{marginTop:90+"px"}}>No hay peticiones en este momento</p>
+            </div>
+        )
+    }
+
     return(
         <div>        
-        <Card bg="Light" className='card_resp' style={{ width: '18rem', color:"black" }}>
-            <Card.Header><strong>Solicitud del aula {codigo} </strong></Card.Header>
-            <Card.Body className='position-relative'>
-                <Card.Text>
-                    <div className='peticion_cont'>
-                        <p><strong>Código: </strong>  {codigo} </p>
-                        <p><strong> Fecha: </strong>{fechaReserva}</p>
-                        <p><strong> Periodo: </strong>{periodo}</p>
-                        <p><strong> Motivo: </strong>{motivo}</p>
-                        <p><strong> Observaciones: </strong>{observaciones}</p>
-                    </div>
-                    <div className='resp_btn'>
-                        <button className='btn_aceptar' type="button" onClick={handleAccept} >Aceptar</button>
-                        <button className='btn_rechazar' type="button" onClick={()=> openModal()}>Rechazar</button>
-                    </div>
-                </Card.Text>
-            </Card.Body>
-        </Card>
-        {showModal && <Modal show={showModal} centered>
-                        <div className='motivo_resp'>
-                            <form onSubmit={handleOnSubmit}>
-                                <div className='motivo'>
-                                    <label >Razon del Rechazo:</label><br />
-                                    <input type="text" onChange={handleOnChange}  className='motivo_input' />
-                                </div>
-                                <div className='btn_motivo'>
-                                    <button>Enviar</button>
-                                    <button type="button" data-bs-dismiss="modal" onClick={()=> closeModal()}>Cancelar</button>
-                                </div>
-                            </form>
+            <Card bg="Light" className='card_resp' style={{ width: '18rem', color:"black" }}>
+                <Card.Header><strong>Solicitud del aula {codigo} </strong></Card.Header>
+                <Card.Body className='position-relative'>
+                    <Card.Text>
+                        <div className='peticion_cont'>
+                            <p><strong>Código: </strong>  {codigo} </p>
+                            <p><strong> Fecha: </strong>{fechaReserva}</p>
+                            <p><strong> Periodo: </strong>{periodo}</p>
+                            <p><strong> Motivo: </strong>{motivo}</p>
+                            <p><strong> Observaciones: </strong>{observaciones}</p>
                         </div>
-                    </Modal>
-            }
+                        <div className='resp_btn'>
+                            <button className='btn_aceptar' type="button" onClick={handleAccept} >Aceptar</button>
+                            <button className='btn_rechazar' type="button" onClick={()=> openModal()}>Rechazar</button>
+                        </div>
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+            {showModal && <Modal show={showModal} centered>
+                <div className='motivo_resp'>
+                    <form onSubmit={handleOnSubmit}>
+                        <div className='motivo'>
+                            <label >Razon del Rechazo:</label><br />
+                            <input type="text" onChange={handleOnChange}  className='motivo_input' />
+                        </div>
+                        <div className='btn_motivo'>
+                            <button>Enviar</button>
+                            <button type="button" data-bs-dismiss="modal" onClick={()=> closeModal()}>Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </Modal>
+                }
         </div>
     )}
 

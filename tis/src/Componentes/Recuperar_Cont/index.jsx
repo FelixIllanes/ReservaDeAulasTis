@@ -4,15 +4,12 @@ import {useState} from 'react'
 import {sendEmail} from "../../services/auth"
 import {Alert} from 'react-bootstrap'
 
-
 function RecuperarCont(){
     const [body, setBody] = useState({})
     const [errores, setErrores] = useState({})
     const [show, setShow] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
-    
-
 
     const redirectTo = () => {
         navigate(`/cambiar-cont/${body["email"]}`)        
@@ -43,8 +40,7 @@ function RecuperarCont(){
 
     return(
     <>
-    <div className={`form_rec_cont ${isLoading && 'contanier-loading'}`}>
-        
+    <div className={`form_rec_cont ${isLoading && 'contanier-loading'}`}>  
         <form onSubmit={handleSubmit} className="rec_cont_form">
             <h1>Ingrese su correo</h1>
 
@@ -63,8 +59,7 @@ function RecuperarCont(){
                 <button className='btn_rec_cont' type="submit" >Recuperar contraseña</button>
             </div>
         </form>
-    </div>
-    
+    </div>   
     </>
 )}
 
