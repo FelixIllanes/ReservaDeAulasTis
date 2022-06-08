@@ -1,7 +1,5 @@
 import './delete_crud.css'
 import {useState} from 'react'
-import {Modal} from 'react-bootstrap'
-import {button} from 'react-bootstrap'
 
 function Delete_User({user, closeAlert, removeUser}){
     const { id, name, apellido, email, password, esAdmin} = user || {}
@@ -25,7 +23,6 @@ function Delete_User({user, closeAlert, removeUser}){
                 </div>
             </div>
         </form>
-
 )}
 
 export default Delete_User

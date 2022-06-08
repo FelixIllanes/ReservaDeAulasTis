@@ -12,13 +12,13 @@ function Materia_grupo({matGrupo, grupoChange}){
         )
     }
     
-    return(
-        <div className="check_cont">
-            <p>
-                <input type="checkbox" onChange={grupoChange} value={id_grupo} name={nombre} id={id_grupo} className="input_materias" />
-                <label htmlFor={id_grupo}>{materia} y {grupo}</label>
-            </p>
-        </div>
+return(
+    <div className="check_cont">
+        <p>
+            <input type="checkbox" onChange={grupoChange} value={id_grupo} name={nombre} id={id_grupo} className="input_materias" />
+            <label htmlFor={id_grupo}>{materia} y {grupo}</label>
+        </p>
+    </div>
 )}
 
 export default Materia_grupo

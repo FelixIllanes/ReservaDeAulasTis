@@ -31,19 +31,19 @@ function Card({aula}) {
 
 
     return (
-            <div className="container img_carac">
-                <div>
-                    <img className="imagen_aula" src={imagen ? getImageUrl(imagen) :  DEFAULT_IMAGE_PATH}  />
-                </div>
-                <div className="caracteristicas">
-                    <p><strong>Capacidad: </strong> {capacidad}</p>
-                    <p><strong>C&oacute;digo: </strong> {codigo}</p>
-                    <p><strong>Caracter&iacute;sticas: </strong> {caracteristicas}</p>
-                    <p><strong>Tipo: </strong>{tipo} </p>
-                    <p><strong>Ubicaci&oacute;n: </strong> {ubicacion}</p>
-                    <button  onClick={redirectTo}>Reservar</button>
-                </div>
+        <div className="container img_carac">
+            <div>
+                <img className="imagen_aula" src={imagen ? getImageUrl(imagen) :  DEFAULT_IMAGE_PATH}  />
             </div>
+            <div className="caracteristicas">
+                <p><strong>Capacidad: </strong> {capacidad}</p>
+                <p><strong>C&oacute;digo: </strong> {codigo}</p>
+                <p><strong>Caracter&iacute;sticas: </strong> {caracteristicas}</p>
+                <p><strong>Tipo: </strong>{tipo} </p>
+                <p><strong>Ubicaci&oacute;n: </strong> {ubicacion}</p>
+                <button  onClick={redirectTo}>Reservar</button>
+            </div>
+        </div>
     )
 
 }

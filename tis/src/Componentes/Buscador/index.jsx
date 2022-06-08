@@ -79,7 +79,7 @@ function Buscador({setAulas}){
     }
 
     const handleChange = (evt) => {
-        if((evt.target.value) === "todos"){//aqui habia un ||
+        if((evt.target.value) === "todos"){
             setBody({
                 body
             })
@@ -111,7 +111,6 @@ function Buscador({setAulas}){
             })
         }else{
             search([]).then(data => {
-                //console.log(data.Respuesta);
                 if (data.length){
                     setAulas(data)
                 }else{

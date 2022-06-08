@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Example from '../Notificaciones'
 import MiPerfilAdm from '../Mi_Perfil/perfil'
 import { useState } from "react";
 import './headerAdm.css'
@@ -20,7 +19,6 @@ const links = [
     },
 
 ]
-
 
 function HeaderAdm(){
     const [toggle, setToggle] = useState(false)

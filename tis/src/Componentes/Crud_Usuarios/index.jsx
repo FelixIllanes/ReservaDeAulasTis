@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { getImageUrl } from '../../services/images'
 
-
-//const DEFAULT_IMAGE_PATH = "assets/imagenes/logo_facultad.png"
-
  const DEFAULT_IMAGE_PATH = "/assets/imagenes/perfilpordefecto.png"
 function CrudUsuarios({user, focusUser, openModal, openAlert}){
     const { id, name, apellido, email, password, esAdmin} = user
@@ -13,7 +10,6 @@ function CrudUsuarios({user, focusUser, openModal, openAlert}){
         focusUser(user)
         openModal()
     }
-
 
     const handleDelete =() =>{
         focusUser(user)
@@ -25,7 +21,6 @@ function CrudUsuarios({user, focusUser, openModal, openAlert}){
         tipo = "Docente"
     }
 
-    /*En lugar de 3 ponemos el id del usuario con el que estamos logeado */
     if(id == userLog ){
         return <></>
     }

@@ -39,14 +39,13 @@ export default function ReservaAula(){
 
     return (
         <main className="inicio">
-                    <div className="container" style={{paddingTop:30+"px"}}>
-                    <div onClick={goBack} style={{cursor: 'pointer'}}><i id="back" className="fa-solid fa-circle-arrow-left"></i></div>
-                    
-                      <ReservarAula 
-                            fechaIni={ini}
-                            grupos={grupos}/>
-                        </div>
+            <div className="container" style={{paddingTop:30+"px"}}>
+                <div onClick={goBack} style={{cursor: 'pointer'}}><i id="back" className="fa-solid fa-circle-arrow-left"></i></div>
         
+                <ReservarAula 
+                    fechaIni={ini}
+                    grupos={grupos}/>
+            </div>
         </main>
     )    
 }

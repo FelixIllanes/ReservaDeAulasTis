@@ -20,9 +20,10 @@ function Notify({reserva}){
 
   if(reserva == [["vacio"]]){
     return(
-        <div className='vac_men_not_res'>
-            <p>No existen notificaciones</p>
-        </div>
+      <div className='vac_men_not_res'>
+          <p>No existen notificaciones</p>
+      </div>
+
     )
   }
 

@@ -37,7 +37,6 @@ export default function Crud(){
         )
     }
 
-
     return (
     <main className="inicio">
             <div className='btn_crud_usr'>
