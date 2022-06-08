@@ -28,6 +28,8 @@ function Card({aula}) {
         )
     }
 
+
+
     return (
         <div className="container img_carac">
             <div>
