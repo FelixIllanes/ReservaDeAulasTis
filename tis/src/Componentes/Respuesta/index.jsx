@@ -1,16 +1,63 @@
 import {Card} from 'react-bootstrap'
 import {Modal} from 'react-bootstrap'
 import {useEffect, useState} from 'react'
+import { useNavigate } from "react-router-dom";
+import { get } from "../../services/user"
 
 import './respuesta.css'
 
 function Respuesta({reserva, acceptReserva, rejectReserva}){
-    const { id, id_users, id_aulas, codigo, materia, grupo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, motivo, observaciones, created_at, updated_at} = reserva
+    const { id, id_users, id_aulas, codigo, materia, grupo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon,tipo, motivo, observaciones, created_at, updated_at} = reserva
     const [body, setBody] = useState({})
+    const [user, setUser] = useState({})
     const [showModal, setShowModal] = useState(false)
 
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
+    const navigate = useNavigate()
+
+    const redirectTo = () => {
+        navigate(`/Home-admin/asignar-aula/${id}/${cantidadEstudiantes}/${fechaReserva}/${numPeriodo(periodo)}/${cantidadPeriodo}`)        
+    }
+
+    const numPeriodo = (per) =>{
+        if(per == "6:45 - 8:15"){
+            return 1
+        }
+        if(per == "8:15 - 9:45"){
+            return 2
+        }
+        if(per == "9:45 - 11:15"){
+            return 3
+        }
+        if(per == "11:15 - 12:45"){
+            return 4
+        }
+        if(per == "12:45 - 14:15"){
+            return 5
+        }
+        if(per == "14:15 - 15:45"){
+            return 6
+        }
+        if(per == "15:45 - 17:15"){
+            return 7
+        }
+        if(per == "17:15 - 18:45"){
+            return 8
+        }
+        if(per == "18:45 - 20:15"){
+            return 9
+        }
+        if(per == "20:15 - 21:45"){
+            return 10
+        }
+
+    }
+
+    useEffect(() => {
+        get(id_users).then(setUser)
+    }, [])
+
 
     const handleOnChange = (evt) => {
         setBody({
@@ -39,21 +86,38 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
         )
     }
 
+    let prioridad = "red";
+    if(tipo == "Elecciones"){
+        prioridad = "blue"
+    }
+    if(tipo == "Reuniones"){
+        prioridad = "green"
+    }
+    if(tipo == "Otros"){
+        prioridad = "gray"
+    }
+
     return(
         <div>        
             <Card bg="Light" className='card_resp' style={{ width: '18rem', color:"black" }}>
-                <Card.Header><strong>Solicitud del aula {codigo} </strong></Card.Header>
+                <Card.Header><strong>Solicitud de Reserva</strong></Card.Header>
                 <Card.Body className='position-relative'>
                     <Card.Text>
                         <div className='peticion_cont'>
-                            <p><strong>Código: </strong>  {codigo} </p>
+                            <p><strong> Docente: </strong> {user.name} {user.apellido}</p>
                             <p><strong> Fecha: </strong>{fechaReserva}</p>
+                            <p><strong> Cantidad de Estudiantes: </strong>{cantidadEstudiantes}</p>
                             <p><strong> Periodo: </strong>{periodo}</p>
+                            <p><strong> Cantidad de Periodos: </strong>{cantidadPeriodo}</p>
+                            <div className='prioridad'>
+                                <p><strong> Tipo: </strong>{tipo}</p>
+                                <i className="fa-solid fa-circle-arrow-up" style={{color:prioridad }}></i>
+                            </div>
                             <p><strong> Motivo: </strong>{motivo}</p>
                             <p><strong> Observaciones: </strong>{observaciones}</p>
                         </div>
                         <div className='resp_btn'>
-                            <button className='btn_aceptar' type="button" onClick={handleAccept} >Aceptar</button>
+                            <button className='btn_aceptar' type="button" onClick={redirectTo} >Asignar</button>
                             <button className='btn_rechazar' type="button" onClick={()=> openModal()}>Rechazar</button>
                         </div>
                     </Card.Text>

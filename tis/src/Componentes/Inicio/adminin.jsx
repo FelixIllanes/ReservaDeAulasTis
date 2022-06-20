@@ -16,6 +16,7 @@ return(
         <div className="container descripcion-Adm">
             <div>
                 <p><center>Bienvenido al inicio {user.name} </center></p>
+                <p><center>Administrador</center></p>
                 <p><center>Facultad de Ciencias y Tecnologia</center></p>
                 <p><center>UMSS</center></p>
             </div>

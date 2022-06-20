@@ -1,7 +1,7 @@
 
 import { getImageUrl } from '../services/images'
 
-const DEFAULT_IMAGE_PATH = "assets/imagenes/logo_facultad.png"
+const DEFAULT_IMAGE_PATH = "/assets/imagenes/612.jpeg"
 
 function RowCrud({aula, focusAula, openModal, openAlert}){
     const { id, imagen, capacidad, codigo, caracteristicas, tipo, ubicacion} = aula
@@ -24,7 +24,7 @@ function RowCrud({aula, focusAula, openModal, openAlert}){
             <th rowSpan="2">{id}</th>
                 <td className="img_col" rowSpan="2">
                     <div className="container">
-                        <img className="imagen_crud" src={imagen ? getImageUrl(imagen) :  DEFAULT_IMAGE_PATH}  />
+                        <img className="imagen_crud" src= {DEFAULT_IMAGE_PATH}  />
                     </div>
                 </td>
                 <td><b>C&oacute;digo:</b> {codigo}</td>

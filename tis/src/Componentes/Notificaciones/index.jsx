@@ -15,7 +15,7 @@ function OffCanvasExample({ name, ...props }) {
 
     useEffect(() => {
       var user = window.localStorage.getItem('userId')
-      getNotify (userId).then(data => {
+      getNotify(userId).then(data => {
         if (data.length){
             setReservas(data)
         }else{

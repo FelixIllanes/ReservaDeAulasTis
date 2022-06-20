@@ -14,9 +14,6 @@ function Notify({reserva}){
 
   const navigate = useNavigate()
 
-  const redirectTo = () => {
-      navigate(`/recomendaciones/${aula.id}/${aula.caracteristicas}/${aula.tipo}/${aula.capacidad}`)        
-  }
 
   if(reserva == [["vacio"]]){
     return(
@@ -25,6 +22,26 @@ function Notify({reserva}){
       </div>
     )
   }
+
+  if(razon == "Aula Contigua"){
+    return(
+    <div>
+  <Card bg="primary" style={{ width: '18rem', color:"white" }}>
+    <Card.Header><strong>Respuesta a on la solicitud</strong></Card.Header>
+    <Card.Body>
+      <Card.Text>
+        <p><strong>Código: </strong> {codigo} </p>
+        <p><strong>Fecha: </strong>{fechaReserva}</p>
+        <p><strong>Periodo: </strong>{periodo}</p>
+        <p><strong>Tipo: </strong>{tipo}</p>
+        <p><strong>Motivo: </strong>{razon}</p>
+        <p><strong>Estado: </strong>Aceptado con aula contigua</p>
+      </Card.Text>
+    </Card.Body>
+  </Card>
+  </div>
+    
+  )}
 
   if(aceptadoRechazado == 1){
     return(
@@ -58,13 +75,13 @@ if(aceptadoRechazado == 0){
         <p><strong>Tipo: </strong>{tipo}</p>
         <p><strong>Motivo: </strong>{razon}</p>
         <p><strong>Estado: </strong>Rechazado</p>
-        <button className='btn_card' onClick={redirectTo}>Recomendación</button>
       </Card.Text>
     </Card.Body>
   </Card>
 </div>
     
 )}
+
 
 }
 

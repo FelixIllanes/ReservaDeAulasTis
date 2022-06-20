@@ -1,17 +1,33 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { get } from '../../services/user';
 import MiPerfil from '../Mi_Perfil';
 import Example from '../Notificaciones';
 
+
 const links = [
   {
-    url: 'catalogo',
-    name: 'Catálogo',
+    url: '/reservar-aula/:id',
+    name: 'Reserva',
   },
 ];
 
+
+
+
 function Header() {
+
+
+  const userId = window.localStorage.getItem('userId');
+  const [perfil, setPerfil] = useState([]);
   const [toggle, setToggle] = useState(false);
+
+
+  useEffect(() => {
+    get(userId).then(setPerfil);
+  }, []);
+
+
   return (
     <header className='header'>
       <nav className='nav'>
@@ -23,7 +39,7 @@ function Header() {
 
         <ul className={`menu-nav ${toggle ? 'nav-menu_visible' : ''}`}>
           <li className='item-nav-menu'>
-            <MiPerfil />
+            <Example />
           </li>
 
           {links.map(({ url, name }, idx) => (
@@ -34,7 +50,7 @@ function Header() {
             </li>
           ))}
           <li className='item-nav-menu'>
-            <Example />
+            <MiPerfil name = {perfil.name} apellido = {perfil.apellido}/>
           </li>
         </ul>
       </nav>

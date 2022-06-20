@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { get } from '../../services/user';
 
-function OffCanvasExample({ name, ...props }) {
+function OffCanvasExample({ name,nombre,apellido, ...props }) {
   const { logout, user } = useAuth();
   const [show, setShow] = useState(false);
-
+  const userId = window.localStorage.getItem('userId');
   const [perfil, setPerfil] = useState([]);
+  
 
   useEffect(() => {
-    const userId = window.localStorage.getItem('userId');
     get(userId).then(setPerfil);
   }, []);
 
@@ -36,7 +36,7 @@ function OffCanvasExample({ name, ...props }) {
         style={{ cursor: 'pointer' }}
         onClick={handleShow}
       >
-        Mi perfil
+        {nombre} {apellido}
       </a>
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Header closeButton>
@@ -61,11 +61,11 @@ function OffCanvasExample({ name, ...props }) {
   );
 }
 
-function MiPerfilAdm() {
+function MiPerfilAdm({name, apellido}) {
   return (
     <>
       {['start'].map((placement, idx) => (
-        <OffCanvasExample key={idx} placement={placement} name={placement} />
+        <OffCanvasExample key={idx} nombre ={name} apellido={apellido} placement={placement} name={placement} />
       ))}
     </>
   );

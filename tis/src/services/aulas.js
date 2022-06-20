@@ -9,6 +9,11 @@ export const get = (id) =>
     .then((res) => res.json())
     .then((data) => data);
 
+export const getOne = (id) =>
+  fetch(`${api}/ambientes/${id}`)
+    .then((res) => res.json())
+    .then((data) => data);    
+
 export const getAll = () =>
   fetch(`${api}/ambientes`)
     .then((res) => res.json())

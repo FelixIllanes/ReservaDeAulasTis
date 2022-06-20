@@ -635,7 +635,7 @@ i {
 }
 
 .vacio_men p {
-  font-size: 50px;
+  font-size: 35px;
   color: black;
   text-decoration: none;
 }
@@ -644,4 +644,41 @@ i {
   text-align: center;
   font-size: 25px;
   margin: 10px;
+}
+.doble_recomendacion{
+  display: grid;
+  grid-template-columns: auto auto;
+
+}
+@media screen and (max-width: 1190px) {
+  .doble_recomendacion{
+    display: block;
+  
+  }
+}
+
+.filter_report{
+  display: grid;
+  grid-template-columns: 70px 250px auto;
+}
+#filtro_reporte{
+  margin-top: 20px;
+  width: 200px;
+}
+
+@media screen and (max-width: 650px) {
+  .filter_report{
+    display: grid;
+    grid-template-columns: 80px auto;
+  }
+  .filter_report .cuadritoMasGrande{
+    margin-left: 20px;
+  }
+} 
+
+.report_btn{
+  margin-top: 20px;
+  height: 35px;
+  padding-top: 10px;
+  padding-bottom: 10px ;
 }

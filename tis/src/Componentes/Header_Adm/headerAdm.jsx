@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import MiPerfilAdm from '../Mi_Perfil/perfil'
-import { useState } from "react";
+import { useEffect, useState } from 'react';
+import { get } from '../../services/user';
 import './headerAdm.css'
 
 const links = [
@@ -17,11 +18,22 @@ const links = [
         url:'respuesta-reserva',
         name: 'Peticiones',
     },
+    {
+        url: 'catalogo',
+        name: 'Catálogo',
+      },
 
 ]
 
 function HeaderAdm(){
+
+    const userId = window.localStorage.getItem('userId');
+    const [perfil, setPerfil] = useState([]);
     const [toggle, setToggle] = useState(false)
+
+    useEffect(() => {
+        get(userId).then(setPerfil);
+      }, []);
 
     return(
     <header className="headerAdm">
@@ -42,7 +54,7 @@ function HeaderAdm(){
                     )
                 }
                  <li className="item-nav-menuAdm">
-                    <MiPerfilAdm/>
+                    <MiPerfilAdm name = {perfil.name} apellido = {perfil.apellido}/>
                 </li>
             </ul>
         </nav>

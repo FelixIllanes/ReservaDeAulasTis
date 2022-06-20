@@ -1,0 +1,36 @@
+.cont_doble_rec{
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 20px 0px 0px 15px;
+    border-width: thick;
+    border-color: #014288;
+    border-style: solid;
+
+}
+.cont_doble_rec button{
+    margin-left: 63%;
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+
+
+.caracteristicas_asig {
+    color: black;
+    font-size: 19px;
+    line-height: 100%;
+    margin-right: 0;
+  }
+
+.img_asig{
+    width: 250px;
+    height: 230px;
+}
+.card_asig_cont{
+    padding: 0;
+    margin: auto;
+}
+.imagen_aula_asig{
+    width: 200px;
+    height: 200px;
+}

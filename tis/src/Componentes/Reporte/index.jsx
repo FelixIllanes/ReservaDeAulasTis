@@ -1,52 +1,52 @@
 import {useEffect, useState} from 'react'
 import { get } from '../../services/group'
-import { getOne } from '../../services/aulas'
+import { getOne } from '../../services/user'
 
 
-function MisReservas({reserva,focusReserva,reservasCont,openAlert}){
+
+
+function Reporte({reserva,focusReserva,reservasCont}){
 
     const { id, id_users, id_aulas, id_grupos, codigo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, tipo, motivo, created_at, updated_at} = reserva
     const [grupo, setGrupo] = useState([])
-    const [aula, setAula] = useState([])
+    const [user, setUser] = useState([])
 
     useEffect(() => {
         get(id_grupos).then(data =>{
             setGrupo(data)
         })
-        getOne(id_aulas).then(data =>{
-            setAula(data)
+
+        getOne(id_users).then(data =>{
+            setUser(data)
         })
     }, [])
 
-    const click= () =>  {
-        
-        focusReserva(id)
-        openAlert()
-    }
 
     if(reserva == [["vacio"]]){
         return<></>      
     }
 
+    let color = "green"
+    if(aceptadoRechazado == 0){
+        color = "red"
+    }
+
     return(
         <>
         <tr>
-            <td>{codigo}</td>
+            <td>{user.name} {user.apellido}</td>
+            <td>{codigo ? codigo :  "Aula No Asignada"}</td>
             <td>{tipo}</td>
             <td>{grupo.materia} {grupo.grupo}</td>
             <td>{cantidadEstudiantes}</td>
-            <td>{aula.ubicacion}</td>
             <td>{fechaReserva}</td>
             <td>{periodo}</td>
             <td>{cantidadPeriodo}</td>
             <td>{razon ? razon :  "Reserva Individual"}</td>
-            <td>
-            <div className="container crud_op">
-                <button style={{marginBottom:10+"px"}} onClick={click}>Cancelar Reserva</button> 
-            </div>
-            </td>
+            <td><i className="fa-solid fa-circle-arrow-up" 
+                style={{color:color }}></i></td>
         </tr>
         </> 
 )}
 
-export default MisReservas
+export default Reporte

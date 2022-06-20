@@ -5,6 +5,8 @@ import {Alert} from 'react-bootstrap'
 import {getToAssign, assignAll} from '../../services/group'
 import './formUsr.css'
 import Materia_grupo from '../Materias_Grupos'
+import { useNavigate } from "react-router-dom";
+
 
 function Crear_Usuario(){
 
@@ -16,8 +18,13 @@ function Crear_Usuario(){
     const [showModal, setShowModal] = useState(false)
     const [showModalSuccess, setShowModalSuccess] = useState(false)
     const [show, setShow] = useState(false);
-
+    const [lleno, setLleno] = useState(false);
     const formData = new FormData();
+    const navigate = useNavigate()
+
+    const redirectTo = () => {
+    navigate(`/Home-admin/crud-usarios`)        
+    }
 
     const openModal = () => {
         getToAssign().then(data => {
@@ -41,6 +48,7 @@ function Crear_Usuario(){
                     ...body,
                     imagen: evt.target.files[0]
                 })
+                
             }else{ 
                 setBody({
                     ...body,
@@ -53,6 +61,7 @@ function Crear_Usuario(){
     const grupoChange = (evt) => {
 
         if (document.getElementById(evt.target.id).checked){
+            setLleno(true)
             setAssign({
                 ...assign,
                 [evt.target.name]: evt.target.value,
@@ -61,46 +70,125 @@ function Crear_Usuario(){
         }
         if (!document.getElementById(evt.target.id).checked){
             var algo = evt.target.name
+            setLleno(false)
             delete assign[algo]
         }
     }
+
+    const validar = () => {
+
+
+        var ExpRegNomApe="^[A-Za-z ]{3,20}$";
+        var valApellido="^[A-Za-z ]{3,20}$";
+        var valEmail=/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/
+        var valPassFuerte="^[A-Za-z0-9]{8,20}$";
+
+
+       if(!body["name"] || !body["apellido"] || !body["email"] || !body["password"] || !body["password_confirmation"]){
+            setErrores({
+                errores,
+                error: "Llenar campo o campos vacios",
+            }) 
+            return false
+       }
+       //Evaluación de Cadena Invalida de Nombre  
+        if(body["name"].match(ExpRegNomApe)==null){
+            console.log(body["name"])
+            setErrores({
+                errores,
+                error: "Nombre inválido, mínimo 3 caracteres máximo 20",
+            }) 
+            return false
+        }
+        //Evaluación de Cadena Invalida de Apellido 
+        if(body["apellido"].match(valApellido)==null){
+            console.log(body["apellido"])
+            setErrores({
+                errores,
+                error: "Apellido inválido, mínimo 3 caracteres máximo 20",
+            }) 
+            return false
+        }
+        //Evaluación de Cadena Invalida de Email 
+        if(body["email"].match(valEmail)==null){
+            setErrores({
+                errores,
+                error: "Campo email inválido",
+            }) 
+            return false
+        }
+        //Evaluación de Cadena valida de Contraseña Fuerte  
+        if(body["password"].match(valPassFuerte)==null){
+            setErrores({
+                errores,
+                error: "Contraseña inválida, tiene que tener una letra minúscula, una letra mayúscula, un número, un carácter especial, mínimo 8 caracteres y máximos 20",
+            }) 
+            return false
+        }
+        //Evaluación de Cadena valida de Contraseña Fuerte 
+        if(body["password_confirmation"].match(valPassFuerte)==null){
+            setErrores({
+                errores,
+                error: "Contraseña inválida, mínimo 8 caracteres y máximos 20",
+            }) 
+            return false
+        }
+       return true
+
+    }
+    
     
     const handleSubmit = (evt) => {
        
         evt.preventDefault()
+        if(validar()){
+            if(body['password'] == body['password_confirmation']){
 
-        if(body['password'] == body['password_confirmation']){
-            setIsLoading(true)
-            create(body).then(data => {
-                console.log(data)
-                if (data.status === 1){
-        
-                    assignAll(assign).then(res => {
+                if(lleno){
 
-                            closeModal();
-                            document.getElementById("formUser").reset();
+                    setIsLoading(true)
+
+                    create(body).then(data => {
+                        console.log(data)
+                        if (data.status === 1){
+                
+                            assignAll(assign).then(res => {
+
+                                    closeModal();
+                                    document.getElementById("formUser").reset();
+                                    setIsLoading(false)
+                                    openModalSuccess();      
+
+                            }).catch(err => console.log(err))  
+                        }
+
+                        if(data.status === 0){
+                            closeModal()
                             setIsLoading(false)
-                            openModalSuccess();      
-
-                    }).catch(err => console.log(err))  
-                }
-
-                if(data.status === 0){
+                            setErrores({
+                                errores,
+                                error: "El correo ingresado ya existe",
+                            })
+                            setShow(true)
+                        }
+                    }).catch(err => console.log(err))
+                }else{
                     closeModal()
-                    setIsLoading(false)
                     setErrores({
                         errores,
-                        error: "El correo ingresado ya existe",
+                        error: "No hay materias disponibles o no selecciono ninguna matería",
                     })
                     setShow(true)
-                }
-            }).catch(err => console.log(err))  
+                }  
+            }else{
+                closeModal()
+                setErrores({
+                    errores,
+                    error: "Las contraseñas no son iguales",
+                })
+                setShow(true)
+            }
         }else{
-            closeModal()
-            setErrores({
-                errores,
-                error: "Las contraseñas no son iguales",
-            })
             setShow(true)
         }
     }
@@ -109,18 +197,8 @@ function Crear_Usuario(){
         <>
         <form className='form_usr' id='formUser'>
             <h2 >Crear Usuario</h2>
-
-
-            {show && <Alert variant="danger"  onClose={() => setShow(false)} dismissible>
-                <p>
-                  {errores['error']} 
-                </p>
-            </Alert>
-            }
-
-
             <div className = "inp_form_usr" style={{marginTop:30+"px"}}>
-                <label>Nombre:</label><br />
+                <label>Nombre*</label><br />
                 <input className="form_input_usr" 
                     type="text"
                     onChange={handleChange}  
@@ -128,12 +206,13 @@ function Crear_Usuario(){
                     id="nombreuser_mod" 
                     placeholder="Nombre"
                     autoComplete='off' 
-                    required pattern='[A-Za-z ]{3,20}' 
+                    required 
+                    pattern='[A-Za-z ]{3,20}' 
                     title='Nombre inválido, mínimo 3 caracteres máximo 20'
                  ></input>    
             </div>
             <div className = "inp_form_usr">
-                <label>Apellido:</label><br />
+                <label>Apellido*</label><br />
                 <input className="form_input_usr"  
                     type="text" 
                     onChange={handleChange} 
@@ -146,7 +225,7 @@ function Crear_Usuario(){
                 ></input>  
             </div>
             <div className = "inp_form_usr">
-                <label>Email:</label><br />
+                <label>Email*</label><br />
                 <input className="form_input_usr" 
                 type="email"
                 onChange={handleChange}  
@@ -158,7 +237,7 @@ function Crear_Usuario(){
                 ></input>  
             </div>
             <div className = "inp_form_usr">
-                <label>Contraseña:</label><br />
+                <label>Contraseña*</label><br />
                 <input className="form_input_usr" 
                 type="password"
                 onChange={handleChange}  
@@ -171,7 +250,7 @@ function Crear_Usuario(){
                 ></input>  
             </div>
             <div className = "inp_form_usr">
-                <label>Repetir Contraseña:</label><br />
+                <label>Repetir Contraseña*</label><br />
                 <input className="form_input_usr" 
                 type="password"
                 onChange={handleChange}  
@@ -183,7 +262,7 @@ function Crear_Usuario(){
                 title='Contraseña inválido, mínimo 8 caracteres máximos 20'
                 ></input>  
             </div>
-
+            <center><p>(*)Campos obligatorios</p></center>
             {showModal && <Modal show={showModal}>  
                 <div className={`container modal_horario ${isLoading && 'contanier-loading'}`} style={{padding:"20px"}}>
                     <h2 style={{textAlign:"center"}}>Materias y grupos</h2>
@@ -195,16 +274,26 @@ function Crear_Usuario(){
                         ))}
 
                     <div className="boton_form">
-                        <button onClick={handleSubmit}>Crear Usuario</button>
+                        <button type='submit' onClick={handleSubmit}>Crear Usuario</button>
                         <button onClick={closeModal}>Cancelar</button>
                     </div>
                 </div>
             </Modal>
             }
-                <div className='btn_form_user'>
+                <div className='btn_form_user' style={{marginBottom:20+"px"}}>
                     <a className='selec_mat_btn' onClick={openModal}>Seleccionar Materias</a>
-                    <button type="button" >Cancelar</button>
-                </div>  
+                    <button onClick={redirectTo} >Cancelar</button>
+                </div>
+            
+                
+            {show && <Alert variant="danger"  onClose={() => setShow(false)} dismissible>
+                <p>
+                  {errores['error']} 
+                </p>
+            </Alert>
+            }  
+            
+            
         </form>
 
         {showModalSuccess && <Modal show={showModalSuccess} centered> 

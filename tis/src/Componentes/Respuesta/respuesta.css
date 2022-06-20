@@ -1,6 +1,6 @@
 .card_resp{
     width: 400px;
-    height: 353px;
+    height: 460px;
     margin-top: 20px;
 }
 .resp_btn{
@@ -66,4 +66,13 @@
 }
 .motivo label{
     font-size: 20px;
+}
+
+.prioridad{
+    display: flex;
+}
+.prioridad i{
+    margin-left: 8px;
+    margin-top: 5px;
+
 }

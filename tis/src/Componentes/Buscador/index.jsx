@@ -75,7 +75,7 @@ function Buscador({setAulas}){
     const navigate = useNavigate()
 
     const redirectTo = () => {
-        navigate(`/`)        
+        navigate(`/Home-admin`)        
     }
 
     const handleChange = (evt) => {

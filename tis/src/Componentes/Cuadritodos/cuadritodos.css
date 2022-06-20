@@ -1,0 +1,33 @@
+.cuadritodos{
+    display: grid;
+    grid-template-columns: 120px 120px 120px 120px;
+    text-align: center;
+}
+.cuadritodos p{
+    margin:0;
+}
+.cuadritodos div{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+.cuadritodos div i{
+    margin-top: 5px;
+}
+.cuadritoMasGrande{
+    width: 480px;
+    padding: 15px 0px 15px 15px ;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+}
+
+@media screen and (max-width:850px){
+    .cuadritodos{
+        display: grid;
+        grid-template-columns: 100px 100px ;
+        text-align: center;
+    }
+    .cuadritoMasGrande{
+        width: 250px
+    }
+  }

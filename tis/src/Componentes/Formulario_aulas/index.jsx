@@ -3,12 +3,18 @@ import {useState} from 'react'
 import {create} from '../../services/aulas'
 import {Modal} from 'react-bootstrap'
 import './formAu.css'
+import { useNavigate } from "react-router-dom";
 
 function Formulario_aulas(){
 
     const [body, setBody] = useState({})
     const [showModal, setShowModal] = useState(false)
     const formData = new FormData();
+    const navigate = useNavigate()
+
+    const redirectTo = () => {
+    navigate(`/Home-admin/crud`)        
+}
 
     
     const openModal = () => setShowModal(true)
@@ -22,17 +28,17 @@ function Formulario_aulas(){
                     tipo: evt.target.value
                 })
             }else{ 
-                if (evt.target.name === 'imagen'){
+                /* if (evt.target.name === 'imagen'){
                     setBody({
                         ...body,
                         imagen: evt.target.files[0]
                     })
-                }else{ 
+                }else{  */
                     setBody({
                         ...body,
                         [evt.target.name]: evt.target.value
                     })
-                }
+                /* } */
             }
         
     }
@@ -47,7 +53,7 @@ function Formulario_aulas(){
         formData.append('ubicacion', body.ubicacion);
         formData.append('caracteristicas', body.caracteristicas);
         formData.append('tipo', body.tipo);
-        formData.append('imagen', body.imagen);
+  /*       formData.append('imagen', body.imagen); */
         create(formData).then(data => {
             if (data.ReFspuesta == "Agregado Correctamente"){
                 document.getElementById("formRgs").reset();
@@ -68,7 +74,7 @@ function Formulario_aulas(){
                     <div className="ventana" id="alert_form">
                     </div>
                     <div className="div_form" style={{marginTop:40+"px"}}>
-                        <label >C&oacute;digo</label><br />
+                        <label >C&oacute;digo*</label><br />
                         <input className = "form_input"
                         type="text" name="codigo" 
                         onChange={handleChange} 
@@ -79,7 +85,7 @@ function Formulario_aulas(){
                         title='Letras y numeros. Mínimo 3 caracteres, máximo 15 ' />
                     </div>
                     <div className="div_form">
-                        <label>Capacidad</label> <br />
+                        <label>Capacidad*</label> <br />
                         <input  className = "form_input"
                         type="number" 
                         name="capacidad" 
@@ -89,22 +95,24 @@ function Formulario_aulas(){
                         autoComplete='off' 
                         required />
                     </div>
-
                     <div className="div_form">
-                        <label>Ubicaci&oacute;n</label> <br />
-                        <input className = "form_input"
-                        type="text" 
-                        name="ubicacion" 
-                        onChange={handleChange}  
-                        id="ubicacion"
-                        autoComplete='off' 
-                        required 
-                        pattern='[A-Za-z0-9 ]{7,40}' 
-                        title='Letras y numeros. Mínimo 7 caracteres, máximo 40 ' />
-                        
+                        <label>Ubicación</label>
+                        <select className="form-select"
+                        aria-label="materia_grupo" 
+                        id="materia_grupo_id" onChange={handleChange} name="ubicacion" required>
+                            <option selected disabled>Seleccionar Ubicación</option>   
+                            <option value="Edificio Academico 2 planta baja">Edificio Nuevo planta baja</option>
+                            <option value="Edificio Academico 2 piso 1">Edificio Nuevo piso 1</option>
+                            <option value="Edificio Academico 2 piso 2">Edificio Nuevo piso 2</option>
+                            <option value="Edificio Academico 2 piso 3">Edificio Nuevo piso 3</option>
+                            <option value="Campus Central">Campus Central</option>
+                            <option value="Trencito">Trencito</option>
+                            <option value="Biblioteca">Biblioteca</option>
+                            <option value="Laboratorios">Laboratorios FCyT</option>
+                        </select>
                     </div>
                     <div className="div_form">
-                        <label >Caracter&iacute;sticas</label> <br />
+                        <label >Caracter&iacute;sticas*</label> <br />
                         <input className = "form_input" 
                         type="text" 
                         name="caracteristicas"  
@@ -116,7 +124,7 @@ function Formulario_aulas(){
                         title='Letras y numeros. Mínimo 7 caracteres, máximo 40 ' />
                     </div>
                     <div className="checkbox_form">
-                        <p>Seleccione el tipo de aula</p>
+                        <p>Seleccione el tipo de aula*</p>
                         <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
                             <input type="radio" 
                             className="btn-check" 
@@ -143,13 +151,14 @@ function Formulario_aulas(){
                             <label className="btn btn-outline-primary" htmlFor="auditorio">Auditorio</label>
                         </div>
                     </div>
-                    <div className='file'>
-                        <label htmlFor="archivo">Selecciona la imagen</label>
+{/*                     <div className='file'>
+                        <label htmlFor="archivo">Selecciona la imagen*</label>
                         <input id="archivo" type="file" onChange={handleChange} name="imagen" accept="image/*" />
-                    </div>
+                    </div> */}
+                    <center><p>(*)Campos obligatorios</p></center>
                     <div className="boton_form">
                         <button type="submit" >Crear Ambiente</button>
-                        <button type="reset">Cancelar</button>
+                        <button onClick={redirectTo}>Cancelar</button>
                     </div>
                 </div>
             </form>

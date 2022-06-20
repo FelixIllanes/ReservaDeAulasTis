@@ -11,6 +11,12 @@ export const get = (id) =>
     .then((data) => data)
     .catch(err => console.log(err))
 
+export const getOne = (id) =>
+  fetch(`${api}/usuario/${id}`)
+    .then((res) => res.json())
+    .then((data) => data)
+    .catch(err => console.log(err))
+
 export const getAll = () =>
   fetch(`${api}/usuarios`)
     .then((res) => res.json())

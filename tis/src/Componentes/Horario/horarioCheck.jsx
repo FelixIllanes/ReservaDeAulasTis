@@ -40,7 +40,15 @@ function HorarioCheck({reserva, periodoChange}){
         </label>
         </div>
       )
-    }
+    } 
+  /*   return(
+      <div className="check_cont">
+        <p>
+          <input type="checkbox" onChange={periodoChange} value={numPeriodo} name={numPeriodo} id={numPeriodo} className="input_materias" />
+          <label htmlFor={numPeriodo}>{periodo}</label>
+        </p>
+      </div>
+    ) */
 }
 
 export default HorarioCheck

@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 import Horario  from '../Horario'
 import {  useParams } from 'react-router-dom';
 import {get} from '../../services/catalogo';
-import {Modal} from 'react-bootstrap'
+import {Modal, Alert} from 'react-bootstrap'
 import {assign} from '../../services/group'
 import {reservarAula, getPeriodos} from '../../services/reserva'
 
@@ -13,8 +13,11 @@ function ReservarAula({fechaIni, grupos}){
     const [showModal, setShowModal] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [showModalSucces, setShowModalSucces] = useState(false)
+    const [show, setShow] = useState(false)
     const [body, setBody] = useState({})
     const [fecha, setFecha] = useState({})
+    const [errores, setErrores] = useState({})
+    const [llenoReserva, setLlenoReserva] = useState(false);
     const idUser = window.localStorage.getItem('userId')
     
     const openModalSucces = () => setShowModalSucces(true)
@@ -49,34 +52,79 @@ function ReservarAula({fechaIni, grupos}){
         })
     }
     const periodoChange = (evt) => {
-            setBody({
-                ...body,
-                periodo: evt.target.value,
-                id_users: idUser,
-                id_aulas: id,
-                codigo: data.codigo,
-                cantidadPeriodo: 1,
-
-                
-            })
+        setLlenoReserva(true)
+        setBody({
+            ...body,
+            periodo: evt.target.value,
+            id_users: idUser,
+            id_aulas: id,
+            codigo: data.codigo,
+            cantidadPeriodo: 1,
+        })
     }
 
+    const validar = () => {
+
+
+        var valMotivo="^[A-Za-z0-9 ]{5,40}$";
+
+
+       if(!body["cantidadEstudiante"] || !body["fechaReserva"] || !body["motvo"] || llenoReserva==false || !body["id_grupos"]){
+            setErrores({
+                errores,
+                error: "Llenar campo o campos vacios",
+            }) 
+            return false
+       }
+
+       //Evaluación de Cadena Invalida de Nombre  
+        if(body["cantidadEstudiante"] <= data.capacidad && body["cantidadEstudiante"] >= data.capacidad-50){
+            setErrores({
+                errores,
+                error: "Cantidan de estudiantes no valida, maximo de capacidad " +data.capacidad,
+            }) 
+            return false
+        }
+        //Evaluación de Cadena Invalida de Apellido 
+        /* if(body["fechaReserva"].match(valApellido)==null){
+            console.log(body["apellido"])
+            setErrores({
+                errores,
+                error: "Apellido inválido, mínimo 3 caracteres máximo 20",
+            }) 
+            return false
+        } */
+        //Evaluación de Cadena Invalida de Email 
+        if(body["motvo"].match(valMotivo)==null){
+            setErrores({
+                errores,
+                error: "Caractéres del motivo invalido",
+            }) 
+            return false
+        }
+        
+       return true
+
+    }
 
     const handleOnSubmit = (evt) => {
         evt.preventDefault()
-        console.log(body)
         setIsLoading(true)
-        reservarAula(body).then(data => {
-            if (data.Respuesta == "Reserva Creada Correctamente"){
-               
-                    closeModal()
-                    document.getElementById("formReservaAmbientes").reset();
-                    setIsLoading(false)
-                    openModalSucces();
-                    
-            }
+        if(validar()){
+            reservarAula(body).then(data => {
+                if (data.Respuesta == "Reserva Creada Correctamente"){
+                
+                        closeModal()
+                        document.getElementById("formReservaAmbientes").reset();
+                        setIsLoading(false)
+                        openModalSucces();
+                        
+                }
 
-        })
+            })
+        }else{
+            setShow(true)
+        }
         
     }
 
@@ -87,6 +135,14 @@ function ReservarAula({fechaIni, grupos}){
                 <div>
                     <h1 style={{textAlign:"center",color:"black"}}>Reserva de Ambiente</h1>
                     <h2 style={{textAlign:"center"}}><strong>Codigo de Aula</strong> {data.codigo}</h2>
+                
+                {show && <Alert variant="danger"  onClose={() => setShow(false)} dismissible>
+                    <p>
+                        {errores['error']} 
+                    </p>
+                </Alert>
+                }
+
                 <div className="div_form">
                     <label>Materia y Grupo</label>
                     <select className="form-select" aria-label="materia_grupo"  name="id_grupos" onChange={handleChange}>                       
@@ -98,7 +154,7 @@ function ReservarAula({fechaIni, grupos}){
                 </div>
                     <div className="div_form" style={{marginTop:15+"px"}}>
                         <label>Capacidad de Alumnos</label><br />
-                        <input className = "form_input" type="number"  autoComplete='off'name="cantidadEstudiantes" onChange={handleChange} id="capAlum" required min={data.capacidad - 50} max={data.capacidad}/>
+                        <input className = "form_input" type="number"  autoComplete='off'name="cantidadEstudiantes" onChange={handleChange} id="capAlum" required/>
                     </div>
                     <div className="div_form">
                         <label>Fecha de Reserva</label><br />

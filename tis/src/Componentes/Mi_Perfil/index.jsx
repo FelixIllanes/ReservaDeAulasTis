@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { get } from '../../services/user';
 
-function OffCanvasExample({ name, ...props }) {
+function OffCanvasExample({ name,nombre,apellido, ...props }) {
   const { logout, user } = useAuth();
   const [show, setShow] = useState(false);
 
@@ -37,7 +37,7 @@ function OffCanvasExample({ name, ...props }) {
         style={{ cursor: 'pointer' }}
         onClick={handleShow}
       >
-        Mi perfil
+        {nombre} {apellido}
       </a>
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Header closeButton>
@@ -46,8 +46,8 @@ function OffCanvasExample({ name, ...props }) {
         <Offcanvas.Body>
           <div className='cont-img-perfil'>
             <img className='img-perfil' src='/assets/imagenes/perfilpordefecto.png' alt='' />
-            <p style={{ marginTop: 12 + 'px' }}>{user?.name}</p>
-            <p>{user?.email}</p>
+            <p style={{ marginTop: 12 + 'px' }}>{perfil.name} {perfil.apellido}</p>
+            <p>{perfil.email}</p>
           </div>
           <div className='cont-btn-perfil'>
             <button onClick={redirectTo}>Mis reservas</button>
@@ -59,11 +59,11 @@ function OffCanvasExample({ name, ...props }) {
   );
 }
 
-function MiPerfil() {
+function MiPerfil({name, apellido}) {
   return (
     <>
       {['start'].map((placement, idx) => (
-        <OffCanvasExample key={idx} placement={placement} name={placement} />
+        <OffCanvasExample key={idx} nombre ={name} apellido={apellido} placement={placement} name={placement}  />
       ))}
     </>
   );

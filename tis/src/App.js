@@ -17,6 +17,8 @@ import FormUser from './pages/Formulario_Usuario';
 import Rec_Cont from './pages/Rec_Cont';
 import CambiarCont from './pages/CambiarCont';
 import Recomendaciones_pag from './pages/Recomendaciones_pag';
+import AsignarAula from './pages/AsignarAula'
+import Reporte_page from './pages/Reporte_page'
 
 import { PrivateRoutes } from './routes/privateRoutes';
 import { AuthProvider } from './store/user';
@@ -38,7 +40,6 @@ function App() {
             >
               <Route index element={<Inicio />} />
               <Route path='reservar-aula/:id' element={<ReservarAula />} />
-              <Route path='catalogo' element={<Catalogos />} />
               <Route path='mis-reservas' element={<Mis_Reservas />} />
               <Route
                 path='recomendaciones/:id/:carac/:tipo/:cap'
@@ -60,6 +61,9 @@ function App() {
               <Route path='vista-forma-aul' index element={<Vista_formulario_aulas />} />
               <Route path='crud-usarios' element={<Crud_Usuarios />} />
               <Route path="form-usuario" element={<FormUser/>}/>
+              <Route path='catalogo' element={<Catalogos />} />
+              <Route path='reporte' element={<Reporte_page />} />
+              <Route path='asignar-aula/:id/:cantidad/:date/:per/:cantPeriodo' element={<AsignarAula />} />
             </Route>
             <Route path='/auth' element={<Auth />} />
             <Route path='/rec' element={<Rec_Cont />} />

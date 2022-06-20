@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import { getCardResponse, getToResponse, setAccept, setReject} from '../services/reserva'
+import { getCardResponse, getToResponse, setAccept, setReject, getFirst, getLast, getUrgent} from '../services/reserva'
 
 export const useReservas = () => {
     const [reservas, setReservas] = useState([])
@@ -34,5 +34,36 @@ export const useReservas = () => {
         setReject(body, id)
     }
 
-return {reservas, acceptReserva, reserva, rejectReserva }
+    const first = () => {
+        getFirst().then(data => {
+            //if (data.length){
+                setReservas(data)
+            //}else{
+                //setAulas(["vacio"])
+            //}
+        })
+    }
+
+    const last = () => {
+        getLast().then(data => {
+            //if (data.length){
+                setReservas(data)
+            //}else{
+                //setAulas(["vacio"])
+            //}
+        })
+    }
+
+    const urgent = () => {
+        getUrgent().then(data => {
+            //if (data.length){
+                setReservas(data)
+            //}else{
+                //setAulas(["vacio"])
+            //}
+        })
+    }
+
+
+return {reservas, acceptReserva, reserva, rejectReserva , first, last, urgent}
 }
