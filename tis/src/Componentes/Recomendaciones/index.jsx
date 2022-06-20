@@ -11,6 +11,7 @@ return(
             />
         ))}
     </div>
+
 )}
 
 export default Recomendaciones

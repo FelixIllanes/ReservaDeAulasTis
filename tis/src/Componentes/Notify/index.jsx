@@ -20,6 +20,7 @@ function Notify({reserva}){
       <div className='vac_men_not_res'>
           <p>No existen notificaciones</p>
       </div>
+
     )
   }
 

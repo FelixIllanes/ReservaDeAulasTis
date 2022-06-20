@@ -93,6 +93,7 @@ main {
   }
 }
 
+
 @media only screen and (max-width: 814px) {
   .header {
     height: 60px;
@@ -151,6 +152,12 @@ main {
     left: 25%;
   }
 }
+@media only screen and (max-width: 380px) {
+  .titulo{
+      left: 25%;
+  }
+}
+
 
 /*fin header*/
 

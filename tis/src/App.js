@@ -45,6 +45,7 @@ function App() {
                 path='recomendaciones/:id/:carac/:tipo/:cap'
                 element={<Recomendaciones_pag />}
               />
+
             </Route>
             {/*  Rutas para el adminstradores */}
             <Route
