@@ -4,15 +4,15 @@ import {Modal} from 'react-bootstrap'
 const tipoAmbientes = [
     {
         name: 'Aula',
-        value: 'aula',
+        value: 'Aula',
     },
     {
         name: 'Laboratorio',
-        value: 'laboratorio',
+        value: 'Laboratorio',
     },
     {
         name: 'Auditorio',
-        value: 'auditorio',
+        value: 'Auditorio',
     },
 ]
 

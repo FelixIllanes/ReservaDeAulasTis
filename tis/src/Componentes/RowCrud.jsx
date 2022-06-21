@@ -1,7 +1,7 @@
 
 import { getImageUrl } from '../services/images'
 
-const DEFAULT_IMAGE_PATH = "/assets/imagenes/612.jpeg"
+
 
 function RowCrud({aula, focusAula, openModal, openAlert}){
     const { id, imagen, capacidad, codigo, caracteristicas, tipo, ubicacion} = aula
@@ -16,7 +16,13 @@ function RowCrud({aula, focusAula, openModal, openAlert}){
         focusAula(aula)
         openAlert()
     }
-
+    var DEFAULT_IMAGE_PATH = "/assets/imagenes/aula.jpeg"
+      if(tipo == "Laboratorio"){
+        DEFAULT_IMAGE_PATH = "/assets/imagenes/laboratorio.jpeg"
+    }
+    if(tipo == "Auditorio"){
+        DEFAULT_IMAGE_PATH = "/assets/imagenes/Auditorio.jpeg"
+    } 
     return(
         <>
     <tbody>

@@ -1,11 +1,12 @@
 import { getImageUrl } from '../services/images'
 import { useNavigate } from "react-router-dom";
 
-const DEFAULT_IMAGE_PATH = "/assets/imagenes/612.jpeg"
+
 
 function Card({aula}) {
     const { id, imagen, capacidad, codigo, caracteristicas, tipo, ubicacion} = aula
     const navigate = useNavigate()
+    var DEFAULT_IMAGE_PATH = "/assets/imagenes/aula.jpeg"
 
   /*   const redirectTo = () => {
         navigate(`/reservar-aula/${id}`)        
@@ -27,7 +28,12 @@ function Card({aula}) {
         )
     }
 
-
+     if(tipo == "Laboratorio"){
+        DEFAULT_IMAGE_PATH = "/assets/imagenes/laboratorio.jpeg"
+    }
+    if(tipo == "Auditorio"){
+        DEFAULT_IMAGE_PATH = "/assets/imagenes/Auditorio.jpeg"
+    } 
 
     return (
         <div className="container img_carac">

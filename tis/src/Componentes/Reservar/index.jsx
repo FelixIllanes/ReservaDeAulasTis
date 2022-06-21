@@ -80,7 +80,7 @@ function Reservar({fechaIni, grupos, user}){
                 <div className="div_form">
                     <label htmlFor="">Capacidad</label> <br />
                     <input className = "form_input" onChange={handleChange}
-                    type="number" name="cantidadEstudiantes" min={0} max={400}required/>
+                    type="number" name="cantidadEstudiantes" min={0} max={500}required/>
                 </div>
                 <div className="div_form">
                     <label>Fecha de Reserva</label><br />

@@ -19,6 +19,7 @@ function FormEditAula({aula, closeModal, updateAula }){
         closeModal()
     }
 
+    console.log(tipo)
     return (
         <form onSubmit={handleOnSubmit} className='form_mod'>
             <h2 >Editar Ambiente</h2>
@@ -72,11 +73,11 @@ function FormEditAula({aula, closeModal, updateAula }){
             <label>Tipo:</label>
                 <select className="form-select" onChange={handleOnChange} 
                 aria-label="tipo" 
-                defaultValue={tipo.toLowerCase()}
-                id="mod_Tipo" name="tipo">    
-                    <option value="aula" selected>Aula</option>
-                    <option value="laboratorio">Laboratorio</option>
-                    <option value="auditorio">Auditorio</option>
+                defaultValue={tipo}
+                id="mod_Tipo" name="tipo">
+                    <option value="Aula">Aula</option>
+                    <option value="Laboratorio">Laboratorio</option>
+                    <option value="Auditorio">Auditorio</option>
                 </select> 
             </div>
             <div className='btn_modal_edit'>
