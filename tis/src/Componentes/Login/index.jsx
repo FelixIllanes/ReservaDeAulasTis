@@ -43,7 +43,9 @@ function LoginUsr() {
   };
   
   return (
-    <div className='container cont_form'>
+    <>
+    <center><h1>Sistema de Reserva de Aulas</h1></center>
+    <div className='container cont_form' style={{marginTop:30+"px"}}>
       <form onSubmit={handleSubmit}>
         <div className={`formulario ${isLoading && 'contanier-loading'}`} id='login_form_cont'>
           <h1 style={{ textAlign: 'center' }}>Inicio de Sesi&oacute;n</h1>
@@ -80,6 +82,7 @@ function LoginUsr() {
         </div>
       </form>
     </div>
+    </>
   );
 }
 export default LoginUsr;

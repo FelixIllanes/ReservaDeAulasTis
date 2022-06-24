@@ -13,9 +13,9 @@ function Inicio(){
 return(
     <div className="container">   
         <div className="container descripcion">
-            <p><center>Bienvenido {user.name} </center></p>
+            <p><center>Bienvenido(a) {user.name} </center></p>
             <p><center>Docente</center></p>
-            <p style={{marginTop:30+"px"}}><center>Facultad de Ciencias y Tecnologia</center></p>
+            <p style={{marginTop:30+"px"}}><center>Facultad de Ciencias y Tecnología</center></p>
             <p><center>UMSS</center></p>
         </div>
    </div> 

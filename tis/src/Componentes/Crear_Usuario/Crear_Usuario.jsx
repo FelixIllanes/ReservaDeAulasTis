@@ -78,8 +78,8 @@ function Crear_Usuario(){
     const validar = () => {
 
 
-        var ExpRegNomApe="^[A-Za-z ]{3,20}$";
-        var valApellido="^[A-Za-z ]{3,20}$";
+        var ExpRegNomApe="^[A-Za-zÑñ ]{3,20}$";
+        var valApellido="^[A-Za-zÑñ ]{3,20}$";
         var valEmail=/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/
         var valPassFuerte="^[A-Za-z0-9]{8,20}$";
 
@@ -96,7 +96,7 @@ function Crear_Usuario(){
             console.log(body["name"])
             setErrores({
                 errores,
-                error: "Nombre inválido, mínimo 3 caracteres máximo 20",
+                error: "Nombre inválido, solo se permiten letras mínimo 3 caracteres máximo 20",
             }) 
             return false
         }
@@ -105,7 +105,7 @@ function Crear_Usuario(){
             console.log(body["apellido"])
             setErrores({
                 errores,
-                error: "Apellido inválido, mínimo 3 caracteres máximo 20",
+                error: "Apellido inválido, solo se permiten letras mínimo 3 caracteres máximo 20",
             }) 
             return false
         }
@@ -121,7 +121,7 @@ function Crear_Usuario(){
         if(body["password"].match(valPassFuerte)==null){
             setErrores({
                 errores,
-                error: "Contraseña inválida, tiene que tener una letra minúscula, una letra mayúscula, un número, un carácter especial, mínimo 8 caracteres y máximos 20",
+                error: "Contraseña inválida, mínimo 8 caracteres y máximos 20",
             }) 
             return false
         }
@@ -149,7 +149,6 @@ function Crear_Usuario(){
                     setIsLoading(true)
 
                     create(body).then(data => {
-                        console.log(data)
                         if (data.status === 1){
                 
                             assignAll(assign).then(res => {
@@ -189,6 +188,7 @@ function Crear_Usuario(){
                 setShow(true)
             }
         }else{
+            closeModal();
             setShow(true)
         }
     }

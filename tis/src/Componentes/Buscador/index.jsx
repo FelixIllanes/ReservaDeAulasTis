@@ -43,24 +43,32 @@ const tipoOpciones = [
 
 const capacidadOpciones = [
     {
-        name: '0-50',
+        name: '1-50',
         value: '50',
     },
     {
-        name: '50-100',
+        name: '51-100',
         value: '100',
     },
     {
-        name: '100-150',
+        name: '101-150',
         value: '150',
     },
     {
-        name: '150-200',
+        name: '151-200',
         value: '200',
     },
     {
-        name: '200-250',
+        name: '201-250',
         value: '250',
+    },
+    {
+        name: '251-300',
+        value: '300',
+    },
+    {
+        name: '301-350',
+        value: '350',
     },
     {
         name: 'Todos',
@@ -80,9 +88,19 @@ function Buscador({setAulas}){
 
     const handleChange = (evt) => {
         if((evt.target.value) === "todos"){
-            setBody({
-                body
-            })
+            if (evt.target.name === 'rango'){
+                setBody({
+                    ...body,
+                    rangoBajo: "",
+                    rangoAlto: ""
+                })
+            }else{ 
+                setBody({
+                    ...body,
+                    [evt.target.name]:""
+                })
+            }
+            
         }else{
             if (evt.target.name === 'rango'){
                 setBody({

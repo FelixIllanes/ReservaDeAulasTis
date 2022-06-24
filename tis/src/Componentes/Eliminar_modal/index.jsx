@@ -17,7 +17,7 @@ function Eliminar_modal({aula, closeAlert, removeAula}){
         <form onSubmit={handleOnSubmit}>
             <div>
                 <div className='delete_title'>
-                    <label htmlFor="">¿Seguro que desea Eliminar Ambiente <strong>{codigo}</strong>?</label>
+                    <label htmlFor="">¿Seguro que desea eliminar Ambiente <strong>{codigo}</strong>?</label>
                 </div>
                 <div className="modal-footer">
                     <button type="submit" className="btn_eliminar" > Eliminar</button>

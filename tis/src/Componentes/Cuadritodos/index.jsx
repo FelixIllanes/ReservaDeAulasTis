@@ -7,7 +7,7 @@ function CuadroPrioridadReporte({estadistica}){
     //estadistica.total == rojo color
     return(
         <div className='cuadritoMasGrande' style={{marginTop:20+"px"}}>
-            <h5>Estadisticas</h5>
+            <h5>Cantidad de reservas</h5>
             <div className="cuadritodos">
                 <div>
                     <p>Aceptados: {estadistica.numAccept} </p>

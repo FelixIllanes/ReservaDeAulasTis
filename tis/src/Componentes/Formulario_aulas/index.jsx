@@ -1,7 +1,7 @@
 
 import {useState} from 'react'
 import {create} from '../../services/aulas'
-import {Modal} from 'react-bootstrap'
+import {Modal, Alert} from 'react-bootstrap'
 import './formAu.css'
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,8 @@ function Formulario_aulas(){
 
     const [body, setBody] = useState({})
     const [showModal, setShowModal] = useState(false)
+    const [errores, setErrores] = useState({})
+    const [show, setShow] = useState(false);
     const formData = new FormData();
     const navigate = useNavigate()
 
@@ -55,16 +57,25 @@ function Formulario_aulas(){
         formData.append('tipo', body.tipo);
   /*       formData.append('imagen', body.imagen); */
         create(formData).then(data => {
+
             if (data.ReFspuesta == "Agregado Correctamente"){
                 document.getElementById("formRgs").reset();
                 openModal();
+            }
+
+            if(data.codigo === 1){
+                setErrores({
+                    errores,
+                    error: "El código de ambiente ya existe"
+                })
+                setShow(true)
             }
 
         })
 
     
     }
-    
+
     return(
         <>
         <div className="container cont_form_au">
@@ -89,7 +100,7 @@ function Formulario_aulas(){
                         <input  className = "form_input"
                         type="number" 
                         name="capacidad" 
-                        min={20} max={200}  
+                        min={20} max={350}  
                         onChange={handleChange} 
                         id="capacidad"
                         autoComplete='off' 
@@ -120,10 +131,10 @@ function Formulario_aulas(){
                         id="caracteristicas"
                         autoComplete='off' 
                         required 
-                        pattern='[A-Za-z0-9 ]{7,40}' 
+                        pattern='[A-Zañ-Ñz0-9 ]{7,40}' 
                         title='Letras y numeros. Mínimo 7 caracteres, máximo 40 ' />
                     </div>
-                    <div className="checkbox_form">
+                    {/* <div className="checkbox_form">
                         <p>Seleccione el tipo de aula*</p>
                         <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
                             <input type="radio" 
@@ -150,16 +161,33 @@ function Formulario_aulas(){
                             value="Auditorio"/>
                             <label className="btn btn-outline-primary" htmlFor="auditorio">Auditorio</label>
                         </div>
-                    </div>
+                    </div> */}
 {/*                     <div className='file'>
                         <label htmlFor="archivo">Selecciona la imagen*</label>
                         <input id="archivo" type="file" onChange={handleChange} name="imagen" accept="image/*" />
                     </div> */}
+                    <div className="div_form">
+                    <label>Seleccione el tipo de aula*</label>
+                    <select className="form-select"
+                    aria-label="materia_grupo" 
+                    id="tipo_ambiente" onChange={handleChange} name="btnradio" required>
+                        <option selected disabled>Seleccionar</option>   
+                        <option value="Aula">Aula</option>
+                        <option value="Laboratorio">Laboratorio</option>
+                        <option value="Auditorio">Auditorio</option>
+                    </select>
+                </div>
                     <center><p>(*)Campos obligatorios</p></center>
                     <div className="boton_form">
                         <button type="submit" >Crear Ambiente</button>
                         <button onClick={redirectTo}>Cancelar</button>
                     </div>
+                    {show && <Alert variant="danger"  onClose={() => setShow(false)} dismissible>
+                        <p>
+                        {errores['error']} 
+                        </p>
+                    </Alert>
+                    }
                 </div>
             </form>
         </div> 

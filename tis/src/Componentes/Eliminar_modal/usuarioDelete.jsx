@@ -15,7 +15,7 @@ function Delete_User({user, closeAlert, removeUser}){
         <form onSubmit={handleOnSubmit}>
             <div>
                 <div className='delete_title'>
-                    <label htmlFor="">¿Seguro que desea Eliminar al usuario <strong>{name}</strong>?</label>
+                    <label htmlFor="">¿Seguro que desea eliminar al usuario <strong>{name}</strong>?</label>
                 </div>
                 <div className="modal-footer">
                     <button type="submit" className="btn_eliminar" > Eliminar</button>

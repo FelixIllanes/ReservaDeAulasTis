@@ -44,6 +44,9 @@
     width: 100%;
     margin: auto;
 }
+.boton_form {
+    display: flex;
+  }
 @media screen and (max-width:520px){
     .formulario_au{
         width: 100%;
@@ -68,6 +71,13 @@
     }
     .formulario_au .file label{
         width: 13rem;
+    }
+    .boton_form {
+        text-align: center;
+        display: block;
+    }
+    .boton_form button{
+        margin-top: 20px;
     }
 
 }

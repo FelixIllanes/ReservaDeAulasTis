@@ -24,7 +24,7 @@ function FormEditAula({aula, closeModal, updateAula }){
         <form onSubmit={handleOnSubmit} className='form_mod'>
             <h2 >Editar Ambiente</h2>
             <div>
-                <label>Código:</label>
+                <label>Código:</label> <br />
                 <input className="form_mod_input" 
                     type="text" 
                     name="codigo" 
@@ -35,7 +35,7 @@ function FormEditAula({aula, closeModal, updateAula }){
                  ></input>    
             </div>
             <div>
-                <label>Capacidad:</label>
+                <label>Capacidad:</label> <br />
                 <input className="form_mod_input" 
                     onChange={handleOnChange} 
                     type="number" 
@@ -43,10 +43,10 @@ function FormEditAula({aula, closeModal, updateAula }){
                     id="capacidad_mod" 
                     placeholder="Capacidad" 
                     defaultValue={capacidad}
-                    required min={20} max={200}></input>  
+                    required min={20} max={350}></input>  
             </div>
             <div>
-                <label>Ubicación:</label>
+                <label>Ubicación:</label> <br />
                 <input className="form_mod_input" 
                 onChange={handleOnChange} 
                 type="text" 
@@ -58,7 +58,7 @@ function FormEditAula({aula, closeModal, updateAula }){
                 title='Letras y numeros. Mínimo 6 caracteres, máximo 40 '></input>  
             </div>
             <div>
-                <label>Características:</label>
+                <label>Características:</label> <br />
                 <input className="form_mod_input" 
                 onChange={handleOnChange} 
                 type="text" 
@@ -70,7 +70,7 @@ function FormEditAula({aula, closeModal, updateAula }){
                 title='Letras y numeros. Mínimo 6 caracteres, máximo 40 '></input>  
             </div>
             <div>
-            <label>Tipo:</label>
+            <label>Tipo:</label> <br />
                 <select className="form-select" onChange={handleOnChange} 
                 aria-label="tipo" 
                 defaultValue={tipo}

@@ -291,9 +291,7 @@ button:active {
 
 /*CSS Formulario*/
 
-.boton_form {
-  display: flex;
-}
+
 
 .checkbox_form {
   padding-left: 15%;
@@ -433,7 +431,7 @@ form .grupo {
   padding-left: 30px;
   border: none;
   margin-right: 15px;
-  margin-left: 35px;
+  margin-left: 75px;
   margin-bottom: 10px;
 }
 .buscador_form {
@@ -446,6 +444,7 @@ form .grupo {
   font-size: 40px;
   color: #003770;
 }
+
 
 /*fin buscador*/
 
@@ -576,6 +575,14 @@ thead {
   border: 0.5px solid;
   font-size: 18px;
 }
+@media screen and (max-width: 400px) {
+  .form_mod_input {
+    width: 80%;
+  }
+  .form_mod .form-select{
+    width: 80%;
+  }
+}
 .modal-dialog {
   color: black;
 }
@@ -645,6 +652,7 @@ i {
   font-size: 35px;
   color: black;
   text-decoration: none;
+  text-align: center;
 }
 
 .men_vacio_grupo_asig_grupo {
@@ -689,3 +697,8 @@ i {
   padding-top: 10px;
   padding-bottom: 10px ;
 }
+@media screen and (max-width: 650px) {
+  .report_btn{
+    height: 65px;
+  }
+} 

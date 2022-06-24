@@ -31,7 +31,7 @@ function FormEditUser({user, closeModal, updateUser }){
                     id="nombreuser_mod" 
                     placeholder="Nombre" 
                     defaultValue= {name}
-                    required pattern='[A-Za-z ]{3,20}' 
+                    required pattern='[A-Za-zÑñ ]{3,20}' 
                     title='Nombre inválido, mínimo 3 caracteres máximo 20'
                     onChange={handleOnChange}
                  ></input>    
@@ -45,19 +45,21 @@ function FormEditUser({user, closeModal, updateUser }){
                     id="apellidouser_mod" 
                     placeholder="Apellido" 
                     defaultValue= {apellido}
-                    required pattern='[A-Za-z ]{3,20}' 
+                    required 
                     title='Apellido inválido, mínimo 3 caracteres máximo 20'
-                ></input>  
+                    ></input>  
             </div>
             <div>
                 <label>Email:</label>
                 <input className="form_mod_input" 
                 onChange={handleOnChange} 
-                type="email" 
+                type="text" 
                 name="email" 
                 id="emailuser_mod" 
                 placeholder="Email" 
                 defaultValue= {email}
+                required
+                pattern="[a-zA-Z0-9Ññ_]+([.][a-zA-Z0-9Ññ_]+)*@[a-zA-Z0-9Ññ_]+([.][a-zA-Z0-9Ññ_]+)*[.][a-zA-Z]{1,5}"
                 ></input>  
             </div>
                 <div className='btn_modal_edit'>
