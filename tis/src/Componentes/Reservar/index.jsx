@@ -36,20 +36,31 @@ function Reservar({fechaIni, grupos, user}){
 
     const handleOnSubmit = (evt) => {
         evt.preventDefault()
-        if(body["periodo"] == 10 && body["cantidadPeriodo"] == 2){
+        
+        let date = new Date(body["fecha"]);
+        //console.log(date.getDay()+1);
+        if(date.getDay()+1 == 7){
             setErrores({
                 errores,
-                error: "En este horario solo puede seleccionar un periodo",
+                error: "No se aceptan reservas para el dia domingo",
             })
             setShow(true) 
         }else{
-            reservarAula(body).then(data => {
-                if (data.Respuesta == "Solicitud creada Correctamente"){
-                    document.getElementById("formReservaAmbientes").reset();
-                    openModalSucces();          
-                }
-            })
-        } 
+            if(body["periodo"] == 10 && body["cantidadPeriodo"] == 2){
+                setErrores({
+                    errores,
+                    error: "En este horario solo puede seleccionar un periodo",
+                })
+                setShow(true) 
+            }else{
+                reservarAula(body).then(data => {
+                    if (data.Respuesta == "Solicitud creada Correctamente"){
+                        document.getElementById("formReservaAmbientes").reset();
+                        openModalSucces();          
+                    }
+                })
+            } 
+        }
     }
     
     return(
@@ -64,12 +75,12 @@ function Reservar({fechaIni, grupos, user}){
                 </Alert>
                 }
                 <div className="div_form">
-                    <label htmlFor="">Nombre</label> <br />
+                    <label htmlFor="">Nombre*</label> <br />
                     <input className = "form_input" 
                     type="text" value={nombreCompleto} disabled/>
                 </div>
                 <div className="div_form">
-                    <label>Materia y Grupo</label>
+                    <label>Materia y Grupo*</label>
                     <select className="form-select" aria-label="materia_grupo"  name="id_grupos" onChange={handleChange}>                       
                         <option selected disabled>Seleccionar</option>
                             {grupos.map(({id_grupo, grupo, materia}) => (
@@ -78,16 +89,16 @@ function Reservar({fechaIni, grupos, user}){
                     </select>
                 </div>
                 <div className="div_form">
-                    <label htmlFor="">Capacidad</label> <br />
+                    <label htmlFor="">Capacidad*</label> <br />
                     <input className = "form_input" onChange={handleChange}
                     type="number" name="cantidadEstudiantes" min={0} max={500}required/>
                 </div>
                 <div className="div_form">
-                    <label>Fecha de Reserva</label><br />
+                    <label>Fecha de Reserva*</label><br />
                     <input className = "form_input" type="date" autoComplete='off'name="fechaReserva" min={fechaIni} onChange={handleChange} id="fechReser" required/>
                 </div>
                 <div className="div_form">
-                    <label>Tipo de Reserva</label>
+                    <label>Tipo de Reserva*</label>
                     <select className="form-select"
                     aria-label="materia_grupo" 
                     id="materia_grupo_id" onChange={handleChange} name="tipo" required>
@@ -105,7 +116,7 @@ function Reservar({fechaIni, grupos, user}){
                     pattern='[A-Za-z0-9 ]{5, }' title='Este campo solo permite numeros y letras'/>
                 </div>
                 <div className="div_form">
-                    <label>Seleccionar Horario</label>
+                    <label>Seleccionar Horario*</label>
                     <select className="form-select"
                     aria-label="materia_grupo" 
                     id="materia_grupo_id" onChange={handleChange} name="periodo" required>
@@ -123,7 +134,7 @@ function Reservar({fechaIni, grupos, user}){
                     </select>
                 </div>
                 <div className="div_form" style={{marginTop:15+"px"}}>
-                    <label>Periodos a Reservar</label>
+                    <label>Periodos a Reservar*</label>
                     <select className="form-select"
                     aria-label="materia_grupo" 
                     id="materia_grupo_id" onChange={handleChange} name="cantidadPeriodo" required>
@@ -132,10 +143,11 @@ function Reservar({fechaIni, grupos, user}){
                         <option value="2">2</option>
                     </select>
                 </div>
-                <div className="boton_form" id='btn_res_amb' >
+                <div className="boton_form" id='btn_res_amb' style={{marginBottom:20+"px"}} >
                     <button>Reservar</button>
                     <button onClick={redirectTo}>Cancelar</button>
                 </div>
+                <center><p>Campos Obligatorios(*)</p></center>
             </div>
         </form>
         {showModalSucces && <Modal show={showModalSucces} centered> 

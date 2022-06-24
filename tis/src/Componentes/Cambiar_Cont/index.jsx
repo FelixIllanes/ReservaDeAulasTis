@@ -21,7 +21,7 @@ function Cambiar_Cont(){
     const closeModalSucces = () => setShowModalSucces(false)
 
     const redirectTo = () => {
-        navigate(`/login/`)        
+        navigate(`/auth`)        
     }
 
     const codigoChange = (evt) => {
@@ -81,17 +81,25 @@ function Cambiar_Cont(){
             </Alert>}
             <div>
                 <label htmlFor="cod_camb">Código</label> <br />
-                <input type="text" id="cod_camb" name="codigo" onChange={codigoChange} required/>
+                <input type="text" 
+                id="cod_camb" 
+                name="codigo" 
+                onChange={codigoChange} required/>
             </div>
             <div>
                 <label htmlFor="cont">Nueva Contraseña</label> <br />
-                <input type="password" id="cont" name="password1" onChange={handleChange} required pattern='[A-Za-z0-9]{8,20}' 
-                title='Contraseña inválido, mínimo 8 caracteres máximos 20' />
+                <input 
+                type="password" id="cont" 
+                name="password1" onChange={handleChange} 
+                required pattern='[A-Za-z0-9]{8,20}' 
+                title='Contraseña inválida, letras y numeros, mínimo 8 caracteres máximos 20' />
             </div>
             <div>
                 <label htmlFor="cont_rep">Repetir Contraseña</label> <br />
-                <input type="password" id="cont_rep" name="password2" onChange={handleChange} required pattern='[A-Za-z0-9]{8,20}' 
-                title='Contraseña inválido, mínimo 8 caracteres máximos 20'/>
+                <input type="password" id="cont_rep" 
+                name="password2" onChange={handleChange} 
+                required pattern='[A-Za-z0-9]{8,20}' 
+                title='Contraseña inválida, letras y numeros, mínimo 8 caracteres máximos 20'/>
             </div>
             <div>
                 <button className='btn_cam_cont' type="submit">Aceptar Cambios</button>
