@@ -16,9 +16,15 @@ export const useAulas = () => {
   }, []);
 
   const updateAula = (id, body) => {
-    const newAulas = aulas.map((aula) => (aula.id === id ? body : aula));
-    setAulas(newAulas);
-    update(body, id);
+        
+/*         update(body, id);.then(data => {
+
+          if(!data.codigo === 1){ */
+            const newAulas = aulas.map((aula) => (aula.id === id ? body : aula));
+            setAulas(newAulas);
+/*           }
+
+      }) */
   };
 
   const removeAula = (id) => {

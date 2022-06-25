@@ -1,10 +1,14 @@
 import './Eliminar_modal/delete_crud.css'
 import {useState} from 'react'
+import {update} from '../services/aulas';
+import {Alert} from 'react-bootstrap'
 import React from 'react'
 
 function FormEditAula({aula, closeModal, updateAula }){
     const [form, setForm] = useState(aula || {})
     const { id,  capacidad, codigo, caracteristicas, tipo, ubicacion} = form 
+    const [errores, setErrores] = useState({})
+    const [show, setShow] = useState(false);
 
     const handleOnChange = (evt) =>{
         setForm({
@@ -15,11 +19,24 @@ function FormEditAula({aula, closeModal, updateAula }){
     
     const handleOnSubmit = (evt) => {
         evt.preventDefault()
-        updateAula(id, form)
-        closeModal()
+        
+        update(form, id).then(data => {
+
+            if(data.codigo === 1){
+                setErrores({
+                    errores,
+                    error: "El código de ambiente ya existe"
+                })
+                setShow(true)
+            }else{
+                updateAula(id, form)
+                closeModal()
+            }
+
+        })
+        
     }
 
-    console.log(tipo)
     return (
         <form onSubmit={handleOnSubmit} className='form_mod'>
             <h2 >Editar Ambiente</h2>
@@ -80,10 +97,17 @@ function FormEditAula({aula, closeModal, updateAula }){
                     <option value="Auditorio">Auditorio</option>
                 </select> 
             </div>
-            <div className='btn_modal_edit'>
+            <div className='btn_modal_edit' style={{marginBottom:15+"px"}}>
                 <button type='submit'> Enviar </button>
                 <button type="button" onClick={()=> closeModal()} >Cancelar</button>
-            </div>  
+            </div>
+            
+            {show && <Alert variant="danger"  onClose={() => setShow(false)} dismissible>
+                        <p>
+                        {errores['error']} 
+                        </p>
+                    </Alert>
+            }  
     </form>
     )
 }

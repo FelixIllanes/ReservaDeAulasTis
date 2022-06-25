@@ -178,7 +178,7 @@ function Formulario_aulas(){
                     </select>
                 </div>
                     <center><p>(*)Campos obligatorios</p></center>
-                    <div className="boton_form">
+                    <div className="boton_form" style={{marginBottom:20+"px"}}>
                         <button type="submit" >Crear Ambiente</button>
                         <button onClick={redirectTo}>Cancelar</button>
                     </div>

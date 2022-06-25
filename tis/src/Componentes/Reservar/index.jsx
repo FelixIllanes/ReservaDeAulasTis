@@ -37,12 +37,11 @@ function Reservar({fechaIni, grupos, user}){
     const handleOnSubmit = (evt) => {
         evt.preventDefault()
         
-        let date = new Date(body["fecha"]);
-        //console.log(date.getDay()+1);
+        let date = new Date(fecha["fecha"]);
         if(date.getDay()+1 == 7){
             setErrores({
                 errores,
-                error: "No se aceptan reservas para el dia domingo",
+                error: "No se aceptan reservas para el día domingo",
             })
             setShow(true) 
         }else{
@@ -68,12 +67,7 @@ function Reservar({fechaIni, grupos, user}){
         <form id="formReservaAmbientes" onSubmit={handleOnSubmit}>
             <div>
                 <h1 style={{textAlign:"center",color:"black"}}>Reserva de Ambiente</h1>
-                {show && <Alert variant="danger"  onClose={() => setShow(false)} dismissible>
-                    <p>
-                        {errores['error']} 
-                    </p>
-                </Alert>
-                }
+                
                 <div className="div_form">
                     <label htmlFor="">Nombre*</label> <br />
                     <input className = "form_input" 
@@ -81,7 +75,7 @@ function Reservar({fechaIni, grupos, user}){
                 </div>
                 <div className="div_form">
                     <label>Materia y Grupo*</label>
-                    <select className="form-select" aria-label="materia_grupo"  name="id_grupos" onChange={handleChange}>                       
+                    <select className="form-select" aria-label="materia_grupo"  name="id_grupos" onChange={handleChange} required>                       
                         <option selected disabled>Seleccionar</option>
                             {grupos.map(({id_grupo, grupo, materia}) => (
                             <option value={id_grupo}>{materia} y {grupo}</option>
@@ -143,11 +137,20 @@ function Reservar({fechaIni, grupos, user}){
                         <option value="2">2</option>
                     </select>
                 </div>
+                <center><p>Campos Obligatorios(*)</p></center>
                 <div className="boton_form" id='btn_res_amb' style={{marginBottom:20+"px"}} >
                     <button>Reservar</button>
                     <button onClick={redirectTo}>Cancelar</button>
                 </div>
-                <center><p>Campos Obligatorios(*)</p></center>
+                <div style={{margin:20+"px"}}>
+                {show && <Alert variant="danger"  onClose={() => setShow(false)} dismissible>
+                    <p>
+                        {errores['error']} 
+                    </p>
+                </Alert>
+                }
+                </div>
+                
             </div>
         </form>
         {showModalSucces && <Modal show={showModalSucces} centered> 
