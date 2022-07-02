@@ -28,7 +28,7 @@ function Notify({reserva}){
     return(
     <div>
   <Card bg="primary" style={{ width: '18rem', color:"white" }}>
-    <Card.Header><strong>Respuesta a on la solicitud</strong></Card.Header>
+    <Card.Header><strong>Respuesta a la solicitud</strong></Card.Header>
     <Card.Body>
       <Card.Text>
         <p><strong>Código: </strong> {codigo} </p>
@@ -67,7 +67,7 @@ if(aceptadoRechazado == 0){
     return(
     <div>
 <Card bg="danger" style={{ width: '18rem', color:"white" }}>
-    <Card.Header><strong>Respuesta a on la solicitud</strong></Card.Header>
+    <Card.Header><strong>Respuesta a la solicitud</strong></Card.Header>
     <Card.Body>
       <Card.Text>
         <p><strong>Código: </strong> {codigo} </p>
