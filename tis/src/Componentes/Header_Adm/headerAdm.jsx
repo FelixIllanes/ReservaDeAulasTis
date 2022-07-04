@@ -7,11 +7,11 @@ import './headerAdm.css'
 const links = [
     {
         url:'crud',
-        name: 'Gestión de Ambientes',
+        name: 'Ambientes',
     },
     {
         url:'crud-usarios',
-        name:'Gestión de usuarios' 
+        name:'Usuarios' 
 
     },
     {

@@ -7,6 +7,8 @@ function AulasCont({reservaCont,focusCont1 ,focusCont2 ,openAlert2}){
    /*  const { id, id_users, id_aulas, id_grupos, codigo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, tipo, motivo, created_at, updated_at} = reserva */
     const [grupo, setGrupo] = useState([])
     const [aula, setAula] = useState([])
+    let date = new Date(reservaCont[0]["fechaReserva"])
+    var fechaNew = date.getUTCDate()+"-"+(date.getUTCMonth()+1)+"-"+date.getFullYear()
 
     useEffect(() => {
         get(reservaCont[0]["id_grupos"]).then(data =>{
@@ -35,7 +37,7 @@ function AulasCont({reservaCont,focusCont1 ,focusCont2 ,openAlert2}){
             <td>{grupo.materia} {grupo.grupo}</td>
             <td>{reservaCont[0]["cantidadEstudiantes"]}</td>
             <td>{aula.ubicacion}</td> 
-            <td>{reservaCont[0]["fechaReserva"]}</td>
+            <td>{fechaNew ? fechaNew : "No existe fecha de reserva"}</td>
             <td>{reservaCont[0]["periodo"]}</td>
             <td>{reservaCont[0]["cantidadPeriodo"]}</td>
             <td>{reservaCont[0]["razon"]}</td>
@@ -51,7 +53,7 @@ function AulasCont({reservaCont,focusCont1 ,focusCont2 ,openAlert2}){
             <td>{grupo.materia} {grupo.grupo}</td>
             <td>{reservaCont[1]["cantidadEstudiantes"]}</td>
             <td>{aula.ubicacion}</td>
-            <td>{reservaCont[1]["fechaReserva"]}</td>
+            <td>{fechaNew ? fechaNew : "No existe fecha de reserva"}</td>
             <td>{reservaCont[1]["periodo"]}</td>
             <td>{reservaCont[1]["cantidadPeriodo"]}</td>
             <td>{reservaCont[1]["razon"]}</td>

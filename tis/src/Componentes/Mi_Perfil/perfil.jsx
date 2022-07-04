@@ -36,7 +36,8 @@ function OffCanvasExample({ name,nombre,apellido, ...props }) {
         style={{ cursor: 'pointer' }}
         onClick={handleShow}
       >
-        {nombre} {apellido}
+        {/* {nombre} {apellido} */}
+        Administrador
       </a>
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Header closeButton>

@@ -7,6 +7,9 @@ import {useEffect, useState} from 'react'
 function Notify({reserva}){
   const [aula, setAula] = useState([])
   const { id, id_users, id_aulas, codigo, materia, grupo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, tipo, motivo, created_at, updated_at} = reserva
+  let date = new Date(fechaReserva)
+  var fechaNew = date.getUTCDate()+"-"+(date.getUTCMonth()+1)+"-"+date.getFullYear()
+
 
   useEffect(() => {
     get(id_aulas).then(setAula)
@@ -32,7 +35,7 @@ function Notify({reserva}){
     <Card.Body>
       <Card.Text>
         <p><strong>Código: </strong> {codigo} </p>
-        <p><strong>Fecha: </strong>{fechaReserva}</p>
+        <p><strong>Fecha: </strong>{fechaNew ? fechaNew : "No existe fecha de reserva"}</p>
         <p><strong>Periodo: </strong>{periodo}</p>
         <p><strong>Tipo: </strong>{tipo}</p>
         <p><strong>Motivo: </strong>{razon}</p>
@@ -52,7 +55,7 @@ function Notify({reserva}){
     <Card.Body>
       <Card.Text>
         <p><strong>Código: </strong>{codigo} </p> 
-        <p><strong>Fecha: </strong>{fechaReserva}</p>
+        <p><strong>Fecha: </strong>{fechaNew ? fechaNew : "No existe fecha de reserva"}</p>
         <p><strong>Tipo: </strong>{tipo}</p>
         <p><strong>Periodo: </strong>{periodo}</p>
         <p><strong>Estado: Aceptado</strong> </p>
@@ -70,8 +73,7 @@ if(aceptadoRechazado == 0){
     <Card.Header><strong>Respuesta a la solicitud</strong></Card.Header>
     <Card.Body>
       <Card.Text>
-        <p><strong>Código: </strong> {codigo} </p>
-        <p><strong>Fecha: </strong>{fechaReserva}</p>
+        <p><strong>Fecha: </strong>{fechaNew ? fechaNew : "No existe fecha de reserva"}</p>
         <p><strong>Periodo: </strong>{periodo}</p>
         <p><strong>Tipo: </strong>{tipo}</p>
         <p><strong>Motivo: </strong>{razon}</p>

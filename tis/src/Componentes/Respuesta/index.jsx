@@ -11,6 +11,8 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
     const [body, setBody] = useState({})
     const [user, setUser] = useState({})
     const [showModal, setShowModal] = useState(false)
+    let date = new Date(fechaReserva)
+    var fechaNew = date.getUTCDate()+"-"+(date.getUTCMonth()+1)+"-"+date.getFullYear()
 
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
@@ -105,7 +107,7 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
                     <Card.Text>
                         <div className='peticion_cont'>
                             <p><strong> Docente: </strong> {user.name} {user.apellido}</p>
-                            <p><strong> Fecha: </strong>{fechaReserva}</p>
+                            <p><strong> Fecha: </strong>{fechaNew ? fechaNew : "No existe fecha de reserva"}</p>
                             <p><strong> Cantidad de Estudiantes: </strong>{cantidadEstudiantes}</p>
                             <p><strong> Periodo: </strong>{periodo}</p>
                             <p><strong> Cantidad de Periodos: </strong>{cantidadPeriodo}</p>
@@ -113,7 +115,7 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
                                 <p><strong> Tipo: </strong>{tipo}</p>
                                 <i className="fa-solid fa-circle-arrow-up" style={{color:prioridad }}></i>
                             </div>
-                            <p><strong> Motivo: </strong>{motivo}</p>
+                            <p><strong> Motivo: </strong>{motivo ? motivo : "No se ingresó un motivo"}</p>
                             <p><strong> Observaciones: </strong>{observaciones}</p>
                         </div>
                         <div className='resp_btn'>

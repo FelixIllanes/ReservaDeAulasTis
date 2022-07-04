@@ -10,6 +10,8 @@ function Reporte({reserva,focusReserva,reservasCont}){
     const { id, id_users, id_aulas, id_grupos, codigo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon, tipo, motivo, created_at, updated_at} = reserva
     const [grupo, setGrupo] = useState([])
     const [user, setUser] = useState([])
+    let date = new Date(fechaReserva)
+    var fechaNew = date.getUTCDate()+"-"+(date.getUTCMonth()+1)+"-"+date.getFullYear()
 
     useEffect(() => {
         get(id_grupos).then(data =>{
@@ -39,7 +41,7 @@ function Reporte({reserva,focusReserva,reservasCont}){
             <td>{tipo}</td>
             <td>{grupo.materia} {grupo.grupo}</td>
             <td>{cantidadEstudiantes}</td>
-            <td>{fechaReserva}</td>
+            <td>{fechaNew ? fechaNew : "No existe fecha de reserva"}</td>
             <td>{periodo}</td>
             <td>{cantidadPeriodo}</td>
             <td>{razon ? razon :  "Reserva Individual"}</td>
