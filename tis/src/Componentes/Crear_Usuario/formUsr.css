@@ -62,7 +62,7 @@
 }
 
 .form_usr input:invalid{
-    border-color: #1b010222;
+    border-color:red;
 }
 
 .form_input_usr{

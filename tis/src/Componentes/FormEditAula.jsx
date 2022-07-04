@@ -25,12 +25,20 @@ function FormEditAula({aula, closeModal, updateAula }){
             if(data.codigo === 1){
                 setErrores({
                     errores,
-                    error: "El código de ambiente ya existe"
+                    error: "Letras y numeros. Mínimo 3 caracteres, máximo 15"
                 })
                 setShow(true)
             }else{
-                updateAula(id, form)
-                closeModal()
+                if(data.existe === 1){
+                    setErrores({
+                        errores,
+                        error: "El código de ambiente ya existe"
+                    })
+                    setShow(true)
+                }else{
+                    updateAula(id, form)
+                    closeModal()
+                }
             }
 
         })
@@ -47,7 +55,9 @@ function FormEditAula({aula, closeModal, updateAula }){
                     name="codigo" 
                     id="codigo_mod" 
                     placeholder="Codigo" 
-                    defaultValue={codigo}
+                    defaultValue={codigo} required
+                    pattern='[A-Za-z0-9 ]{3,15}'
+                    title='Letras y numeros. Mínimo 3 caracteres, máximo 15'
                     onChange={handleOnChange}
                  ></input>    
             </div>

@@ -12,7 +12,7 @@ export const useUser = () => {
     const updateUser = (id, body) => {
         const newUsers = users.map((user) => user.id === id ? body : user)
         setUsers(newUsers)
-        update(body, id)
+        /* update(body, id) */
     }
 
     const removeUser = (id) => {

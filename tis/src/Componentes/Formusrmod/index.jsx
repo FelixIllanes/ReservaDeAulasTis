@@ -1,10 +1,14 @@
 
 import {useState} from 'react'
 import React from 'react'
-
+import {Alert} from 'react-bootstrap'
+import {update} from '../../services/user'
+ 
 function FormEditUser({user, closeModal, updateUser }){
     const [form, setForm] = useState(user || {})
     const { id, name, apellido, email, password, esAdmin} = form
+    const [show, setShow] = useState(false);
+    const [errores, setErrores] = useState({})
 
     const handleOnChange = (evt) =>{
         setForm({
@@ -16,9 +20,26 @@ function FormEditUser({user, closeModal, updateUser }){
     
     const handleOnSubmit = (evt) => {
         evt.preventDefault()
-        updateUser(id, form)
-        closeModal()
+        
+        update(form, id).then(data => {
+
+            if(data.status === 0){
+                setErrores({
+                    errores,
+                    error: "El correo ingresado ya existe"
+                })
+                setShow(true)
+            }else{
+                updateUser(id, form)
+                closeModal()
+            }
+    
+        })
+        
     }
+
+    
+
 
     return (
         <form onSubmit={handleOnSubmit} className='form_mod'>
@@ -45,7 +66,7 @@ function FormEditUser({user, closeModal, updateUser }){
                     id="apellidouser_mod" 
                     placeholder="Apellido" 
                     defaultValue= {apellido}
-                    required 
+                    required pattern='[A-Za-zÑñ ]{3,20}' 
                     title='Apellido inválido, mínimo 3 caracteres máximo 20'
                     ></input>  
             </div>
@@ -66,6 +87,12 @@ function FormEditUser({user, closeModal, updateUser }){
                 <button type='submit'> Enviar </button>
                 <button type="button" onClick={()=> closeModal()} >Cancelar</button>
             </div>  
+            {show && <Alert variant="danger"  onClose={() => setShow(false)} dismissible>
+                        <p>
+                        {errores['error']} 
+                        </p>
+                    </Alert>
+            } 
         </form>
     )
 }

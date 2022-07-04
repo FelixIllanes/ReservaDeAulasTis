@@ -156,6 +156,7 @@ function Crear_Usuario(){
                                     closeModal();
                                     document.getElementById("formUser").reset();
                                     setIsLoading(false)
+                                    setAssign({})
                                     openModalSuccess();      
 
                             }).catch(err => console.log(err))  
@@ -168,6 +169,7 @@ function Crear_Usuario(){
                                 errores,
                                 error: "El correo ingresado ya existe",
                             })
+                            setAssign({})
                             setShow(true)
                         }
                     }).catch(err => console.log(err))
@@ -177,6 +179,7 @@ function Crear_Usuario(){
                         errores,
                         error: "No hay materias disponibles o no selecciono ninguna matería",
                     })
+                    setAssign({})
                     setShow(true)
                 }  
             }else{
@@ -185,10 +188,12 @@ function Crear_Usuario(){
                     errores,
                     error: "Las contraseñas no son iguales",
                 })
+                setAssign({})
                 setShow(true)
             }
         }else{
             closeModal();
+            setAssign({})
             setShow(true)
         }
     }

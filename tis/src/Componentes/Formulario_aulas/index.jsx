@@ -93,7 +93,7 @@ function Formulario_aulas(){
                         autoComplete='off' 
                         required 
                         pattern='[A-Za-z0-9 ]{3,15}' 
-                        title='Letras y numeros. Mínimo 3 caracteres, máximo 15 ' />
+                        title='Letras y numeros. Mínimo 3 caracteres, máximo 15' />
                     </div>
                     <div className="div_form">
                         <label>Capacidad*</label> <br />

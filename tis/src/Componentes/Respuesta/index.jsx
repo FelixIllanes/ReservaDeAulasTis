@@ -68,11 +68,6 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
         })
     }
 
-    const handleAccept= (evt) => {
-        evt.preventDefault()
-        acceptReserva(id, codigo, periodo, fechaReserva, id_aulas)
-    }
-
     const handleOnSubmit = (evt) => {
         evt.preventDefault()
         console.log(body)
