@@ -5,18 +5,25 @@ import {getToResponse} from '../services/reserva'
 import { useNavigate } from "react-router-dom";
 import {useReservas} from '../hooks/useReservas'
 import CuadroPrioridad from '../Componentes/Cuadro_Prioridad'
+import { get } from "../services/user"
 
 export default function Respuesta_Reserva(){
 
     const navigate = useNavigate()
 
     const {reservas, acceptReserva, reserva, rejectReserva, first, last, urgent} = useReservas()
+    const [user, setUser] = useState({})
 
     const redirectIni = () => {
         navigate(`/Home-admin/`)        
     }
     const redirectTo = () => {
         navigate(`/Home-admin/reporte`)        
+    }
+
+    const getUser = (id) => {
+        get(id).then(setUser) 
+        return user     
     }
 
     const handleSubmit = (evt) => {
@@ -61,7 +68,7 @@ export default function Respuesta_Reserva(){
                     {reservas?.map(reserva => (
                         <>
                         <Respuesta reserva={reserva}
-                                rejectReserva={rejectReserva}
+                                   rejectReserva={rejectReserva}
                         />
                         </>
                     ))}

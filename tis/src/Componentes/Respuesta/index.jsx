@@ -6,7 +6,7 @@ import { get } from "../../services/user"
 
 import './respuesta.css'
 
-function Respuesta({reserva, acceptReserva, rejectReserva}){
+function Respuesta({reserva,rejectReserva}){
     const { id, id_users, id_aulas, codigo, materia, grupo, cantidadEstudiantes, fechaReserva, periodo, cantidadPeriodo, aceptadoRechazado, razon,tipo, motivo, observaciones, created_at, updated_at} = reserva
     const [body, setBody] = useState({})
     const [user, setUser] = useState({})
@@ -101,7 +101,7 @@ function Respuesta({reserva, acceptReserva, rejectReserva}){
                 <Card.Body className='position-relative'>
                     <Card.Text>
                         <div className='peticion_cont'>
-                            <p><strong> Docente: </strong> {user.name} {user.apellido}</p>
+                            <p><strong> Docente: </strong> {reserva["0"]["nombre"]}</p>
                             <p><strong> Fecha: </strong>{fechaNew ? fechaNew : "No existe fecha de reserva"}</p>
                             <p><strong> Cantidad de Estudiantes: </strong>{cantidadEstudiantes}</p>
                             <p><strong> Periodo: </strong>{periodo}</p>
